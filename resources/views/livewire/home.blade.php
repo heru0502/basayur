@@ -1,3 +1,12 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
+  <div class="card card-style">
+    <div class="content mb-0">
+      <h1 class="text-center mb-0">Get Sticky Today</h1>
+      <p class="text-center color-highlight font-11 mt-n1 pb-0">Tons of Awesome Features just for You.</p>
+      <p class="boxed-text-xl mt-n3">
+        Fast, easy to use and filled with features. Get Sticky Today and give your site the Mobile Feeling it deserves.
+      </p>
+      <a href="#" class="btn btn-m btn-center-l text-uppercase font-900 bg-red-dark rounded-sm shadow-xl mb-4">Purchase Now - $25</a>
+    </div>
+  </div>
 </div>

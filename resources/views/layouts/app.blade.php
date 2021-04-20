@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="theme/fonts/css/fontawesome-all.min.css">
   <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
   <link rel="apple-touch-icon" sizes="180x180" href="theme/app/icons/icon-192x192.png">
+  @livewireStyles
 </head>
 
 <body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
@@ -30,16 +31,7 @@
 
   <div class="page-content header-clear-small">
 
-    <div class="card card-style">
-      <div class="content mb-0">
-        <h1 class="text-center mb-0">Get Sticky Today</h1>
-        <p class="text-center color-highlight font-11 mt-n1 pb-0">Tons of Awesome Features just for You.</p>
-        <p class="boxed-text-xl mt-n3">
-          Fast, easy to use and filled with features. Get Sticky Today and give your site the Mobile Feeling it deserves.
-        </p>
-        <a href="#" class="btn btn-m btn-center-l text-uppercase font-900 bg-red-dark rounded-sm shadow-xl mb-4">Purchase Now - $25</a>
-      </div>
-    </div>
+    {{ $slot }}
 
   </div>
   <!-- End of Page Content-->
@@ -192,4 +184,5 @@
 
 <script type="text/javascript" src="theme/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="theme/scripts/custom.js"></script>
+@livewireScripts
 </body>
