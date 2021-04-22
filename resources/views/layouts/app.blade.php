@@ -15,19 +15,20 @@
   @livewireStyles
 </head>
 
-<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+<body class="theme-light" data-highlight="highlight-orange" data-gradient="body-default">
 
 <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
 <div id="page">
 
   <div id="footer-bar" class="footer-bar-1">
-    <a href="/" class="active-nav"><i class="fa fa-home"></i><span>Home</span></a>
-    <a href="/products"><i class="fa fa-star"></i><span>Products</span></a>
-    <a href="index-pages.html"><i class="fa fa-heart"></i><span>Pages</span></a>
-    <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
-    <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+    <a href="/" class="active-nav"><i class="fa fa-home"></i><span>Beranda</span></a>
+    <a href="/products"><i class="fa fa-clipboard-list"></i><span>Pesanan</span></a>
+    <a href="index-pages.html"><i class="fa fa-shopping-cart"></i><span>Keranjang</span><em class="badge bg-red-light">3</em></a>
+    <a href="index-search.html"><i class="fa fa-search"></i><span>Pencarian</span></a>
+    <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Profil</span></a>
   </div>
+
 
   <div class="page-content header-clear-small">
 
