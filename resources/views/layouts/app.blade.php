@@ -22,13 +22,12 @@
 <div id="page">
 
   <div id="footer-bar" class="footer-bar-1">
-    <a href="/" class="active-nav"><i class="fa fa-home"></i><span>Beranda</span></a>
+    <a href="/" class="active-nav"><i class="fa fa-store"></i><span>Beranda</span></a>
     <a href="/products"><i class="fa fa-clipboard-list"></i><span>Pesanan</span></a>
-    <a href="/cart"><i class="fa fa-shopping-cart"></i><span>Keranjang</span><em class="badge bg-red-light">3</em></a>
+    <a href="/cart"><i class="fa fa-shopping-basket"></i><span>Keranjang</span><em class="badge bg-orange-light">3</em></a>
     <a href="index-search.html"><i class="fa fa-search"></i><span>Pencarian</span></a>
     <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Profil</span></a>
   </div>
-
 
   <div class="page-content header-clear-small">
 

@@ -1,5 +1,5 @@
 <div>
-  <div class="card bg-highlight">
+  <div class="card gradient-orange">
     <p class="content color-white mb-4 text-center">
       Grating ongkir minimum belanja Rp 50.000
     </p>
