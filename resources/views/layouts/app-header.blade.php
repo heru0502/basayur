@@ -21,16 +21,13 @@
 
 <div id="page">
 
-  <div id="footer-bar" class="footer-bar-1">
-    <a href="/" class="active-nav"><i class="fa fa-home"></i><span>Beranda</span></a>
-    <a href="/products"><i class="fa fa-clipboard-list"></i><span>Pesanan</span></a>
-    <a href="/cart"><i class="fa fa-shopping-cart"></i><span>Keranjang</span><em class="badge bg-red-light">3</em></a>
-    <a href="index-search.html"><i class="fa fa-search"></i><span>Pencarian</span></a>
-    <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Profil</span></a>
+  <div class="header header-fixed header-logo-center">
+    <a href="index.html" class="header-title">Sticky Mobile</a>
+    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+    <a href="#" data-toggle-theme class="header-icon header-icon-4"><i class="fas fa-lightbulb"></i></a>
   </div>
 
-
-  <div class="page-content header-clear-small">
+  <div class="page-content header-clear-medium">
 
     {{ $slot }}
 
