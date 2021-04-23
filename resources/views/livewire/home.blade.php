@@ -91,8 +91,8 @@
     <div class="container-fluid">
       <div class="row flex-row flex-nowrap overflow-auto mb-0">
         <div class="card card-style-custom pb-3" style="width: 170px;">
-          <a href="#"><img src="theme/images/pictures/17s.jpg"  class="rounded-sm shadow-xl img-fluid"></a>
-          <a href="#">
+          <a href="#" data-menu="menu-cart-edit-1"><img src="theme/images/pictures/17s.jpg"  class="rounded-sm shadow-xl img-fluid"></a>
+          <a href="#" data-menu="menu-cart-edit-1">
             <h5 class="mt-1">Brilliant Headset </h5>
             <span class="color-green-dark font-10">In Stock</span>
           </a>

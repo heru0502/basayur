@@ -35,6 +35,33 @@
     {{ $slot }}
 
   </div>
+
+  <div id="menu-cart-edit-1" class="menu menu-box-bottom menu-box-detached">
+    <div class="menu-title"><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
+
+    <div class="content mb-0">
+      <div class="row mb-6">
+        <div class="col-12">
+          <img src="theme/images/pictures/tomato-1.jpeg" class="rounded-m shadow-xl img-fluid" >
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-12">
+          <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
+          <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
+          <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
+        </div>
+      </div>
+
+      <a href="#" class="btn  btn-m font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight mb-4">BELI</a>
+    </div>
+  </div>
+
   <!-- End of Page Content-->
   <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
   <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
