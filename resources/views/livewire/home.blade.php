@@ -108,7 +108,14 @@
           </a>
           <span class=" font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
           <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-          <a href="#" class="btn btn-xxs btn-full rounded-xl text-uppercase font-500 shadow-s bg-highlight">Beli</a>
+
+          <div class="align-self-center">
+            <div class="stepper rounded-s float-start">
+              <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
+              <input type="number" min="1" max="99" value="10">
+              <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
+            </div>
+          </div>
         </div>
         <div class="card card-style-custom pb-3" style="width: 170px;">
           <a href="#"><img src="theme/images/pictures/17s.jpg"  class="rounded-sm shadow-xl img-fluid"></a>
