@@ -20,20 +20,15 @@
 <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
 <div id="page">
-
   <div id="footer-bar" class="footer-bar-1">
     <a href="/" class="active-nav"><i class="fa fa-store"></i><span>Beranda</span></a>
-    <a href="/products"><i class="fa fa-clipboard-list"></i><span>Pesanan</span></a>
+    <a href="/orders"><i class="fa fa-clipboard-list"></i><span>Pesanan</span></a>
     <a href="/cart"><i class="fa fa-shopping-basket"></i><span>Keranjang</span><em class="badge bg-orange-light">3</em></a>
     <a href="index-search.html"><i class="fa fa-search"></i><span>Pencarian</span></a>
     <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Profil</span></a>
   </div>
 
-  <div class="page-content header-clear-small">
-
-    {{ $slot }}
-
-  </div>
+  {{ $slot }}
 
   <div id="menu-cart-edit-1" class="menu menu-box-bottom menu-box-detached">
     <div class="menu-title"><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
