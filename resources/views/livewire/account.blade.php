@@ -1,5 +1,9 @@
 <div>
-  <div class="page-content header-clear-small">
+  <div class="header header-fixed header-logo-center">
+    <a href="index.html" class="header-title">Akun</a>
+  </div>
+
+  <div class="page-content header-clear-medium">
     <div class="card card-style">
       <div class="d-flex content">
         <div class="flex-grow-1">
