@@ -2,8 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Route::livewire('/', 'home')->name('home');
-//Route::livewire('/products', 'product-index')->name('product.index');
+Route::domain('admin.' . env('APP_URL'))->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+
+Route::domain('driver.' . env('APP_URL'))->group(function () {
+    Route::get('/', function () {
+        return 'driver';
+    });
+});
 
 Route::get('/', \App\Http\Livewire\Home::class);
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class);
@@ -14,3 +23,7 @@ Route::get('/checkout', \App\Http\Livewire\Checkout::class);
 Route::get('/payment-method', \App\Http\Livewire\PaymentMethod::class);
 Route::get('/search', \App\Http\Livewire\Search::class);
 Route::get('/account', \App\Http\Livewire\Account::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
