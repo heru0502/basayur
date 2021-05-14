@@ -8,6 +8,7 @@ class OrderIndex extends Component
 {
     public function render()
     {
-        return view('livewire.order-index');
+        return view('livewire.order-index')
+            ->layout('layouts.customer');
     }
 }
