@@ -24,6 +24,8 @@
         <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
         <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
 
+        @stack('stylesheet')
+
         @livewireStyles
 
         <!-- Scripts -->
@@ -71,6 +73,8 @@
 
         <script src="{{ asset('stisla/js/stisla.js') }}"></script>
         <script src="{{ asset('stisla/js/scripts.js') }}"></script>
+
+        @stack('javascript')
 
         @livewireScripts
         <script src="{{ mix('js/app.js') }}" defer></script>
