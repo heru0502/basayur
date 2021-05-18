@@ -21,4 +21,12 @@ class Menu extends Model
         'unit_id',
         'description'
     ];
+
+    public function category() {
+        return $this->belongsTo(MenuCategory::class, 'menu_category_id');
+    }
+
+    public function unit() {
+        return $this->belongsTo(Unit::class);
+    }
 }

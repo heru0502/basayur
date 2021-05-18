@@ -21,6 +21,7 @@
         "tailwindcss": "^2.0.1"
     },
     "dependencies": {
+        "sweetalert": "^2.1.2",
         "turbolinks": "^5.2.0"
     }
 }
