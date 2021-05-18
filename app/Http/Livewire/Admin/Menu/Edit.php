@@ -8,13 +8,14 @@ use App\Models\Unit;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+class Edit extends Component
 {
     use WithFileUploads;
 
     public $in_stock;
     public $menu;
     public $image;
+    public $menu_id;
 
     protected $rules = [
         'menu.name' => 'required|string',
@@ -36,19 +37,22 @@ class Create extends Component
         ]);
     }
 
-    public function mount(Menu $menu)
+    public function mount($id, Menu $menu)
     {
+        $this->menu_id = $id;
+
+        $menu = Menu::find($id);
+
         $this->menu = $menu;
-        $this->menu['is_active'] = false;
-        $this->menu['in_stock'] = false;
     }
 
     public function render()
     {
         $units = Unit::all();
         $categories = MenuCategory::all();
+        $menu = Menu::find($this->menu_id);
 
-        return view('livewire.admin.menu.create', compact('units', 'categories'))
+        return view('livewire.admin.menu.create', compact('units', 'categories', 'menu'))
             ->layoutData(['header_content' => 'Form Tambah Menu']);
     }
 
@@ -61,13 +65,14 @@ class Create extends Component
     {
         $this->validate();
 
-        $image = $this->image->store('images');
-
-        $this->menu['image'] = 'storage/'. $image;
+        if ($this->image) {
+            $image = $this->image->store('images');
+            $this->menu['image'] = 'storage/'. $image;
+        }
 
         $this->menu->save();
 
-        session()->flash('success', 'store');
+        session()->flash('success', 'update');
 
         return redirect()->to('/menus');
     }

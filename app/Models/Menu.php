@@ -19,7 +19,8 @@ class Menu extends Model
         'stock',
         'size_per_unit',
         'unit_id',
-        'description'
+        'description',
+        'image'
     ];
 
     public function category() {

@@ -68,7 +68,6 @@
         <script defer src="{{ asset('stisla/js/modules/marked.min.js') }}"></script>
         <script defer src="{{ asset('vendor/notyf/notyf.min.js') }}"></script>
         <script defer src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
-{{--        <script defer src="{{ asset('stisla/js/page/modules-sweetalert.js') }}"></script>--}}
         <script defer src="{{ asset('stisla/js/modules/chart.min.js') }}"></script>
         <script defer src="{{ asset('vendor/select2/select2.min.js') }}"></script>
 

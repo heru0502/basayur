@@ -6,7 +6,6 @@
           <h4>
             <a href="{{ route('menus.create') }}" class="btn btn-primary">Tambah</a>
             <button class="btn btn-danger" wire:click="remove"><i class="fa fa-trash"></i></button>
-            <button class="btn btn-success"><i class="fa fa-check"></i></button>
           </h4>
 
           <div class="card-header-form">
@@ -28,7 +27,8 @@
                 <th>Harga (Rp)</th>
                 <th>Active</th>
                 <th>Stock</th>
-                <th>Ukuran per Satuan</th>
+                <th>Satuan</th>
+                <th>Gambar</th>
               </tr>
 
               @foreach($menus as $i => $menu)
@@ -40,7 +40,7 @@
                   </div>
                 </td>
                 <td>
-                  <a href="">{{ $menu->name }}</a>
+                  <a href="{{ route('menus.edit', $menu->id) }}">{{ $menu->name }}</a>
                 </td>
                 <td>{{ $menu->category->name }}</td>
                 <td>
@@ -66,6 +66,7 @@
                   @endif
                 </td>
                 <td>{{ '/ '. $menu->size_per_unit .' '. $menu->unit->name }}</td>
+                <td><img width="100" src="{{ $menu->image }}"></td>
               </tr>
               @endforeach
             </table>

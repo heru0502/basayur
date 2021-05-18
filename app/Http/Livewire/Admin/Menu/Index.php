@@ -18,7 +18,9 @@ class Index extends Component
 
     public function render()
     {
-        $menus = Menu::where('name', 'like', '%'.$this->search.'%')->paginate(5);
+        $menus = Menu::where('name', 'like', '%'.$this->search.'%')
+            ->latest()
+            ->paginate(10);
 
         return view('livewire.admin.menu.index', compact('menus'))
             ->layoutData(['header_content' => 'Menu']);
