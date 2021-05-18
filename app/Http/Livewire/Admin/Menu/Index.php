@@ -14,20 +14,7 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['removeAll'];
     public $search = '';
-    public $check_all;
     public $checks = [];
-    public $disabled = false;
-    public $total_checked;
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
-    public function mount(Request $request)
-    {
-        //
-    }
 
     public function render()
     {
@@ -37,15 +24,6 @@ class Index extends Component
             ->layoutData(['header_content' => 'Menu']);
     }
 
-//    public function checkAll()
-//    {
-////        if ($this->check_all) {
-//            foreach ($this->checks as $key => $check) {
-//                $this->checks[$key] = true;
-//            }
-////        }
-//    }
-
     public function countChecked()
     {
         foreach ($this->checks as $key => $check) {
@@ -53,18 +31,14 @@ class Index extends Component
                 unset($this->checks[$key]);
             }
         }
-
-        if (count($this->checks) > 0) {
-            $this->disabled = true;
-        }
     }
 
     public function remove()
     {
         $menuIds = array_keys($this->checks);
-        $totalSelected = count($this->checks);
+        $totalChecked = count($this->checks);
 
-        if ($totalSelected > 0) {
+        if ($totalChecked > 0) {
             $menus = Menu::find($menuIds)->pluck('name')->toArray();
             $message = implode(', ', $menus);
             $this->emit('sweet-alert', $message);

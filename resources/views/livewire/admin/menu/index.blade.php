@@ -10,14 +10,12 @@
           </h4>
 
           <div class="card-header-form">
-            <form>
-              <div class="input-group">
-                <input type="text" class="form-control" wire:model="search" placeholder="Search">
-                <div class="input-group-btn">
-                  <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                </div>
+            <div class="input-group">
+              <input type="text" class="form-control" wire:model="search" placeholder="Search">
+              <div class="input-group-btn">
+                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
         <div class="card-body">
@@ -41,7 +39,9 @@
                     <label for="checkbox-{{$i}}" class="custom-control-label">&nbsp;</label>
                   </div>
                 </td>
-                <td>{{ $menu->name }}</td>
+                <td>
+                  <a href="">{{ $menu->name }}</a>
+                </td>
                 <td>{{ $menu->category->name }}</td>
                 <td>
                   @if($menu->special_price)
