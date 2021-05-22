@@ -3,29 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Menu;
+use App\Traits\WithCart;
+use App\Traits\WithModalMenu;
 use Livewire\Component;
 
 class Home extends Component
 {
-    public $selected_menu;
-//    protected $listeners = ['selected'];
-
-    public function mount()
-    {
-        $this->selected_menu['in_stock'] = false;
-    }
+    use WithCart, WithModalMenu;
 
     public function render()
     {
         $menus = Menu::latest()->get();
 
         return view('livewire.home', compact('menus'))
-            ->layout('layouts.customer');
-    }
-
-    public function selected($menu)
-    {
-        $this->selected_menu = $menu ?? '';
-//        $this->render();
+            ->layout('layouts.customer', ['total_item' => $this->items['total_item']]);
     }
 }
