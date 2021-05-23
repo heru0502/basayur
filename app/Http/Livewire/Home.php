@@ -16,6 +16,6 @@ class Home extends Component
         $menus = Menu::latest()->get();
 
         return view('livewire.home', compact('menus'))
-            ->layout('layouts.customer', ['total_item' => $this->items['total_item']]);
+            ->layout('layouts.customer', ['total_item' => $this->total_item]);
     }
 }

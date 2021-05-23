@@ -15,6 +15,6 @@ trait WithModalMenu
 
     public function selected($menu)
     {
-        $this->selected_menu = $menu ?? '';
+        $this->selected_menu = $menu;
     }
 }

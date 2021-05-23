@@ -8,7 +8,9 @@ class Cart extends Component
 {
     public function render()
     {
-        return view('livewire.cart')
-            ->layout('layouts.app-header', ['title' => 'Keranjang']);
+        $title = 'Cart';
+
+        return view('livewire.cart', compact('title'))
+            ->layout('layouts.customer');
     }
 }

@@ -5,20 +5,26 @@ namespace App\Traits;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 trait WithCart
 {
     public $items;
+    public $total_item;
 
     public function mountWithCart(Request $request)
     {
         $this->items = $request->session()->get('items');
+        $this->total_item = $request->session()->get('total_item');
     }
 
-    public function increase($id)
+    public function increase($menu)
     {
+        $id = $menu['id'];
+
         $buy_number = $this->items[$id]['buy_number'] ?? 0;
 
+        $this->items[$id] = $menu;
         $this->items[$id]['buy_number'] = $buy_number + 1;
 
         $this->updateTotalItem();
@@ -31,15 +37,20 @@ trait WithCart
         $buy_number = $this->items[$id]['buy_number'] ?? 0;
 
         if ($buy_number > 0) {
-            $this->items[$id]['buy_number'] = $buy_number - 1;
+            $buy_number = $buy_number - 1;
+            $this->items[$id]['buy_number'] = $buy_number;
 
             $this->updateTotalItem();
 
-            session(['items' => $this->items]);
+            if ($buy_number > 0) {
+                session(['items' => $this->items]);
+            } else {
+                Session::forget('items.'.$id);
+            }
         }
     }
 
-    public function updateTotalItem()
+    private function updateTotalItem()
     {
         $total_item = 0;
         foreach ($this->items as $item) {
@@ -47,8 +58,9 @@ trait WithCart
                 $total_item = $total_item + $item['buy_number'];
             }
         }
-        $this->items['total_item'] = $total_item;
 
-        $this->emit('updateCartNumber', $total_item);
+        $this->total_item = $total_item;
+
+        session(['total_item' => $total_item]);
     }
 }

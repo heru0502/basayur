@@ -19,7 +19,7 @@
         <h5 class="mt-1">
           {{ $selected_menu['name'] ?? null }}
           <span class="color-green-dark font-10">
-              @if($selected_menu['in_stock'])
+            @if($selected_menu['in_stock'])
               In Stock
             @else
               Tersedia: {{ $selected_menu['stock'] ?? null }}
@@ -44,7 +44,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-12">
-        <p style="line-height: 14pt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
+        <p style="line-height: 14pt">{{ $selected_menu['description'] ?? null }}</p>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
       </div>
 
       <div wire:loading.remove>
-        <a href="#" wire:click="increase({{ $selected_menu['id'] ?? null }})" class="close-menu btn btn-sm font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
+        <a href="#" wire:click="increase({{ json_encode($selected_menu) }})" class="close-menu btn btn-sm font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
       </div>
     </div>
   </div>
