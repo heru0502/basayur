@@ -76,10 +76,9 @@
               </a>
               @if($menu->special_price)
                 <span class=" font-13"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-                <h3 class=" color-highlight">Rp {{ $menu->special_price }} <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              @else
-                <h3 class=" color-highlight">Rp {{ $menu->price }} <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
               @endif
+
+              <h3 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-14 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h3>
 
               @if(($items[$menu->id]['buy_number'] ?? 0) < 1)
                 <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>

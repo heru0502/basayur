@@ -28,120 +28,45 @@
 
     <div class="card card-style">
       <div class="content">
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="row mb-3">
-              <div class="col-7">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="col-4">
-                <div class="stepper rounded-s float-start">
-                  <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
-                  <input type="number" min="1" max="99" value="10">
-                  <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
 
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="row mb-3">
-              <div class="col-7">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="col-4">
-                <div class="stepper rounded-s float-start">
-                  <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
-                  <input type="number" min="1" max="99" value="10">
-                  <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
-                </div>
-              </div>
+        @foreach($items as $item)
+          <div class="d-flex mb-0">
+            <div>
+              <img src="{{ $item['image'] }}" class="rounded-m shadow-xl" width="80">
             </div>
-          </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
+            <div class="ms-3">
+              <h5 class="mt-1">
+                {{ $item['name'] }}
+                <span class="color-green-dark font-10">
+                  @if($item['in_stock'])
+                    In Stock
+                  @else
+                    Tersedia: {{ $item['stock'] }}
+                  @endif
+                </span>
+              </h5>
 
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="row mb-3">
-              <div class="col-7">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="col-4">
-                <div class="stepper rounded-s float-start">
-                  <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
-                  <input type="number" min="1" max="99" value="10">
-                  <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
+              @if($item['special_price'])
+                <span class="font-13"><del>Rp {{ $item['price'] }}</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
+              @endif
 
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="row mb-3">
-              <div class="col-7">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="col-4">
-                <div class="stepper rounded-s float-start">
-                  <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
-                  <input type="number" min="1" max="99" value="10">
-                  <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
+              <div class="row mb-3">
+                <div class="col-7">
+                  <h3 class=" color-highlight">Rp {{ $item['special_price'] ?? $item['price'] }} <span class="color-gray-dark font-14 font-500">/ {{ $item['size_per_unit'] }} {{ $item['unit']['name'] }}</span></h3>
+                </div>
+                <div class="col-4">
+                  <div class="stepper rounded-s float-start">
+                    <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
+                    <input type="number" min="1" max="99" value="10">
+                    <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
+          <div class="divider divider-margins mb-3"></div>
+        @endforeach
 
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="row mb-3">
-              <div class="col-7">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="col-4">
-                <div class="stepper rounded-s float-start">
-                  <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
-                  <input type="number" min="1" max="99" value="10">
-                  <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
 
         <div class="row mb-0">
           <div class="col-12 pe-1">
