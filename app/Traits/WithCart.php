@@ -9,23 +9,39 @@ use Illuminate\Support\Facades\Session;
 
 trait WithCart
 {
-    public $items;
+    public $items = [];
     public $total_item;
+    public $last;
 
     public function mountWithCart(Request $request)
     {
         $this->items = $request->session()->get('items');
         $this->total_item = $request->session()->get('total_item');
+//        Session::flush();
     }
 
     public function increase($menu)
     {
-        $id = $menu['id'];
+        $menu = collect($menu);
+        $items = collect($this->items);
+        $item = $items->where('id', $menu->get('id'))->first();
 
-        $buy_number = $this->items[$id]['buy_number'] ?? 0;
-
-        $this->items[$id] = $menu;
-        $this->items[$id]['buy_number'] = $buy_number + 1;
+        if ($item) {
+            $item = collect($item);
+            $id = $item->get('id');
+            $buy_number = $item->get('buy_number') + 1;
+            $menu->put('buy_number', $buy_number);
+            $items->each(function($item, $key) use($id, $buy_number) {
+                if ($item['id'] == $id) {
+                    $this->items[$key]['buy_number'] = $item['buy_number'] + 1;
+                    return false;
+                }
+            });
+        }
+        else {
+            $menu->put('buy_number', 1);
+            array_push($this->items, $menu->toArray());
+        }
 
         $this->updateTotalItem();
 

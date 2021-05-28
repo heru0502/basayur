@@ -80,15 +80,13 @@
 
               <h3 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-14 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h3>
 
-              @if(($items[$menu->id]['buy_number'] ?? 0) < 1)
+              @if(checkBuyButton($menu->id, $items))
                 <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
-              @endif
-
-              @if(($items[$menu->id]['buy_number'] ?? 0) > 0)
+              @else
                 <div class="align-self-center">
                   <div class="stepper rounded-s float-start">
                     <a href="#" class="stepper-sub" wire:click="decrease({{ $menu->id }})"><i class="fa fa-minus color-red-dark"></i></a>
-                    <input type="number" min="1" max="99" wire:model="items.{{ $menu->id }}.buy_number" value="{{ $items[$menu->id]['buy_number'] ?? 0 }}" readonly>
+                    <input type="number" min="0" max="99" value="{{ getTotalBuyNumber($menu->id, $items) }}" readonly>
                     <a href="#" class="stepper-add" wire:click="increase({{ $menu }})"><i class="fa fa-plus color-green-dark"></i></a>
                   </div>
                 </div>
