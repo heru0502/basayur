@@ -2,13 +2,36 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\CustomerAddress;
+use App\Traits\WithCart;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Checkout extends Component
 {
+    use WithCart;
+
+    public $note;
+
+    public function mount()
+    {
+        $this->note = Session::get('note');
+    }
+
     public function render()
     {
-        return view('livewire.checkout')
+        $address = null;
+        $date = Carbon::now()->addDay();
+        $shipment_date = convertDayEngToInd($date->format('l'), $date->format('l, j M Y'));
+        $shipment_time = '06:00 ~ 11:00';
+
+        return view('livewire.checkout', compact('address', 'shipment_date', 'shipment_time'))
             ->layout('layouts.app-header', ['title' => 'Checkout']);
+    }
+
+    public function saveNote()
+    {
+        session(['note' => $this->note]);
     }
 }

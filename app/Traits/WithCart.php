@@ -12,6 +12,7 @@ trait WithCart
     public $items = [];
     public $total_item;
     public $subtotal;
+    public $shipment_price;
     public $last;
 
     public function mountWithCart()
@@ -19,6 +20,7 @@ trait WithCart
         $this->items = Session::get('items');
         $this->total_item = Session::get('total_item');
         $this->subtotal = Session::get('subtotal');
+        $this->shipment_price = Session::get('shipment_price');
 //        Session::flush();
     }
 
@@ -96,10 +98,12 @@ trait WithCart
 
         $this->total_item = $total_item;
         $this->subtotal = $subtotal;
+        $this->shipment_price = $subtotal >= 30000 ? 0 : 5000;
 
         session([
             'total_item' => $total_item,
-            'subtotal' => $subtotal
+            'subtotal' => $subtotal,
+            'shipment_price' => $this->shipment_price
         ]);
     }
 }

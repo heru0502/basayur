@@ -5,7 +5,7 @@
         <a href="/payment-method" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</a>
       </div>
       <div class="p-2 text-end">
-        <h3 class="mb-0 color-highlight">Rp 50.000</h3>
+        <h3 class="mb-0 color-highlight">Rp {{ $subtotal }}</h3>
         <img src="theme/images/pictures/coins.png" height="20"> <span class="color-highlight ">Dapatkan 50 poin</span>
       </div>
       <div class="p-2 flex-fill">
@@ -17,97 +17,72 @@
   <div class="page-content header-clear-medium">
     <div class="card card-style">
       <div class="content">
-        <div class="d-flex">
-          <div>
-            <h4>Alamat Pengiriman</h4>
+        @if($address)
+          <div class="d-flex">
+            <div>
+              <h4>Alamat Pengiriman</h4>
+            </div>
+            <div class="flex-fill text-end">
+              <a href="#" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
+            </div>
           </div>
-          <div class="flex-fill text-end">
-            <a href="#" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
+          <p class="mb-0">
+            Komp. Balitra Jaya Permai jl.Brunai no. B14 Loktabat, Banjarbaru, Kalimantan Selatan
+          </p>
+          <p>
+            +6287815932909
+          </p>
+        @else
+          <div class="d-flex">
+            <div>
+              <h4>Alamat Pengiriman</h4>
+            </div>
           </div>
-        </div>
-        <p class="mb-0">
-          Komp. Balitra Jaya Permai jl.Brunai no. B14 Loktabat, Banjarbaru, Kalimantan Selatan
-        </p>
-        <p>
-          +6287815932909
-        </p>
+          <p class="color-red-light">Anda belum menambahkan alamat.</p>
+          <a href="#" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
+        @endif
       </div>
     </div>
 
     <div class="card card-style">
       <div class="content">
-        <div class="d-flex">
-          <div>
-            <h4>Alamat</h4>
-          </div>
-        </div>
-        <p class="color-red-light">Anda belum menambahkan alamat.</p>
-        <a href="#" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
-      </div>
-    </div>
+        @foreach($items as $item)
+          <div class="d-flex mb-0">
+            <div>
+              <img src="{{ $item['image'] }}" class="rounded-m shadow-xl" width="80">
+            </div>
+            <div class="ms-3 flex-fill">
+              <h5 class="mt-1">
+                {{ $item['name'] }}
+                <span class="color-green-dark font-10">
+                  @if($item['in_stock'])
+                    In Stock
+                  @else
+                    Tersedia: {{ $item['stock'] }}
+                  @endif
+                </span>
+              </h5>
 
-    <div class="card card-style">
-      <div class="content">
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3 flex-fill">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="d-flex m-1">
-              <div class="">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="flex-fill text-end">
-                <p>x3</p>
+              @if($item['special_price'])
+                <span class="font-13"><del>Rp {{ $item['price'] }}</del> <span class="badge bg-green-light color-white">Hemat {{ $item['discount'] }}%</span></span>
+              @endif
+
+              <div class="d-flex m-1">
+                <div class="">
+                  <h3 class=" color-highlight">Rp {{ $item['special_price'] ?? $item['price'] }} <span class="color-gray-dark font-14 font-500">/ {{ $item['size_per_unit'] }} {{ $item['unit']['name'] }}</span></h3>
+                </div>
+                <div class="flex-fill text-end">
+                  <p>x{{ getTotalBuyNumber($item['id'], $items) }}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
-
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3 flex-fill">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="d-flex m-1">
-              <div class="">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="flex-fill text-end">
-                <p>x3</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
-
-        <div class="d-flex mb-0">
-          <div>
-            <img src="theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="80">
-          </div>
-          <div class="ms-3 flex-fill">
-            <h5 class="mt-1">Brilliant Headset <span class="color-green-dark font-10">In Stock</span></h5>
-            <span class="font-13"><del>Rp 50.000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
-            <div class="d-flex m-1">
-              <div class="">
-                <h3 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
-              </div>
-              <div class="flex-fill text-end">
-                <p>x3</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="divider divider-margins mb-3"></div>
+          <div class="divider divider-margins mb-3"></div>
+        @endforeach
 
         <div class="row mb-0">
           <div class="col-12 pe-1">
-            <a href="/home" data-back-button class="btn btn-xl btn-full mb-3 rounded-xl font-700 border-white color-green-light bg-theme"><i class="fa fa-lg fa-shopping-basket"></i> Belanja lagi</a>
+            <a href="/" data-back-button class="btn btn-xl btn-full mb-3 rounded-xl font-700 border-white color-green-light bg-theme"><i class="fa fa-lg fa-shopping-basket"></i> Belanja lagi</a>
           </div>
         </div>
       </div>
@@ -131,7 +106,7 @@
             Tanggal Pengiriman
           </div>
           <div class="flex-fill text-end">
-            Minggu, 25 April 2021
+            {{ $shipment_date }}
           </div>
         </div>
         <div class="divider divider-margins mb-2"></div>
@@ -141,16 +116,14 @@
             Waktu Pengiriman
           </div>
           <div class="flex-fill text-end">
-            06.00 ~ 11.00
+            {{ $shipment_time }}
           </div>
         </div>
         <div class="divider divider-margins mb-4"></div>
 
         <div class="input-style input-style-always-active has-borders validate-field mb-4">
-          <input type="name" class="form-control validate-name" id="form1ab" placeholder="Tulis catatan anda disini...">
-          <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Catatan</label>
-          <i class="fa fa-times disabled invalid color-red-dark"></i>
-          <i class="fa fa-check disabled valid color-green-dark"></i>
+          <input type="text" wire:model="note" wire:keydown.debounce.1s="saveNote" class="form-control" id="note" placeholder="Tulis catatan anda disini...">
+          <label for="note" class="color-theme opacity-50 text-uppercase font-700 font-10">Catatan</label>
           <em>(opsional)</em>
         </div>
       </div>
@@ -165,10 +138,10 @@
         </div>
         <div class="d-flex mb-1">
           <div>
-            Subtotal (3 item)
+            {{ "Subtotal ($total_item item)" }}
           </div>
           <div class="flex-fill text-end">
-            Rp 100.000
+            Rp {{ $subtotal }}
           </div>
         </div>
         <div class="divider divider-margins mb-2"></div>
@@ -179,7 +152,7 @@
             <span class="font-11 color-orange-light">GRATIS ONGKIR minimal belanja Rp 30.000</span>
           </div>
           <div class="flex-fill text-end">
-            Rp 5.000
+            Rp {{ $shipment_price }}
           </div>
         </div>
         <div class="divider divider-margins mb-2"></div>

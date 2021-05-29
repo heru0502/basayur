@@ -21,3 +21,27 @@ function getTotalBuyNumber(int $menu_id, $items)
 
     return $buy_number;
 }
+
+function convertDayEngToInd($day, $string)
+{
+    $dayInd = '';
+
+    switch ($day) {
+        case 'Monday':
+            $dayInd = 'Senin'; break;
+        case 'Tuesday':
+            $dayInd = 'Selasa'; break;
+        case 'Wednesday':
+            $dayInd = 'Rabu'; break;
+        case 'Thursday':
+            $dayInd = 'Kamis'; break;
+        case 'Friday':
+            $dayInd = 'Jumat'; break;
+        case 'Saturday':
+            $dayInd = 'Sabtu'; break;
+        case 'Sunday':
+            $dayInd = 'Minggu'; break;
+    }
+
+    return str_replace($day, $dayInd, $string);
+}
