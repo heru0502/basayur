@@ -11,9 +11,7 @@ class Cart extends Component
 
     public function render()
     {
-        $title = 'Cart';
-
-        return view('livewire.cart', compact('title'))
+        return view('livewire.cart')
             ->layout('layouts.customer');
     }
 }

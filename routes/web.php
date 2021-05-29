@@ -26,6 +26,7 @@ Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
 Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);
 Route::get('/cart', \App\Http\Livewire\Cart::class);
 Route::get('/checkout', \App\Http\Livewire\Checkout::class);
+Route::get('/address', \App\Http\Livewire\AddressUpdate::class);
 Route::get('/payment-method', \App\Http\Livewire\PaymentMethod::class);
 Route::get('/search', \App\Http\Livewire\Search::class);
 Route::get('/account', \App\Http\Livewire\Account::class);

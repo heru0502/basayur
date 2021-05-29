@@ -29,5 +29,9 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             }
         });
+
+        Blade::if('filled', function($string) {
+
+        });
     }
 }

@@ -174,6 +174,7 @@
 <script type="text/javascript" src="theme/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="theme/scripts/custom.js"></script>
 @livewireScripts
+
 @stack('javascript')
 
 </body>

@@ -27,7 +27,7 @@ class Checkout extends Component
         $shipment_time = '06:00 ~ 11:00';
 
         return view('livewire.checkout', compact('address', 'shipment_date', 'shipment_time'))
-            ->layout('layouts.app-header', ['title' => 'Checkout']);
+            ->layout('layouts.customer');
     }
 
     public function saveNote()

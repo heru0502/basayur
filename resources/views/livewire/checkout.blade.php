@@ -1,4 +1,9 @@
 <div>
+  <div class="header header-fixed header-logo-center">
+    <a href="index.html" class="header-title">Checkout</a>
+    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+  </div>
+
   <div class="fixed-bottom card mb-0">
     <div class="d-flex flex-row-reverse m-1">
       <div class="p-2">
@@ -39,7 +44,7 @@
             </div>
           </div>
           <p class="color-red-light">Anda belum menambahkan alamat.</p>
-          <a href="#" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
+          <a href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
         @endif
       </div>
     </div>
