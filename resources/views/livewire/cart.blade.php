@@ -10,7 +10,7 @@
         <a href="/checkout" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</a>
       </div>
       <div class="p-2 text-end">
-        <h3 class="mb-0 color-highlight">Rp 50.000</h3>
+        <h3 class="mb-0 color-highlight">Rp {{ $subtotal }}</h3>
         <img src="theme/images/pictures/coins.png" height="20"> <span class="color-highlight ">Dapatkan 50 poin</span>
       </div>
       <div class="p-2 flex-fill">
@@ -56,9 +56,9 @@
                 </div>
                 <div class="col-4">
                   <div class="stepper rounded-s float-start">
-                    <a href="#" class="stepper-sub"><i class="fa fa-minus color-red-dark"></i></a>
-                    <input type="number" min="1" max="99" value="10">
-                    <a href="#" class="stepper-add"><i class="fa fa-plus color-green-dark"></i></a>
+                    <a href="#" class="stepper-sub" wire:click.prevent="decrease({{ $item['id'] }})"><i class="fa fa-minus color-red-dark"></i></a>
+                    <input type="number" min="0" max="99" value="{{ getTotalBuyNumber($item['id'], $items) }}" readonly>
+                    <a href="#" class="stepper-add" wire:click.prevent="increase({{ json_encode($item) }})"><i class="fa fa-plus color-green-dark"></i></a>
                   </div>
                 </div>
               </div>

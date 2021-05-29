@@ -11,12 +11,14 @@ trait WithCart
 {
     public $items = [];
     public $total_item;
+    public $subtotal;
     public $last;
 
     public function mountWithCart()
     {
         $this->items = Session::get('items');
         $this->total_item = Session::get('total_item');
+        $this->subtotal = Session::get('subtotal');
 //        Session::flush();
     }
 
@@ -82,14 +84,22 @@ trait WithCart
     private function updateTotalItem()
     {
         $total_item = 0;
+        $subtotal = 0;
+
         foreach ($this->items as $item) {
             if (isset($item['buy_number'])) {
                 $total_item = $total_item + $item['buy_number'];
             }
+
+            $subtotal += ($item['special_price'] ?? $item['price']) * $item['buy_number'];
         }
 
         $this->total_item = $total_item;
+        $this->subtotal = $subtotal;
 
-        session(['total_item' => $total_item]);
+        session([
+            'total_item' => $total_item,
+            'subtotal' => $subtotal
+        ]);
     }
 }
