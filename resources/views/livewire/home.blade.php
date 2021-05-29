@@ -87,7 +87,7 @@
                   <div class="stepper rounded-s float-start">
                     <a href="#" class="stepper-sub" wire:click="decrease({{ $menu->id }})"><i class="fa fa-minus color-red-dark"></i></a>
                     <input type="number" min="0" max="99" value="{{ getTotalBuyNumber($menu->id, $items) }}" readonly>
-                    <a href="#" class="stepper-add" wire:click="increase({{ $menu }})"><i class="fa fa-plus color-green-dark"></i></a>
+                    <a href="#" class="stepper-add" wire:click.prevent="increase({{ $menu }})"><i class="fa fa-plus color-green-dark"></i></a>
                   </div>
                 </div>
               @endif

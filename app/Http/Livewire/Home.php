@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Menu;
 use App\Traits\WithCart;
 use App\Traits\WithModalMenu;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Home extends Component

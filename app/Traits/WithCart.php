@@ -13,10 +13,10 @@ trait WithCart
     public $total_item;
     public $last;
 
-    public function mountWithCart(Request $request)
+    public function mountWithCart()
     {
-        $this->items = $request->session()->get('items');
-        $this->total_item = $request->session()->get('total_item');
+        $this->items = Session::get('items');
+        $this->total_item = Session::get('total_item');
 //        Session::flush();
     }
 
@@ -31,9 +31,10 @@ trait WithCart
             $id = $item->get('id');
             $buy_number = $item->get('buy_number') + 1;
             $menu->put('buy_number', $buy_number);
+
             $items->each(function($item, $key) use($id, $buy_number) {
                 if ($item['id'] == $id) {
-                    $this->items[$key]['buy_number'] = $item['buy_number'] + 1;
+                    $this->items[$key]['buy_number'] = $buy_number;
                     return false;
                 }
             });
@@ -50,18 +51,30 @@ trait WithCart
 
     public function decrease($id)
     {
-        $buy_number = $this->items[$id]['buy_number'] ?? 0;
+        $items = collect($this->items);
+        $item = $items->where('id', $id)->first();
+
+        $buy_number = $item['buy_number'] ?? 0;
 
         if ($buy_number > 0) {
             $buy_number = $buy_number - 1;
-            $this->items[$id]['buy_number'] = $buy_number;
+
+            $items->each(function($item, $key) use($id, $buy_number, &$index) {
+                if ($item['id'] == $id) {
+                    $this->items[$key]['buy_number'] = $buy_number;
+                    $index = $key;
+                    return false;
+                }
+            });
 
             $this->updateTotalItem();
 
             if ($buy_number > 0) {
                 session(['items' => $this->items]);
             } else {
-                Session::forget('items.'.$id);
+                $items->forget($index);
+                $this->items = $items->toArray();
+                Session::forget('items.'.$index);
             }
         }
     }

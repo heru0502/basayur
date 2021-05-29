@@ -175,4 +175,5 @@
 <script type="text/javascript" src="theme/scripts/custom.js"></script>
 @livewireScripts
 @stack('javascript')
+
 </body>
