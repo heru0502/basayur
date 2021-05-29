@@ -47,7 +47,7 @@
               </h5>
 
               @if($item['special_price'])
-                <span class="font-13"><del>Rp {{ $item['price'] }}</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
+                <span class="font-13"><del>Rp {{ $item['price'] }}</del> <span class="badge bg-green-light color-white">Hemat {{ $item['discount'] }}%</span></span>
               @endif
 
               <div class="row mb-3">

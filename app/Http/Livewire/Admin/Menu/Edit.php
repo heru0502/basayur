@@ -70,6 +70,15 @@ class Edit extends Component
             $this->menu['image'] = 'storage/'. $image;
         }
 
+        if (isset($this->menu['special_price'])) {
+            $price = $this->menu['price'];
+            $specialPrice = $this->menu['special_price'];
+
+            $this->menu['discount'] = (($price - $specialPrice) / $price) * 100;
+        } else {
+            $this->menu['discount'] = null;
+        }
+
         $this->menu->save();
 
         session()->flash('success', 'update');

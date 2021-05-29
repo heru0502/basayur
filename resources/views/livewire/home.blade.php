@@ -75,7 +75,7 @@
                 </span>
               </a>
               @if($menu->special_price)
-                <span class=" font-13"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
+                <span class=" font-13"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
               @endif
 
               <h3 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-14 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h3>

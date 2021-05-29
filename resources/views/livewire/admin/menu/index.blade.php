@@ -46,7 +46,8 @@
                 <td>
                   @if($menu->special_price)
                     {{ $menu->special_price }}
-                    <del><small>{{ $menu->price }}</small></del>
+                    <del><small>{{ $menu->price }}</small></del><br>
+                    <small><b class="text-green-500">({{ $menu->discount }}%)</b></small>
                   @else
                     {{ $menu->price }}
                   @endif
