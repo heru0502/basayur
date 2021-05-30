@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Str;
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL") ?? null);
+
+$database = getenv("CLEARDB_DATABASE_URL") ? substr($url["path"], 1) : null;
 
 return [
 
@@ -50,7 +52,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => $url["host"] ?? env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => substr($url["path"], 1) ?? env('DB_DATABASE', 'forge'),
+            'database' => $database ?? env('DB_DATABASE', 'forge'),
             'username' => $url["user"] ?? env('DB_USERNAME', 'forge'),
             'password' => $url["pass"] ?? env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
