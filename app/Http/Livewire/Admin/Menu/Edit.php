@@ -66,8 +66,8 @@ class Edit extends Component
         $this->validate();
 
         if ($this->image) {
-            $image = $this->image->store('images');
-            $this->menu['image'] = 'storage/'. $image;
+            $image = $this->image->store('images', setStorage());
+            $this->menu['image'] = urlImage($image);
         }
 
         if (isset($this->menu['special_price'])) {
@@ -83,6 +83,6 @@ class Edit extends Component
 
         session()->flash('success', 'update');
 
-        return redirect()->to('/admin/menus');
+        return redirect()->to(route('admin.menus.index'));
     }
 }

@@ -45,3 +45,21 @@ function convertDayEngToInd($day, $string)
 
     return str_replace($day, $dayInd, $string);
 }
+
+function setStorage()
+{
+    if (config('app.env') === 'local') {
+        return 'public';
+    }
+
+    return 's3';
+}
+
+function urlImage($image)
+{
+    if (config('app.env') === 'local') {
+        return 'storage/' . $image;
+    }
+
+    return 'https://' . config('filesystems.disks.s3.bucket') . '.s3-' . config('filesystems.disks.s3.region') . '.amazonaws.com/' . $image;
+}

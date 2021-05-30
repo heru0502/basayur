@@ -69,6 +69,6 @@ class Create extends Component
 
         session()->flash('success', 'store');
 
-        return redirect()->to('/admin/menus');
+        return redirect()->to(route('admin.menus.index'));
     }
 }

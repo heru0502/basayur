@@ -187,7 +187,7 @@
                 </div>
                 Simpan
               </button>
-              <a href="{{ route('menus.index') }}" class="btn btn-secondary">Batal</a>
+              <a href="{{ route('admin.menus.index') }}" class="btn btn-secondary">Batal</a>
             </div>
           </form>
 

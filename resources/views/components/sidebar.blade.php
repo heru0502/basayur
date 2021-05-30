@@ -14,7 +14,7 @@
             </li>
 
             <li class="{{ request()->routeIs('menus.*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('menus.index') }}">
+                <a class="nav-link" href="{{ route('admin.menus.index') }}">
                     <i class="fas fa-newspaper"></i> <span>Menu</span>
                 </a>
             </li>
