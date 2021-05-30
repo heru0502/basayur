@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //Global Variables
     let isPWA = false;  // Enables or disables the service worker and PWA
-    let isAJAX = false; // AJAX transitions. Requires local server or server
+    let isAJAX = true; // AJAX transitions. Requires local server or server
     var pwaName = "Sticky"; //Local Storage Names for PWA
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //Place all your custom Javascript functions and plugin calls below this line
     function init_template(){
+        Livewire.restart();
+
         //Caching Global Variables
         var i, e, el; //https://www.w3schools.com/js/js_performance.asp
                         

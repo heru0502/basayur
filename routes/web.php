@@ -20,7 +20,7 @@ Route::domain('driver.' . env('APP_URL'))->group(function () {
     });
 });
 
-Route::get('/', \App\Http\Livewire\Home::class);
+Route::get('/', \App\Http\Livewire\Home::class)->name('home');
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class);
 Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
 Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);

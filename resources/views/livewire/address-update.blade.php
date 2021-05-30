@@ -1,7 +1,7 @@
 <div>
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">Alamat Pengiriman</a>
-    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+    <a href="/checkout" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
   </div>
 
   <div class="page-content header-clear-medium">
@@ -17,8 +17,6 @@
             </select>
             <i class="fa fa-check valid color-green-dark"></i>
             <em></em>
-
-
           </div>
 
           <div class="input-style input-style-always-active has-borders no-icon mb-4" wire:self.ignore>
