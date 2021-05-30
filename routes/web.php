@@ -3,17 +3,17 @@
 use Illuminate\Support\Facades\Route;
 //use Laravel\Socialite\Facades\Socialite;
 //
-//Route::domain('admin.' . env('APP_URL'))->group(function () {
-//    Route::get('/', function () {
-//        return view('welcome');
-//    });
-//
-//    Route::middleware(['auth:sanctum', 'verified'])->group(function() {
-//        Route::get('/menus', \App\Http\Livewire\Admin\Menu\Index::class)->name('menus.index');
-//        Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('menus.create');
-//        Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('menus.edit');
-//    });
-//});
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+        Route::get('/menus', \App\Http\Livewire\Admin\Menu\Index::class)->name('menus.index');
+        Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('menus.create');
+        Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('menus.edit');
+    });
+});
 //
 //Route::domain('driver.' . env('APP_URL'))->group(function () {
 //    Route::get('/', function () {
