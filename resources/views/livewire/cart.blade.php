@@ -1,7 +1,7 @@
 <div>
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">Cart</a>
-    <a href="/" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
   </div>
 
   <div class="fixed-bottom card mb-0">
@@ -70,7 +70,7 @@
 
         <div class="row mb-0">
           <div class="col-12 pe-1">
-            <a href="#" data-back-button class="btn btn-xl btn-full mb-3 rounded-xl font-700 border-white color-green-light bg-theme"><i class="fa fa-lg fa-shopping-basket"></i> Tambah lagi</a>
+            <a href="/" class="btn btn-xl btn-full mb-3 rounded-xl font-700 border-white color-green-light bg-theme"><i class="fa fa-lg fa-shopping-basket"></i> Tambah lagi</a>
           </div>
         </div>
       </div>

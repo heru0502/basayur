@@ -2,8 +2,8 @@
 <div id="menu-cart-edit-1" wire:ignore.self class="menu menu-box-bottom menu-box-detached d-block">
   <div class="menu-title"><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
 
-  <div class="content mb-0">
-    <div class="row mb-6">
+  <div class="content mb-1">
+    <div class="row mb-0">
       <div class="col-12">
         <div wire:loading>
           <img src="{{ asset('theme/images/default-image.png') }}" class="rounded-m shadow-xl img-fluid" >
@@ -16,7 +16,7 @@
     </div>
     <div class="row mb-1">
       <div class="col-12">
-        <h5 class="mt-1">
+        <h5 class="mt-3" style="line-height: 12px">
           {{ $selected_menu['name'] ?? null }}
           <span class="color-green-dark font-10">
             @if($selected_menu['in_stock'])

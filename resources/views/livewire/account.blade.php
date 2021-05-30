@@ -1,4 +1,6 @@
 <div>
+  @include('components.stickymobile.footer-bar')
+
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">Akun</a>
   </div>

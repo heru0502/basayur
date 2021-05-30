@@ -1,13 +1,13 @@
 <div>
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">Checkout</a>
-    <a href="/cart" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
   </div>
 
   <div class="fixed-bottom card mb-0">
     <div class="d-flex flex-row-reverse m-1">
       <div class="p-2">
-        <a href="/payment-method" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</a>
+        <a href="/payment-method" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</a>
       </div>
       <div class="p-2 text-end">
         <h3 class="mb-0 color-highlight">Rp {{ $subtotal }}</h3>
@@ -87,7 +87,7 @@
 
         <div class="row mb-0">
           <div class="col-12 pe-1">
-            <a href="/" data-back-button class="btn btn-xl btn-full mb-3 rounded-xl font-700 border-white color-green-light bg-theme"><i class="fa fa-lg fa-shopping-basket"></i> Belanja lagi</a>
+            <a href="/" class="btn btn-xl btn-full mb-3 rounded-xl font-700 border-white color-green-light bg-theme"><i class="fa fa-lg fa-shopping-basket"></i> Belanja lagi</a>
           </div>
         </div>
       </div>

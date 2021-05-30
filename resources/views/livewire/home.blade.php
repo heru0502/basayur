@@ -2,6 +2,10 @@
   @include('components.stickymobile.footer-bar')
 
   <div class="page-content header-clear-small">
+    <div class="search-box bg-white rounded-xl bottom-0 mx-3 mb-3">
+      <i class="fa fa-search"></i>
+      <input type="text" class="border-0" placeholder="Apa yang dicari hari ini?">
+    </div>
 
     <div class="card card-style">
       <div class="content">
@@ -62,10 +66,10 @@
         <div class="row flex-row flex-nowrap overflow-auto mb-0">
 
           @foreach($menus as $i => $menu)
-            <div class="card card-style-custom pb-3" style="width: 170px;" wire:key="{{ $menu->id }}">
+            <div class="card card-style-custom pb-3" style="width: 130px;" wire:key="{{ $menu->id }}">
               <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1"><img src="{{ asset($menu->image) }}"  class="rounded-sm shadow-xl img-fluid"></a>
               <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1">
-                <h5 class="mt-1">{{ $menu->name }}</h5>
+                <h5 class="mt-3" style="line-height: 0px">{{ $menu->name }}</h5>
                 <span class="color-green-dark font-10">
                   @if($menu->in_stock)
                     In Stock
@@ -75,10 +79,10 @@
                 </span>
               </a>
               @if($menu->special_price)
-                <span class=" font-13"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
+                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
               @endif
 
-              <h3 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-14 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h3>
+              <h5 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
 
               @if(checkBuyButton($menu->id, $items))
                 <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>

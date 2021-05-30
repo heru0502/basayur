@@ -1,4 +1,6 @@
 <div>
+  @include('components.stickymobile.footer-bar')
+
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">List Order</a>
     <a href="/order-histories" class="header-icon header-icon-4 me-3 color-highlight font-800">Riwayat</a>
