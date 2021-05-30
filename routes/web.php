@@ -1,26 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::domain('admin.' . env('APP_URL'))->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-    Route::middleware(['auth:sanctum', 'verified'])->group(function() {
-        Route::get('/menus', \App\Http\Livewire\Admin\Menu\Index::class)->name('menus.index');
-        Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('menus.create');
-        Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('menus.edit');
-    });
-});
-
-Route::domain('driver.' . env('APP_URL'))->group(function () {
-    Route::get('/', function () {
-        return 'driver';
-    });
-});
+//use Laravel\Socialite\Facades\Socialite;
+//
+//Route::domain('admin.' . env('APP_URL'))->group(function () {
+//    Route::get('/', function () {
+//        return view('welcome');
+//    });
+//
+//    Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+//        Route::get('/menus', \App\Http\Livewire\Admin\Menu\Index::class)->name('menus.index');
+//        Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('menus.create');
+//        Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('menus.edit');
+//    });
+//});
+//
+//Route::domain('driver.' . env('APP_URL'))->group(function () {
+//    Route::get('/', function () {
+//        return 'driver';
+//    });
+//});
 
 Route::get('/', \App\Http\Livewire\Home::class)->name('home');
+Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
 Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
 Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);
@@ -34,3 +36,13 @@ Route::get('/account', \App\Http\Livewire\Account::class)->name('account');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+//
+//Route::get('/auth/redirect', function () {
+//    return Socialite::driver('google')->redirect();
+//});
+//
+//Route::get('/auth/callback', function () {
+//    $user = Socialite::driver('google')->user();
+//
+//    // $user->token
+//});
