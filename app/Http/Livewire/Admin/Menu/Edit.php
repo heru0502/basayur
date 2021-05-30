@@ -83,6 +83,6 @@ class Edit extends Component
 
         session()->flash('success', 'update');
 
-        return redirect()->to('/menus');
+        return redirect()->to('/admin/menus');
     }
 }
