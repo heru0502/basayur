@@ -6,7 +6,7 @@ setTimeout(function(){
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict'
-    
+
     //Global Variables
     let isPWA = false;  // Enables or disables the service worker and PWA
     let isAJAX = true; // AJAX transitions. Requires local server or server
@@ -17,10 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //Setting Service Worker Locations scope = folder | location = service worker js location
     var pwaScope = "/";
     var pwaLocation = "/_service-worker.js";
+
+    // Custom Variables
+    let firstPage = location.href;
     
     //Place all your custom Javascript functions and plugin calls below this line
-    function init_template(){
-        Livewire.restart();
+    function init_template(firstPage){
+        if (firstPage === undefined) {
+            Livewire.restart();
+        }
 
         //Caching Global Variables
         var i, e, el; //https://www.w3schools.com/js/js_performance.asp
@@ -1403,6 +1408,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
         
     //End of Init Template
+
     if(isAJAX === true){
         if(window.location.protocol !== "file:"){
             const options = {
@@ -1419,6 +1425,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    init_template();
+    init_template(firstPage);
 });
 
