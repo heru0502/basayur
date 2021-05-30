@@ -66,7 +66,7 @@ class Edit extends Component
         $this->validate();
 
         if ($this->image) {
-            $image = $this->image->store('images', setStorage());
+            $image = $this->image->storePublicly('images', setStorage());
             $this->menu['image'] = urlImage($image);
         }
 

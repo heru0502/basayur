@@ -61,9 +61,9 @@ class Create extends Component
     {
         $this->validate();
 
-        $image = $this->image->store('images');
+        $image = $this->image->storePublicly('images', setStorage());
 
-        $this->menu['image'] = 'storage/'. $image;
+        $this->menu['image'] = urlImage($image);
 
         $this->menu->save();
 
