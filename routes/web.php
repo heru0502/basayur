@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', \App\Http\Livewire\Home::class)->name('home');
-Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
+//Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
 Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
 Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);
