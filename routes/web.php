@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Customer\AuthController;
 use Illuminate\Support\Facades\Route;
-//use Laravel\Socialite\Facades\Socialite;
-//
+use Laravel\Socialite\Facades\Socialite;
+
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('welcome');
@@ -22,7 +23,7 @@ Route::prefix('admin')->group(function () {
 //});
 
 Route::get('/', \App\Http\Livewire\Home::class)->name('home');
-//Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
+Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
 Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
 Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);
@@ -36,13 +37,14 @@ Route::get('/account', \App\Http\Livewire\Account::class)->name('account');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-//
-//Route::get('/auth/redirect', function () {
-//    return Socialite::driver('google')->redirect();
-//});
-//
-//Route::get('/auth/callback', function () {
-//    $user = Socialite::driver('google')->user();
-//
-//    // $user->token
-//});
+
+Route::get('/auth/{provider}/redirect', function ($provider) {
+    $providers = ['google', 'facebook'];
+
+    if (!in_array($provider, $providers))
+        abort(404);
+
+    return Socialite::driver($provider)->redirect();
+});
+
+Route::get('auth/{provider}/callback', [AuthController::class, 'callbackOAuth']);

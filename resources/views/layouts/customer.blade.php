@@ -5,7 +5,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <title>StickyMobile BootStrap</title>
+  <title>BASAYUR</title>
   <link rel="stylesheet" type="text/css" href="theme/styles/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="theme/styles/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
@@ -169,11 +169,24 @@
     </div>
   </div>
 
+    <div id="snackbar-2" class="snackbar-toast bg-green-dark" data-bs-delay="5000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Selamat datang <b>{{ session()->get('success-login') }}</b> !!</div>
 </div>
 
 <script type="text/javascript" src="theme/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="theme/scripts/custom.js"></script>
 @livewireScripts
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        var successLogin = "{{ session()->get('success-login') }}";
+
+        if (successLogin) {
+            var toastID = document.getElementById('snackbar-2');
+            toastID = new bootstrap.Toast(toastID);
+            toastID.show();
+        }
+    })
+</script>
 
 @stack('javascript')
 
