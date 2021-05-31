@@ -48,7 +48,8 @@ class AuthController extends Controller
         }
         catch (\Exception $e) {
             Log::error($e->getMessage());
-            abort(400);
+            echo $e->getMessage();
+//            abort(400);
         }
 
         return redirect(session()->get('url.intended') ?? '/')->with('success-login', $customer->name);
