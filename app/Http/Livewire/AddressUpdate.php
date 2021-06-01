@@ -26,10 +26,10 @@ class AddressUpdate extends Component
 
     public function mount(CustomerAddress $address)
     {
-        $oldAddress = CustomerAddress::where('user_id', Auth::guard('customer')->id())->first();
+        $oldAddress = CustomerAddress::where('user_id', Auth::id())->first();
         $this->address = $oldAddress ?? $address;
-        $this->regency_id = $oldAddress->village->district->regency_id;
-        $this->district_id = $oldAddress->village->district_id;
+        $this->regency_id = $oldAddress->village->district->regency_id ?? null;
+        $this->district_id = $oldAddress->village->district_id ?? null;
 
 
     }
@@ -60,7 +60,7 @@ class AddressUpdate extends Component
     {
         $this->validate();
 
-        $this->address['user_id'] = Auth::guard('customer')->id();
+        $this->address['user_id'] = Auth::id();
 
         $this->address->save();
 

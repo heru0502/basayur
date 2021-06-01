@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\CustomerAddress;
 use App\Traits\WithCart;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
@@ -25,7 +26,7 @@ class Checkout extends Component
 
     public function render()
     {
-        $address = null;
+        $address = CustomerAddress::where('user_id', Auth::guard('customer')->id())->first();
         $date = Carbon::now()->addDay();
         $shipment_date = convertDayEngToInd($date->format('l'), $date->format('l, j M Y'));
         $shipment_time = '06:00 ~ 11:00';

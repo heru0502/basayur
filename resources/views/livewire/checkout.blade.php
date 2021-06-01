@@ -4,7 +4,7 @@
     <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
   </div>
 
-  <div class="fixed-bottom card mb-0">
+  <div class="fixed-bottom card mb-0" style="z-index: 1">
     <div class="d-flex flex-row-reverse m-1">
       <div class="p-2">
         <a href="/payment-method" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</a>
@@ -28,14 +28,14 @@
               <h4>Alamat Pengiriman</h4>
             </div>
             <div class="flex-fill text-end">
-              <a href="#" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
+              <a href="/address" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
             </div>
           </div>
-          <p class="mb-0">
-            Komp. Balitra Jaya Permai jl.Brunai no. B14 Loktabat, Banjarbaru, Kalimantan Selatan
+          <p class="my-2" style="line-height: 18px">
+            {{ $address->address }}
           </p>
           <p>
-            +6287815932909
+            {{ $address->phone_number }}
           </p>
         @else
           <div class="d-flex">
@@ -44,7 +44,12 @@
             </div>
           </div>
           <p class="color-red-light">Anda belum menambahkan alamat.</p>
-          <a href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
+
+          @auth('customer')
+            <a href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
+          @else
+            <a href="#" data-menu="menu-login-1" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
+          @endauth
         @endif
       </div>
     </div>
@@ -197,6 +202,18 @@
         <div class="col-6"><a href="#" class="btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu">Tutup</a></div>
         <div class="col-6"><a href="#" class="btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light">Pakai</a></div>
       </div>
+    </div>
+  </div>
+
+  <div id="menu-login-1" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="600" data-menu-effect="menu-over">
+    <div class="menu-title mt-n1">
+      <h1>Login</h1>
+      <p class="color-theme opacity-50">Please enter your credentials below</p>
+      <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+    </div>
+
+    <div class="content mb-0">
+      @include('components.stickymobile.login')
     </div>
   </div>
 </div>
