@@ -169,7 +169,9 @@
     </div>
   </div>
 
-  <div id="snackbar-2" class="toast snackbar-toast bg-green-dark" data-bs-delay="4000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Selamat datang <b>{{ session()->get('success-login') }}</b> !!</div>
+  @unless(request()->routeIs('welcome'))
+    <div id="snackbar-2" class="snackbar-toast bg-green-dark" data-bs-delay="4000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Selamat datang <b>{{ session()->get('success-login') }}</b> !!</div>
+  @endunless
 </div>
 
 <script type="text/javascript" src="theme/scripts/bootstrap.min.js"></script>

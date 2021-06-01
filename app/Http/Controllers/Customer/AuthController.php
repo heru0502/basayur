@@ -6,16 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-    public function __construct(StatefulGuard $guard)
-    {
-        $this->guard = $guard;
-    }
-
     public function callbackOAuth($provider, Request $request)
     {
         try {
@@ -44,7 +40,7 @@ class AuthController extends Controller
                 ]);
             }
 
-            $this->guard->login($customer);
+            Auth::guard('customer')->login($customer);
         }
         catch (\Exception $e) {
             Log::error($e->getMessage());
