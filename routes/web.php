@@ -48,4 +48,4 @@ Route::get('/auth/{provider}/redirect', function ($provider) {
 });
 
 Route::get('auth/{provider}/callback', [AuthController::class, 'callbackOAuth']);
-Route::get('auth/logout', [AuthController::class, 'logout'])->name('logout-customer');
+Route::delete('auth/logout', [AuthController::class, 'logout'])->name('logout-customer');
