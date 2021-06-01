@@ -1,6 +1,11 @@
 <div>
-  <div class="fixed-bottom card mb-0 p-2">
-    <a href="#" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
+  <div class="fixed-bottom card mb-0 p-2" style="z-index: 1">
+    @auth('customer')
+      <a href="#" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
+    @else
+      <a href="#" data-menu="menu-login-1" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-yellow-dark">Login untuk Pesan</a>
+      <a href="#" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark mt-2" disabled>Buat Pesanan</a>
+    @endauth
   </div>
 
   <div class="page-content header-clear-medium">
@@ -136,21 +141,15 @@
     </div>
   </div>
 
-  <div id="menu-cart-2" class="menu menu-box-modal">
-    <div class="menu-title"><h1>Pilih Kode Voucher</h1></div>
+  <div id="menu-login-1" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="600" data-menu-effect="menu-over">
+    <div class="menu-title mt-n1">
+      <h1>Login</h1>
+      <p class="color-theme opacity-50">Please enter your credentials below</p>
+      <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+    </div>
 
     <div class="content mb-0">
-      <div>
-        <div class="input-style has-borders validate-field mb-4">
-          <input type="name" class="form-control validate-name" id="form1ab" placeholder="Masukkan kode voucer.">
-          <i class="fa fa-times disabled invalid color-red-dark"></i>
-          <i class="fa fa-check disabled valid color-green-dark"></i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6"><a href="#" class="btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu">Tutup</a></div>
-        <div class="col-6"><a href="#" class="btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light">Pakai</a></div>
-      </div>
+      @include('components.stickymobile.login')
     </div>
   </div>
 </div>

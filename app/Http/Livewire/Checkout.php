@@ -16,6 +16,10 @@ class Checkout extends Component
 
     public function mount()
     {
+        if (!Session::get('items')) {
+            abort(404);
+        }
+
         $this->note = Session::get('note');
     }
 

@@ -3,11 +3,16 @@
 
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">List Order</a>
-    <a href="/order-histories" class="header-icon header-icon-4 me-3 color-highlight font-800">Riwayat</a>
+
+    @auth('customer')
+      <a href="/order-histories" class="header-icon header-icon-4 me-3 color-highlight font-800">Riwayat</a>
+    @endauth
   </div>
 
   <div class="page-content header-clear-medium">
-    <div class="card card-style bg-theme pb-0">
+
+    @auth('customer')
+      <div class="card card-style bg-theme pb-0">
       <div class="content">
         <a href="/order-detail" style="color: inherit; text-decoration: inherit;">
           <div class="row mb-0 opacity-50">
@@ -60,5 +65,12 @@
         </div>
       </div>
     </div>
+    @else
+      <div class="card bg-transparent" data-card-height="cover">
+        <div class="card-center text-center">
+          @include('components.stickymobile.login')
+        </div>
+      </div>
+    @endauth
   </div>
 </div>

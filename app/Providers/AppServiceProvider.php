@@ -29,9 +29,5 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             }
         });
-
-        Blade::if('auth', function($string) {
-
-        });
     }
 }

@@ -2,10 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class PaymentMethod extends Component
 {
+    public function mount()
+    {
+        if (!Session::get('items')) {
+            abort(404);
+        }
+    }
+
     public function render()
     {
         return view('livewire.payment-method')

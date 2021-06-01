@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Traits\WithCart;
+use App\Traits\WithPublic;
 use Livewire\Component;
 
 class OrderIndex extends Component
 {
-    use WithCart;
+    use WithCart, WithPublic;
 
     public function render()
     {

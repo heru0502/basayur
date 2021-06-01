@@ -48,7 +48,7 @@ class AuthController extends Controller
 //            abort(400);
         }
 
-        return redirect(session()->get('url.intended') ?? '/')->with('success-login', $customer->name);
+        return redirect()->intended('/')->with('success-login', $customer->name);
     }
 
     public function logout(Request $request)
