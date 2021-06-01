@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        Blade::if('filled', function($string) {
+        Blade::if('auth', function($string) {
 
         });
     }

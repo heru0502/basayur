@@ -50,4 +50,15 @@ class AuthController extends Controller
 
         return redirect(session()->get('url.intended') ?? '/')->with('success-login', $customer->name);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('customer')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

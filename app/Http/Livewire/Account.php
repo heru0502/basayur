@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Traits\WithCart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Account extends Component
@@ -11,7 +12,9 @@ class Account extends Component
 
     public function render()
     {
-        return view('livewire.account')
+        $customer = Auth::guard('customer')->user();
+
+        return view('livewire.account', compact('customer'))
             ->layout('layouts.customer');
     }
 }
