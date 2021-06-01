@@ -15,50 +15,43 @@
                 <option value="{{ $province->id }}">{{ $province->name }}</option>
               @endforeach
             </select>
-            <i class="fa fa-check valid color-green-dark"></i>
             <em></em>
           </div>
 
           <div class="input-style input-style-always-active has-borders no-icon mb-4" wire:self.ignore>
             <label for="regency" class="color-orange-light">Pilih Kota / Kabupaten</label>
-            <select id="regency" wire:model="address.regency_id">
+            <select id="regency" wire:model="regency_id">
               <option value="" selected>Pilih Kota / Kabupaten</option>
               @foreach($regencies as $regency)
                 <option value="{{ $regency->id }}">{{ $regency->name }}</option>
               @endforeach
             </select>
+            <span><i class="fa fa-chevron-down"></i></span>
+            <em class="mt-n3 me-4">(required)</em>
 
-            @if(($address['regency_id'] ?? null) != '')
-              <i class="fa fa-check valid color-green-dark"></i>
-            @else
-              <span><i class="fa fa-chevron-down"></i></span>
-            @endif
-
-            @if($errors->has('address.regency_id') && empty($address['regency_id']))
+            @if($errors->has('regency_id') && empty($regency_id))
               <i class="fa fa-times invalid color-red-dark"></i>
             @endif
-            <em></em>
+
+            <em class="mt-n3 me-4">(required)</em>
           </div>
 
           <div class="input-style input-style-always-active has-borders no-icon mb-4">
             <label for="district" class="color-orange-light">Pilih Kecamatan</label>
-            <select id="district" wire:model="address.district_id">
+            <select id="district" wire:model="district_id">
               <option value="" selected>Pilih Kecamatan</option>
               @foreach($districts as $district)
                 <option value="{{ $district->id }}">{{ $district->name }}</option>
               @endforeach
             </select>
+            <span><i class="fa fa-chevron-down"></i></span>
+            <em class="mt-n3 me-4">(required)</em>
 
-            @if(($address['district_id'] ?? null) != '')
-              <i class="fa fa-check valid color-green-dark"></i>
-            @else
-              <span><i class="fa fa-chevron-down"></i></span>
-            @endif
-
-            @if($errors->has('address.district_id') && empty($address['district_id']))
+            @if($errors->has('district_id') && empty($district_id))
               <i class="fa fa-times invalid color-red-dark"></i>
             @endif
-            <em></em>
+
+            <em class="mt-n3 me-4">(required)</em>
           </div>
 
           <div class="input-style input-style-always-active has-borders no-icon mb-4">
@@ -69,37 +62,39 @@
                 <option value="{{ $village->id }}">{{ $village->name }}</option>
               @endforeach
             </select>
-
-            @if(($address['village_id'] ?? null) != '')
-              <i class="fa fa-check valid color-green-dark"></i>
-            @else
-              <span><i class="fa fa-chevron-down"></i></span>
-            @endif
+            <span><i class="fa fa-chevron-down"></i></span>
+            <em class="mt-n3 me-4">(required)</em>
 
             @if($errors->has('address.village_id') && empty($address['village_id']))
               <i class="fa fa-times invalid color-red-dark"></i>
             @endif
-            <em></em>
           </div>
 
           <div class="input-style input-style-always-active has-borders no-icon mb-4">
             <textarea id="address" wire:model="address.address" placeholder="Tulis alamat anda"></textarea>
             <label for="address" class="color-orange-light">Alamat</label>
-
-            @if(($address['address'] ?? null) != '')
-              <i class="fa fa-check valid color-green-dark"></i>
-            @else
-              <em class="mt-n3">(required)</em>
-            @endif
+            <em class="mt-n3 me-4">(required)</em>
 
             @if($errors->has('address.address') && empty($address['address']))
               <i class="fa fa-times invalid color-red-dark"></i>
             @endif
           </div>
 
+          <div class="divider divider-margins mb-4"></div>
+
+          <div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
+            <input type="text" wire:model="address.phone_number" class="form-control validate-name" id="phone_number" placeholder="0878123xxxxx">
+            <label for="phone_number" class="color-highlight">No. HP</label>
+            <em class="mt-n3 me-4">(required)</em>
+
+            @if($errors->has('address.phone_number'))
+              <i class="fa fa-times invalid color-red-dark"></i>
+            @endif
+          </div>
+
           <div class="row mx-1">
             <button type="submit" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">
-              <div wire:loading>
+              <div wire:loading.delay>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
               </div>
 

@@ -172,6 +172,8 @@
   @unless(request()->routeIs('welcome'))
     <div id="snackbar-2" @unless(session()->get('success-login')) style="position: static" @endunless class="snackbar-toast bg-green-dark" data-bs-delay="4000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Selamat datang <b>{{ session()->get('success-login') }}</b> !!</div>
   @endunless
+
+    <div id="toast-3" class="toast toast-tiny toast-top bg-green-dark" data-bs-delay="3000" data-autohide="true"><i class="fa fa-check me-3"></i><span id="toast-text">Confirmed</span></div>
 </div>
 
 <script type="text/javascript" src="theme/scripts/bootstrap.min.js"></script>
@@ -179,15 +181,25 @@
 @livewireScripts
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        var successLogin = "{{ session()->get('success-login') }}";
+  document.addEventListener('DOMContentLoaded', () => {
+    var successLogin = "{{ session()->get('success-login') }}";
 
-        if (successLogin) {
-            var toastID = document.getElementById('snackbar-2');
-            toastID = new bootstrap.Toast(toastID);
-            toastID.show();
-        }
-    })
+    if (successLogin) {
+      var toastID = document.getElementById('snackbar-2');
+      toastID = new bootstrap.Toast(toastID);
+      toastID.show();
+    }
+  })
+</script>
+
+<script>
+  Livewire.on('toast-save', event => {
+    var toastID = document.getElementById('toast-3');
+    document.getElementById('toast-text').innerHTML = 'Data '+event+' berhasil disimpan!';
+
+    toastID = new bootstrap.Toast(toastID);
+    toastID.show();
+  })
 </script>
 
 @stack('javascript')

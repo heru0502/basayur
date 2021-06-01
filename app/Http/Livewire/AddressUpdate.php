@@ -2,28 +2,42 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\CustomerAddress;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Village;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class AddressUpdate extends Component
 {
     public $address;
+    public $regency_id;
+    public $district_id;
 
     protected $rules = [
-        'address.regency_id' => 'required|integer',
-        'address.district_id' => 'required|integer',
+        'regency_id' => 'required|integer',
+        'district_id' => 'required|integer',
         'address.village_id' => 'required|integer',
-        'address.address' => 'required|string'
+        'address.address' => 'required|string',
+        'address.phone_number' => 'required|numeric'
     ];
+
+    public function mount(CustomerAddress $address)
+    {
+        $oldAddress = CustomerAddress::where('user_id', Auth::guard('customer')->id())->first();
+        $this->address = $oldAddress ?? $address;
+        $this->regency_id = $oldAddress->village->district->regency_id;
+        $this->district_id = $oldAddress->village->district_id;
+
+
+    }
 
     public function render()
     {
-        $regencyId = $this->address['regency_id'] ?? null;
-        $districtId = $this->address['district_id'] ?? null;
-        $villageId = $this->address['village_id'] ?? null;
+        $regencyId = $this->regency_id ?? null;
+        $districtId = $this->district_id ?? null;
         
         $provinces = Province::where('id', 63)->get();
         $regencies = Regency::whereIn('id', [6303, 6372])->get();
@@ -46,6 +60,10 @@ class AddressUpdate extends Component
     {
         $this->validate();
 
+        $this->address['user_id'] = Auth::guard('customer')->id();
 
+        $this->address->save();
+
+        $this->emit('toast-save', 'Alamat');
     }
 }
