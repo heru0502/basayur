@@ -1,8 +1,6 @@
 <div>
   <div class="header header-fixed header-transparent header-logo-center">
-    <a href="index.html" class="header-title color-theme">Sticky Mobile</a>
-    <a href="#" data-back-button class="header-icon color-theme header-icon-1"><i class="fas fa-arrow-left"></i></a>
-    <a href="/" class="header-icon color-theme header-icon-4 me-2">Lewati</a>
+    <a href="/welcome/skip" class="header-icon color-theme header-icon-4 me-2">Lewati</a>
   </div>
 
   <div class="page-content pb-0 bg-theme">

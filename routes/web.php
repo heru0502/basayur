@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Customer\AuthController;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -49,3 +50,7 @@ Route::get('/auth/{provider}/redirect', function ($provider) {
 
 Route::get('auth/{provider}/callback', [AuthController::class, 'callbackOAuth']);
 Route::delete('auth/logout', [AuthController::class, 'logout'])->name('logout-customer');
+Route::get('welcome/skip', function() {
+    Cookie::queue(Cookie::make('welcome', true, 10080));
+    return redirect()->route('home');
+});
