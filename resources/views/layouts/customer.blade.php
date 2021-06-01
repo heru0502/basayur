@@ -169,10 +169,6 @@
     </div>
   </div>
 
-  @unless(request()->routeIs('welcome'))
-    <div id="snackbar-2" @unless(session()->get('success-login')) style="position: static" @endunless class="snackbar-toast bg-green-dark" data-bs-delay="4000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Selamat datang <b>{{ session()->get('success-login') }}</b> !!</div>
-  @endunless
-
     <div id="toast-2" class="toast toast-tiny toast-top bg-blue-dark" data-bs-delay="3500" data-autohide="true"><i class="fa fa-info me-3"></i><span class="toast-text">Confirmed</span></div>
     <div id="toast-3" class="toast toast-tiny toast-top bg-green-dark" data-bs-delay="3500" data-autohide="true"><i class="fa fa-check me-3"></i><span class="toast-text">Confirmed</span></div>
 </div>
