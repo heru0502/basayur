@@ -173,7 +173,8 @@
     <div id="snackbar-2" @unless(session()->get('success-login')) style="position: static" @endunless class="snackbar-toast bg-green-dark" data-bs-delay="4000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Selamat datang <b>{{ session()->get('success-login') }}</b> !!</div>
   @endunless
 
-    <div id="toast-3" class="toast toast-tiny toast-top bg-green-dark" data-bs-delay="3000" data-autohide="true"><i class="fa fa-check me-3"></i><span id="toast-text">Confirmed</span></div>
+    <div id="toast-2" class="toast toast-tiny toast-top bg-blue-dark" data-bs-delay="3500" data-autohide="true"><i class="fa fa-info me-3"></i><span class="toast-text">Confirmed</span></div>
+    <div id="toast-3" class="toast toast-tiny toast-top bg-green-dark" data-bs-delay="3500" data-autohide="true"><i class="fa fa-check me-3"></i><span class="toast-text">Confirmed</span></div>
 </div>
 
 <script type="text/javascript" src="theme/scripts/bootstrap.min.js"></script>
@@ -185,7 +186,9 @@
     var successLogin = "{{ session()->get('success-login') }}";
 
     if (successLogin) {
-      var toastID = document.getElementById('snackbar-2');
+      var toastID = document.getElementById('toast-2');
+      document.getElementsByClassName('toast-text')[0].innerHTML = "{{ session()->get('success-login') }}";
+
       toastID = new bootstrap.Toast(toastID);
       toastID.show();
     }
@@ -194,8 +197,8 @@
 
 <script>
   Livewire.on('toast-save', event => {
-    var toastID = document.getElementById('toast-3');
-    document.getElementById('toast-text').innerHTML = 'Data '+event+' berhasil disimpan!';
+    var toastID = document.getElementsByClassName('toast-3');
+    document.getElementsByClassName('toast-text')[0].innerHTML = 'Data '+event+' berhasil disimpan!';
 
     toastID = new bootstrap.Toast(toastID);
     toastID.show();

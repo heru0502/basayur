@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -44,11 +45,12 @@ class AuthController extends Controller
         }
         catch (\Exception $e) {
             Log::error($e->getMessage());
-            echo $e->getMessage();
-//            abort(400);
+            abort(400);
         }
 
-        return redirect()->intended('/')->with('success-login', $customer->name);
+        $message = Str::limit("Selamat datang {$customer->name}", 27, '...');
+
+        return redirect()->intended('/')->with('success-login', $message);
     }
 
     public function logout(Request $request)
