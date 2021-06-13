@@ -1,7 +1,7 @@
 <div>
   <div class="header header-fixed header-logo-center">
     <a href="index.html" class="header-title">Menu</a>
-    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+    <a href="/" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     <a href="/cart" class="header-icon header-icon-4">
       <i class="fa fa-shopping-basket"></i>
       <span class="badge bg-red-dark">{{ $total_item === 0 ? '' : $total_item }}</span>
