@@ -11,7 +11,7 @@
   <div class="page-content header-clear-medium">
     <div class="search-box bg-white rounded-xl bottom-0 mx-3 mb-3">
       <i class="fa fa-search"></i>
-      <input type="text" class="border-0" placeholder="Tulis disini yang ingin dicari . . .">
+      <input type="text" wire:model="search" class="border-0" placeholder="Tulis disini yang ingin dicari . . .">
     </div>
 
     <div class="row mb-2 mx-3">
@@ -42,12 +42,12 @@
       <div class="col-12 ps-1">
         <div class="input-style has-borders has-icon mb-4 input-filter">
           <i class="fa fa-sort-amount-down"></i>
-          <select id="form5">
-            <option value="">Terbaru</option>
-            <option value="">Terlama</option>
-            <option value="">Termurah</option>
-            <option value="">Termahal</option>
-            <option value="">Terlaris</option>
+          <select id="form5" wire:model="selected_sorting">
+            <option value="latest">Terbaru</option>
+            <option value="oldest">Terlama</option>
+{{--            <option value="cheapest">Termurah</option>--}}
+{{--            <option value="most_expensive">Termahal</option>--}}
+{{--            <option>Terlaris</option>--}}
           </select>
           <span><i class="fa fa-chevron-down"></i></span>
         </div>

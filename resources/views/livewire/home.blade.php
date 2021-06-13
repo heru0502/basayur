@@ -44,36 +44,36 @@
     <div class="card card-style mt-3">
       <div class="content">
         <div class="row mb-0 text-center">
-          <a href="#" class="col-3 align-text-bottom">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [1]]) }}" class="col-3 align-text-bottom">
             <img src="theme/images/icons/categories/vegetable.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase">SAYURAN</p>
           </a>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [2]]) }}" class="col-3">
             <img src="theme/images/icons/categories/fish.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase">IKAN</p>
           </a>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [3]]) }}" class="col-3">
             <img src="theme/images/icons/categories/chicken.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase">DAGING</p>
           </a>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [4]]) }}" class="col-3">
             <img src="theme/images/icons/categories/seasoning.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase">BUMBU</p>
           </a>
           <div class="w-100 mb-3 mt-3"></div>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [5]]) }}" class="col-3">
             <img src="theme/images/icons/categories/tempeh.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase" style="line-height: 16px">PRODUK OLAHAN</p>
           </a>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [6]]) }}" class="col-3">
             <img src="theme/images/icons/categories/salted-fish.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase" style="line-height: 16px">PRODUK AWETAN</p>
           </a>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [7]]) }}" class="col-3">
             <img src="theme/images/icons/categories/flour.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase" style="line-height: 16px">BAHAN BAKU</p>
           </a>
-          <a href="#" class="col-3">
+          <a href="{{ '/menus?'. http_build_query(['selected_categories' => [8]]) }}" class="col-3">
             <img src="theme/images/icons/categories/fruit.png" class="img-fluid">
             <p class="font-11 font-700 text-uppercase">BUAH</p>
           </a>
