@@ -11,6 +11,16 @@
   opacity: 1; /* Firefox */
 }
 
+.input-style.input-filter select {
+  height: 33px !important;
+  line-height: 25px
+}
+
+.input-style.input-filter span {
+  top: 90%;
+  right: 30px;
+}
+
 /* ---- */
 
 .fa-rotate-180, .fa-rotate-90, [data-bs-toggle] i {

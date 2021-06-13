@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
 //});
 
 Route::get('/', \App\Http\Livewire\Home::class)->name('home');
+Route::get('/menus', \App\Http\Livewire\MenuIndex::class)->name('menu');
 Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
 Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
