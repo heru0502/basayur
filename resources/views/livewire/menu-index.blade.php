@@ -31,10 +31,10 @@
       <div class="col-12 ps-1">
         <a href="#"
            wire:click="filterClick('is_promo')"
-           class="{{ $selected_filter === 'is_promo' ? 'bg-blue-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-blue-dark color-blue-dark">Promo</a>
+           class="{{ $selected_filter === 'is_promo' ? 'bg-green-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark">Promo</a>
         <a href="#"
            wire:click="filterClick('is_featured')"
-           class="{{ $selected_filter === 'is_featured' ? 'bg-blue-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-blue-dark color-blue-dark">Pilihan</a>
+           class="{{ $selected_filter === 'is_featured' ? 'bg-green-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark">Pilihan</a>
       </div>
     </div>
 
@@ -62,23 +62,22 @@
               <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1"><img src="{{ asset($menu->image) }}"  class="rounded-sm shadow-xl img-fluid"></a>
             </div>
 
-            <div class="content">
+            <div class="content mt-1">
               <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1">
                 <h5 class="mt-3" style="line-height: 0px">{{ $menu->name }}</h5>
-                <span class="color-green-dark font-10">
+                <p><span class="color-green-dark font-10">
                   @if($menu->in_stock)
                     In Stock
                   @else
                     Tersedia: {{ $menu->stock }}
                   @endif
-                </span>
-                <br>
+                </span></p>
               </a>
               @if($menu->special_price)
-                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
+                <span class=" font-12" style="line-height: 0px"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
               @endif
 
-              <h5 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
+              <h5 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-14 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
 
               @if(checkBuyButton($menu->id, $items))
                 <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>

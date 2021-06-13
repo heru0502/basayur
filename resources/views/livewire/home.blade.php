@@ -91,7 +91,7 @@
             </p>
           </div>
           <div class="ms-auto">
-            <a href="#" class="font-14 color-highlight">Lihat semua ></a>
+            <a href="/menus?selected_filter=is_promo" class="font-14 color-highlight">Lihat semua ></a>
           </div>
         </div>
       </div>

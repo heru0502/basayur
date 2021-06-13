@@ -13,10 +13,10 @@ class MenuIndex extends Component
 {
     use WithCart, WithModalMenu;
 
-    public array $selected_categories = [];
-    public string $selected_filter = '';
-    public string $selected_sorting = '';
-    public string $search = '';
+    public $selected_categories = [];
+    public $selected_filter = '';
+    public $selected_sorting = '';
+    public $search = '';
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -28,6 +28,7 @@ class MenuIndex extends Component
     public function mount(Request $request)
     {
         $this->selected_categories = $request->selected_categories ?? [];
+        $this->selected_filter = $request->selected_filter;
         $this->selected_sorting = 'latest';
     }
 
