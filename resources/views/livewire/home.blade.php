@@ -2,10 +2,12 @@
   @include('components.stickymobile.footer-bar')
 
   <div class="page-content header-clear-small">
-    <div class="search-box bg-white rounded-xl bottom-0 mx-3 mb-3">
-      <i class="fa fa-search"></i>
-      <input type="text" class="border-0" placeholder="Apa yang dicari hari ini?">
-    </div>
+    <form method="get" action="/menus">
+      <div class="search-box bg-white rounded-xl bottom-0 mx-3 mb-3">
+        <i class="fa fa-search"></i>
+        <input type="text" class="border-0" name="search" placeholder="Apa yang dicari hari ini?">
+      </div>
+    </form>
 
     <div class="splide single-slider slider-arrows" wire:ignore id="single-slider-3">
       <div class="splide__track">
