@@ -55,13 +55,13 @@
                 </span>
                 </h5>
 
-                @if($item['special_price'])
-                  <span class="font-13"><del>Rp {{ $item['price'] }}</del> <span class="badge bg-green-light color-white">Hemat {{ $item['discount'] }}%</span></span>
+                @if($item['selling_price'])
+                  <span class="font-13"><del>Rp {{ $item['original_price'] }}</del> <span class="badge bg-green-light color-white">Hemat {{ $item['discount'] }}%</span></span>
                 @endif
 
                 <div class="row mb-3">
                   <div class="col-7">
-                    <h3 class=" color-highlight">Rp {{ $item['special_price'] ?? $item['price'] }} <span class="color-gray-dark font-14 font-500">/ {{ $item['size_per_unit'] }} {{ $item['unit']['name'] }}</span></h3>
+                    <h3 class=" color-highlight">Rp {{ $item['selling_price'] ?? $item['original_price'] }} <span class="color-gray-dark font-14 font-500">/ {{ $item['size_per_unit'] }} {{ $item['unit']['name'] }}</span></h3>
                   </div>
                   <div class="col-4">
                     <div class="stepper rounded-s float-start">

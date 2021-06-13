@@ -44,12 +44,12 @@
                 </td>
                 <td>{{ $menu->category->name }}</td>
                 <td>
-                  @if($menu->special_price)
-                    {{ $menu->special_price }}
-                    <del><small>{{ $menu->price }}</small></del><br>
+                  @if($menu->selling_price)
+                    {{ $menu->selling_price }}
+                    <del><small>{{ $menu->original_price }}</small></del><br>
                     <small><b class="text-green-500">({{ $menu->discount }}%)</b></small>
                   @else
-                    {{ $menu->price }}
+                    {{ $menu->original_price }}
                   @endif
                 </td>
                 <td>

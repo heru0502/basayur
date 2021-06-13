@@ -12,8 +12,9 @@ class Menu extends Model
     protected $fillable = [
         'menu_category_id',
         'name',
-        'price',
-        'special_price',
+        'original_price',
+        'discount',
+        'selling_price',
         'is_active',
         'in_stock',
         'stock',

@@ -27,18 +27,18 @@
             </span>
         </h5>
 
-        @if(($selected_menu['special_price'] ?? null))
+        @if(($selected_menu['selling_price'] ?? null))
           <div class="d-flex">
             <div>
-              <span class="font-13"><del>Rp {{ $selected_menu['price'] ?? null }}</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
+              <span class="font-13"><del>Rp {{ $selected_menu['original_price'] ?? null }}</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
             </div>
 
             <div class="ms-3">
-              <h3 class=" color-highlight">Rp {{ $selected_menu['special_price'] ?? null }} <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
+              <h3 class=" color-highlight">Rp {{ $selected_menu['selling_price'] ?? null }} <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
             </div>
           </div>
         @else
-          <h3 class="color-highlight">Rp {{ $selected_menu['price'] ?? null }} <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
+          <h3 class="color-highlight">Rp {{ $selected_menu['original_price'] ?? null }} <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h3>
         @endif
       </div>
     </div>

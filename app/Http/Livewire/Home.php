@@ -30,7 +30,7 @@ class Home extends Component
             ->get();
 
         $menus['promo'] = Menu::with('unit')
-            ->where('special_price', '>', 0)
+            ->where('selling_price', '>', 0)
             ->take(10)
             ->latest()
             ->get();

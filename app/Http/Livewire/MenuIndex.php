@@ -49,7 +49,7 @@ class MenuIndex extends Component
             })
             ->when($selected_filter, function ($q) use ($selected_filter) {
                 if ($selected_filter === 'is_promo') {
-                    $q->where('special_price', '>', 0);
+                    $q->where('selling_price', '>', 0);
                 }
                 else if ($selected_filter === 'is_featured') {
                     $q->where('is_featured', 1);

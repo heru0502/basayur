@@ -48,15 +48,15 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-3 col-form-label">Harga</label>
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Harga Asli</label>
                     <div class="col-sm-9">
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Rp</span>
                         </div>
-                        <input type="text" class="form-control @error('menu.price') is-invalid @enderror" wire:model="menu.price">
+                        <input type="text" class="form-control @error('menu.original_price') is-invalid @enderror" wire:model="menu.original_price">
 
-                        @error('menu.price')
+                        @error('menu.original_price')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
@@ -66,15 +66,15 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-3 col-form-label">Harga Spesial</label>
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Harga Jual</label>
                     <div class="col-sm-9">
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Rp</span>
                         </div>
-                        <input type="text" class="form-control @error('menu.special_price') is-invalid @enderror" wire:model="menu.special_price">
+                        <input type="text" class="form-control @error('menu.selling_price') is-invalid @enderror" wire:model="menu.selling_price">
 
-                        @error('menu.special_price')
+                        @error('menu.selling_price')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>

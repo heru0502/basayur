@@ -112,11 +112,11 @@
                   @endif
                 </span>
               </a>
-              @if($menu->special_price)
-                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
+              @if($menu->original_price > $menu->selling_price)
+                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->original_price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
               @endif
 
-              <h5 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
+              <h5 class=" color-highlight">Rp {{ $menu->selling_price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
 
               @if(checkBuyButton($menu->id, $items))
                 <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
@@ -168,11 +168,11 @@
                   @endif
                 </span>
               </a>
-              @if($menu->special_price)
-                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
+              @if($menu->original_price > $menu->selling_price)
+                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->original_price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
               @endif
 
-              <h5 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
+              <h5 class=" color-highlight">Rp {{ $menu->selling_price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
 
               @if(checkBuyButton($menu->id, $items))
                 <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>

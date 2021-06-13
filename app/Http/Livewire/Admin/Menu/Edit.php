@@ -21,8 +21,8 @@ class Edit extends Component
         'menu.name' => 'required|string',
         'menu.description' => 'nullable|string',
         'menu.menu_category_id' => 'required|integer',
-        'menu.price' => 'required|integer',
-        'menu.special_price' => 'nullable|integer',
+        'menu.original_price' => 'required|integer',
+        'menu.selling_price' => 'nullable|integer',
         'menu.is_active' => 'boolean',
         'menu.in_stock' => 'boolean',
         'menu.stock' => 'required_if:in_stock,0|integer',
@@ -70,11 +70,11 @@ class Edit extends Component
             $this->menu['image'] = urlImage($image);
         }
 
-        if (isset($this->menu['special_price'])) {
-            $price = $this->menu['price'];
-            $specialPrice = $this->menu['special_price'];
+        if (isset($this->menu['selling_price'])) {
+            $original_price = $this->menu['original_price'];
+            $sellingPrice = $this->menu['selling_price'];
 
-            $this->menu['discount'] = (($price - $specialPrice) / $price) * 100;
+            $this->menu['discount'] = (($original_price - $sellingPrice) / $original_price) * 100;
         } else {
             $this->menu['discount'] = null;
         }

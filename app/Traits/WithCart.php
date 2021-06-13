@@ -93,7 +93,7 @@ trait WithCart
                 $total_item = $total_item + $item['buy_number'];
             }
 
-            $subtotal += ($item['special_price'] ?? $item['price']) * $item['buy_number'];
+            $subtotal += ($item['selling_price'] ?? $item['original_price']) * $item['buy_number'];
         }
 
         $this->total_item = $total_item;
