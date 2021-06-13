@@ -24,7 +24,16 @@ class Home extends Component
 
     public function render()
     {
-        $menus = Menu::with('unit')->latest()->get();
+        $menus['latest'] = Menu::with('unit')
+            ->take(10)
+            ->latest()
+            ->get();
+
+        $menus['promo'] = Menu::with('unit')
+            ->where('special_price', '>', 0)
+            ->take(10)
+            ->latest()
+            ->get();
 
         return view('livewire.home', compact('menus'))
             ->layout('layouts.customer', ['total_item' => $this->total_item]);

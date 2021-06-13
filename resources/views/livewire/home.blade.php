@@ -99,7 +99,63 @@
       <div class="container-fluid">
         <div class="row flex-row flex-nowrap overflow-auto mb-0">
 
-          @foreach($menus as $i => $menu)
+          @foreach($menus['promo'] as $i => $menu)
+            <div class="card card-style-custom pb-3" style="width: 130px;" wire:key="{{ $menu->id }}">
+              <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1"><img src="{{ asset($menu->image) }}"  class="rounded-sm shadow-xl img-fluid"></a>
+              <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1">
+                <h5 class="mt-3" style="line-height: 0px">{{ $menu->name }}</h5>
+                <span class="color-green-dark font-10">
+                  @if($menu->in_stock)
+                    In Stock
+                  @else
+                    Tersedia: {{ $menu->stock }}
+                  @endif
+                </span>
+              </a>
+              @if($menu->special_price)
+                <span class=" font-10" style="line-height: 0px"><del>Rp {{ $menu->price }}</del> <span class="badge bg-green-light color-white">Hemat {{ $menu->discount }}%</span></span>
+              @endif
+
+              <h5 class=" color-highlight">Rp {{ $menu->special_price ?? $menu->price }} <span class="color-gray-dark font-12 font-500">/ {{ $menu->size_per_unit }} {{ $menu->unit->name }}</span></h5>
+
+              @if(checkBuyButton($menu->id, $items))
+                <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
+              @else
+                <div class="align-self-center">
+                  <div class="stepper rounded-s float-start">
+                    <a href="#" class="stepper-sub" wire:click.prevent="decrease({{ $menu->id }})"><i class="fa fa-minus color-red-dark"></i></a>
+                    <input type="number" min="0" max="99" value="{{ getTotalBuyNumber($menu->id, $items) }}" readonly>
+                    <a href="#" class="stepper-add" wire:click.prevent="increase({{ $menu }})"><i class="fa fa-plus color-green-dark"></i></a>
+                  </div>
+                </div>
+              @endif
+            </div>
+          @endforeach
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card ">
+      <div class="content">
+        <div class="d-flex mb-3">
+          <div class="me-3">
+            <h3>Menu Terbaru</h3>
+            <p class="mt-n2 color-gray-dark">
+              Menu terbaru hari ini
+            </p>
+          </div>
+          <div class="ms-auto">
+            <a href="/menus" class="font-14 color-highlight">Lihat semua ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row flex-row flex-nowrap overflow-auto mb-0">
+
+          @foreach($menus['latest'] as $i => $menu)
             <div class="card card-style-custom pb-3" style="width: 130px;" wire:key="{{ $menu->id }}">
               <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1"><img src="{{ asset($menu->image) }}"  class="rounded-sm shadow-xl img-fluid"></a>
               <a href="#" wire:click="selected({{ $menu }})" data-menu="menu-cart-edit-1">
