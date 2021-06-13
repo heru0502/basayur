@@ -17,15 +17,24 @@
     <div class="row mb-2 mx-3">
       <div class="col-12 ps-1">
         @foreach($categories as $category)
-          <a href="#" class="btn btn-xxs mb-1 rounded-xl text-uppercase font-900 border-highlight color-highlight bg-theme">{{ $category->name }}</a>
+          <a href="#"
+             wire:click="categoryClick({{ $category->id }})"
+             class="{{ in_array($category->id, $selected_categories) ? 'bg-highlight' : 'bg-theme' }} btn btn-xxs mb-1 rounded-xl text-uppercase font-900 border-highlight color-highlight"
+          >
+            {{ $category->name }}
+          </a>
         @endforeach
       </div>
     </div>
 
     <div class="row mb-2 mx-3">
       <div class="col-12 ps-1">
-        <a href="#" class="btn btn-xxs mb-1 text-uppercase font-900 border-blue-dark color-blue-dark bg-theme">Promo</a>
-        <a href="#" class="btn btn-xxs mb-1 text-uppercase font-900 border-blue-dark color-blue-dark bg-theme">Pilihan</a>
+        <a href="#"
+           wire:click="filterClick('is_promo')"
+           class="{{ $selected_filter === 'is_promo' ? 'bg-blue-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-blue-dark color-blue-dark">Promo</a>
+        <a href="#"
+           wire:click="filterClick('is_featured')"
+           class="{{ $selected_filter === 'is_featured' ? 'bg-blue-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-blue-dark color-blue-dark">Pilihan</a>
       </div>
     </div>
 
