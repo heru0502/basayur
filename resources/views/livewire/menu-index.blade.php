@@ -17,12 +17,15 @@
     <div class="row mb-2 mx-3">
       <div class="col-12 ps-1">
         @foreach($categories as $category)
-          <a href="#"
+          <button
              wire:click="categoryClick({{ $category->id }})"
+             wire:dirty.class="bg-gray-dark border-gray-dark color-gray-dark"
+             wire:dirty.class.remove="bg-highlight bg-theme border-highlight color-highlight"
+             wire:target="categoryClick({{ $category->id }})"
              class="{{ in_array($category->id, $selected_categories) ? 'bg-highlight' : 'bg-theme' }} btn btn-xxs mb-1 rounded-xl text-uppercase font-900 border-highlight color-highlight"
           >
             {{ $category->name }}
-          </a>
+          </button>
         @endforeach
       </div>
     </div>
