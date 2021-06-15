@@ -21,23 +21,33 @@
              wire:click="categoryClick({{ $category->id }})"
              wire:loading.class="bg-gray-dark border-gray-dark color-gray-dark"
              wire:loading.class.remove="bg-highlight bg-theme border-highlight color-highlight"
+             wire:loading.attr="disabled"
              wire:target="categoryClick({{ $category->id }})"
              class="{{ in_array($category->id, $selected_categories) ? 'bg-highlight' : 'bg-theme' }} btn btn-xxs mb-1 rounded-xl text-uppercase font-900 border-highlight color-highlight"
-          >
-            {{ $category->name }}
-          </button>
+          >{{ $category->name }}</button>
         @endforeach
       </div>
     </div>
 
     <div class="row mb-2 mx-3">
       <div class="col-12 ps-1">
-        <a href="#"
+        <button
            wire:click="filterClick('is_promo')"
-           class="{{ $selected_filter === 'is_promo' ? 'bg-green-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark">Promo</a>
-        <a href="#"
+           wire:loading.class="bg-gray-dark border-gray-dark color-gray-dark"
+           wire:loading.class.remove="bg-highlight bg-theme border-highlight color-highlight"
+           wire:loading.attr="disabled"
+           wire:target="filterClick('is_promo')"
+           class="{{ $selected_filter === 'is_promo' ? 'bg-green-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark"
+        >Promo</button>
+
+        <button
            wire:click="filterClick('is_featured')"
-           class="{{ $selected_filter === 'is_featured' ? 'bg-green-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark">Pilihan</a>
+           wire:loading.class="bg-gray-dark border-gray-dark color-gray-dark"
+           wire:loading.class.remove="bg-highlight bg-theme border-highlight color-highlight"
+           wire:loading.attr="disabled"
+           wire:target="filterClick('is_featured')"
+           class="{{ $selected_filter === 'is_featured' ? 'bg-green-dark' : 'bg-theme' }} btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark"
+        >Pilihan</button>
       </div>
     </div>
 

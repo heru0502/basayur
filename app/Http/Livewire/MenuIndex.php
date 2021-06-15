@@ -82,7 +82,7 @@ class MenuIndex extends Component
 
     public function filterClick($selected_filter)
     {
-        if ($this->selected_filter == $selected_filter) {
+        if ($this->selected_filter === $selected_filter) {
             $this->selected_filter = '';
         }
         else {
