@@ -7,7 +7,7 @@
   <div class="fixed-bottom card mb-0" style="z-index: 1">
     <div class="d-flex flex-row-reverse m-1">
       <div class="p-2">
-        <a href="/payment-method" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</a>
+        <a href="{{ $address ? '/payment-method' : '#' }}" onclick="checkAddress()" id="next_page" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</a>
       </div>
       <div class="p-2 text-end">
         <h3 class="mb-0 color-highlight">Rp {{ $subtotal }}</h3>
@@ -20,8 +20,8 @@
   </div>
 
   <div class="page-content header-clear-medium">
-    <div class="card card-style">
-      <div class="content">
+    <div class="card card-style card-danger border-red-dark" id="address_card">
+      <div class="content border-red-dark">
         @if($address)
           <div class="d-flex">
             <div>
@@ -217,3 +217,18 @@
     </div>
   </div>
 </div>
+
+@push('javascript')
+  <script>
+    function checkAddress() {
+        var nextPage = document.getElementById('next_page');
+        var attr = nextPage.getAttribute('href');
+        if (attr === '#') {
+            var addressCard = document.getElementById('address_card');
+            addressCard.focus();
+            addressCard.scrollIntoView({ behavior: 'smooth', block: 'center'});
+            addressCard.style.boxShadow = '0px 0px 10px red';
+        }
+    }
+  </script>
+@endpush
