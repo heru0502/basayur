@@ -18,7 +18,12 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class,
             UserTableSeeder::class,
             UnitTableSeeder::class,
-            MenuCategoryTableSeeder::class
+            MenuCategoryTableSeeder::class,
+            DeliveryTableSeeder::class,
+            PaymentTableSeeder::class,
+            StatusDeliveryTableSeeder::class,
+            StatusOrderTableSeeder::class,
+            StatusPaymentTableSeeder::class
         ]);
     }
 }

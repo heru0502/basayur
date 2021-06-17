@@ -7,6 +7,10 @@ use Livewire\Component;
 
 class PaymentMethod extends Component
 {
+    protected $rules = [
+
+    ];
+
     public function mount()
     {
         if (!Session::get('items')) {
