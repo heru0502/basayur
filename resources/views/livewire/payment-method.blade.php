@@ -1,7 +1,7 @@
 <div>
   <div class="fixed-bottom card mb-0 p-2" style="z-index: 1">
     @auth('customer')
-      <a href="#" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
+      <a href="#" wire:click="createOrder()" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
     @else
       <a href="#" data-menu="menu-login-1" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-yellow-dark">Login untuk Pesan</a>
       <a href="#" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark mt-2" disabled>Buat Pesanan</a>
