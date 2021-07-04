@@ -23,7 +23,7 @@ Route::prefix('admin')->group(function () {
 //    });
 //});
 
-Route::get('/', \App\Http\Livewire\Home::class)->name('home');
+//Route::get('/', \App\Http\Livewire\Home::class)->name('home');
 Route::get('/menus', \App\Http\Livewire\MenuIndex::class)->name('menus');
 Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
 Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
@@ -58,3 +58,5 @@ Route::get('welcome/skip', function() {
     Cookie::queue(Cookie::make('welcome', true, 10080));
     return redirect()->route('home');
 });
+
+Route::get('/', [\App\Http\Controllers\EventsController::class, 'show']);
