@@ -19,7 +19,7 @@
 
 <body class="theme-light" data-highlight="highlight-orange" data-gradient="body-default">
 
-<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+{{--<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>--}}
 
 <div id="page">
 

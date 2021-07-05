@@ -13,36 +13,29 @@ document.addEventListener('DOMContentLoaded', () => {
     var pwaName = "Sticky"; //Local Storage Names for PWA
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
-    
+
     //Setting Service Worker Locations scope = folder | location = service worker js location
     var pwaScope = "/";
     var pwaLocation = "/_service-worker.js";
 
-    // Custom Variables
-    let firstPage = location.href;
-    
     //Place all your custom Javascript functions and plugin calls below this line
-    function init_template(firstPage){
-        if (firstPage === undefined) {
-            Livewire.restart();
-        }
-
+    function init_template(){
         //Caching Global Variables
         var i, e, el; //https://www.w3schools.com/js/js_performance.asp
-                        
+
         //Attaching Menu Hider
         var menuHider = document.getElementsByClassName('menu-hider');
-        if(!menuHider.length){document.body.innerHTML += '<div class="menu-hider"></div>';}
+        // if(!menuHider.length){document.body.innerHTML += '<div class="menu-hider"></div>';}
 
         //Demo function for programtic creation of Menu
-        //menu('menu-settings', 'show', 250);                
-        
+        //menu('menu-settings', 'show', 250);
+
         //Activating Menus
-        document.querySelectorAll('.menu').forEach(el=>{el.style.display='block'})
-        
+        // document.querySelectorAll('.menu').forEach(el=>{el.style.display='block'})
+
         //Validator
         var inputField = document.querySelectorAll('input');
-        if(inputField.length){      
+        if(inputField.length){
             var mailValidator = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
             var phoneValidator = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
             var nameValidator = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
@@ -52,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var textValidator = /[A-Za-z]{2}[A-Za-z]*[ ]?[A-Za-z]*/;
 
             function valid(el){
-                el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled'); 
+                el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled');
                 el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
             }
             function invalid(el){
@@ -64,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.parentElement.querySelectorAll('.valid')[0].classList.add('disabled');
                 el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
             }
-            
+
             var regularField = document.querySelectorAll('.input-style input:not([type="date"])')
             regularField.forEach(el => el.addEventListener('keyup', e => {
                 if(!el.value == ""){
@@ -76,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.parentElement.classList.remove('input-style-active');
                     el.parentElement.querySelector('em').classList.remove('disabled');
                 }
-            }));   
-            
+            }));
+
             var regularTextarea = document.querySelectorAll('.input-style textarea')
             regularTextarea.forEach(el => el.addEventListener('keyup', e => {
                 if(!el.value == ""){
@@ -88,28 +81,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.parentElement.querySelector('em').classList.remove('disabled');
                 }
             }));
-            
+
             var selectField = document.querySelectorAll('.input-style select')
             selectField.forEach(el => el.addEventListener('change', e => {
                 if(el.value !== "default"){
                     el.parentElement.classList.add('input-style-active');
                     el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled');
                     el.parentElement.querySelectorAll('.invalid, em, span')[0].classList.add('disabled');
-                }  
+                }
                 if(el.value == "default"){
                     el.parentElement.querySelectorAll('span, .valid, em')[0].classList.add('disabled');
                     el.parentElement.querySelectorAll('.invalid')[0].classList.remove('disabled');
                     el.parentElement.classList.add('input-style-active');
                 }
             }));
-            
+
             var dateField = document.querySelectorAll('.input-style input[type="date"]')
             dateField.forEach(el => el.addEventListener('change', e => {
                 el.parentElement.classList.add('input-style-active');
                 el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled');
                 el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
             }));
-            
+
             var validateField = document.querySelectorAll('.validate-field input, .validator-field textarea');
             if(validateField.length){
                 validateField.forEach(el => el.addEventListener('keyup', e => {
@@ -127,12 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }));
             }
         }
-         
-    
-        
+
+
+
         //Image Sliders
         var splide = document.getElementsByClassName('splide');
-        if(splide.length){            
+        if(splide.length){
             var singleSlider = document.querySelectorAll('.single-slider');
             if(singleSlider.length){
                 singleSlider.forEach(function(e){
@@ -143,16 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         perPage: 1,
                     }).mount();
                     var sliderNext = document.querySelectorAll('.slider-next');
-                    var sliderPrev = document.querySelectorAll('.slider-prev'); 
+                    var sliderPrev = document.querySelectorAll('.slider-prev');
                     sliderNext.forEach(el => el.addEventListener('click', el => {single.go('>');}));
                     sliderPrev.forEach(el => el.addEventListener('click', el => {single.go('<');}));
                 });
             }
-            
+
             var doubleSlider = document.querySelectorAll('.double-slider');
             if(doubleSlider.length){
                 doubleSlider.forEach(function(e){
-                     var double = new Splide( '#'+e.id, {
+                    var double = new Splide( '#'+e.id, {
                         type:'loop',
                         autoplay:true,
                         interval:4000,
@@ -161,11 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }).mount();
                 });
             }
-            
+
             var trippleSlider = document.querySelectorAll('.tripple-slider');
             if(trippleSlider.length){
                 trippleSlider.forEach(function(e){
-                     var tripple = new Splide( '#'+e.id, {
+                    var tripple = new Splide( '#'+e.id, {
                         type:'loop',
                         autoplay:true,
                         padding: {
@@ -187,26 +180,26 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             return false;
         }));
-        
+
         //Map Page
         var fullMap = document.querySelectorAll('.map-full');
         if(fullMap.length){
             var mapActivator = document.querySelectorAll('.show-map');
             var mapDisabler = document.querySelectorAll('.hide-map');
             mapActivator[0].addEventListener('click',function(e){
-               document.getElementsByClassName('card-overlay')[0].classList.add('disabled'); 
-               document.getElementsByClassName('card-center')[0].classList.add('disabled'); 
-               document.getElementsByClassName('hide-map')[0].classList.remove('disabled'); 
+                document.getElementsByClassName('card-overlay')[0].classList.add('disabled');
+                document.getElementsByClassName('card-center')[0].classList.add('disabled');
+                document.getElementsByClassName('hide-map')[0].classList.remove('disabled');
             })
             mapDisabler[0].addEventListener('click',function(e){
-               document.getElementsByClassName('card-overlay')[0].classList.remove('disabled'); 
-               document.getElementsByClassName('card-center')[0].classList.remove('disabled'); 
-               document.getElementsByClassName('hide-map')[0].classList.add('disabled'); 
+                document.getElementsByClassName('card-overlay')[0].classList.remove('disabled');
+                document.getElementsByClassName('card-center')[0].classList.remove('disabled');
+                document.getElementsByClassName('hide-map')[0].classList.add('disabled');
             })
         }
 
 
-        
+
         //To Do List
         var toDoList = document.querySelectorAll('.todo-list a');
         toDoList.forEach(el => el.addEventListener('click', e => {
@@ -217,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.querySelector('i:last-child').classList.toggle('fa-square')
             el.querySelector('i:last-child').classList.toggle('color-green-dark')
         }));
-        
+
         //Setting Sidebar Widths
         var menus = document.querySelectorAll('.menu');
         if(menus.length){
@@ -245,13 +238,13 @@ document.addEventListener('DOMContentLoaded', () => {
             var wrappers = document.querySelectorAll('.header, #footer-bar, .page-content');
 
             menuOpen.forEach(el => el.addEventListener('click',e =>{
-                //Close Existing Opened Menus 
+                //Close Existing Opened Menus
                 const activeMenu = document.querySelectorAll('.menu-active');
                 for(let i=0; i < activeMenu.length; i++){activeMenu[i].classList.remove('menu-active');}
                 //Open Clicked Menu
                 var menuData = el.getAttribute('data-menu');
                 document.getElementById(menuData).classList.add('menu-active');
-                document.getElementsByClassName('menu-hider')[0].classList.add('menu-active');    
+                document.getElementsByClassName('menu-hider')[0].classList.add('menu-active');
                 //Check and Apply Effects
                 var menu = document.getElementById(menuData);
                 var menuEffect = menu.getAttribute('data-menu-effect');
@@ -297,26 +290,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.history.go(-1);
             }));
         }
-        
+
 
         //Back to Top
         const backToTop = document.querySelectorAll('.back-to-top-icon, .back-to-top-badge, .back-to-top');
-            if(backToTop.length){
+        if(backToTop.length){
             backToTop.forEach(el => el.addEventListener('click',e =>{
                 window.scrollTo({ top: 0, behavior: `smooth` })
             }));
         }
-        
+
         //Card Extender
         const cards = document.getElementsByClassName('card');
         function card_extender(){
             var headerHeight, footerHeight, headerOnPage;
             var headerOnPage = document.querySelectorAll('.header:not(.header-transparent)')[0];
             var footerOnPage = document.querySelectorAll('#footer-bar')[0];
-            
+
             headerOnPage ? headerHeight = document.querySelectorAll('.header')[0].offsetHeight : headerHeight = 0
             footerOnPage ? footerHeight = document.querySelectorAll('#footer-bar')[0].offsetHeight : footerHeight = 0
-            
+
             for (let i = 0; i < cards.length; i++) {
                 if(cards[i].getAttribute('data-card-height') === "cover"){
                     if (window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.outerHeight;}
@@ -333,12 +326,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-        
+
         if(cards.length){
             card_extender();
             window.addEventListener("resize", card_extender);
-        }  
-        
+        }
+
         //Page Highlights
         var highlightData = document.querySelectorAll('[data-change-highlight]');
         highlightData.forEach(el => el.addEventListener('click', e =>{
@@ -349,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadHighlight.rel = "stylesheet";
             loadHighlight.className = "page-highlight";
             loadHighlight.type = "text/css";
-            loadHighlight.href = 'theme/styles/highlights/highlight_' + highlight +'.css';
+            loadHighlight.href = 'styles/highlights/highlight_' + highlight +'.css';
             document.getElementsByTagName("head")[0].appendChild(loadHighlight);
             document.body.setAttribute('data-highlight', 'highlight-'+highlight)
             localStorage.setItem(pwaName+'-Highlight', highlight)
@@ -374,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadHighlight.rel = "stylesheet";
             loadHighlight.className = "page-highlight";
             loadHighlight.type = "text/css";
-            loadHighlight.href = 'theme/styles/highlights/highlight_' + defaultHighlight[1] +'.css';
+            loadHighlight.href = 'styles/highlights/highlight_' + defaultHighlight[1] +'.css';
             if(!document.querySelectorAll('.page-highlight').length){
                 document.getElementsByTagName("head")[0].appendChild(loadHighlight);
                 document.body.setAttribute('data-highlight', 'highlight-'+defaultHighlight[1])
@@ -425,18 +418,18 @@ document.addEventListener('DOMContentLoaded', () => {
         //Activating Dark Mode
         const darkModeSwitch = document.querySelectorAll('[data-toggle-theme]')
         darkModeSwitch.forEach(el => el.addEventListener('click',e =>{
-            if(document.body.className == "theme-light"){ removeTransitions(); activateDarkMode();} 
+            if(document.body.className == "theme-light"){ removeTransitions(); activateDarkMode();}
             else if(document.body.className == "theme-dark"){ removeTransitions(); activateLightMode();}
             setTimeout(function(){addTransitions();},350);
         }));
 
-        //Set Color Based on Remembered Preference. 
+        //Set Color Based on Remembered Preference.
         if(localStorage.getItem(pwaName+'-Theme') == "dark-mode"){for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked="checked"};document.body.className = 'theme-dark';}
         if(localStorage.getItem(pwaName+'-Theme') == "light-mode"){document.body.className = 'theme-light';} if(document.body.className == "detect-theme"){setColorScheme();}
 
         //Detect Dark/Light Mode
         const darkModeDetect = document.querySelectorAll('.detect-dark-mode');
-        darkModeDetect.forEach(el => el.addEventListener('click',e =>{    
+        darkModeDetect.forEach(el => el.addEventListener('click',e =>{
             document.body.classList.remove('theme-light', 'theme-dark');
             document.body.classList.add('detect-theme')
             setTimeout(function(){setColorScheme();},50)
@@ -455,11 +448,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputArray = document.getElementsByClassName('upload-file');
         if(inputArray.length){
             inputArray[0].addEventListener('change',prepareUpload,false);
-                function prepareUpload(event){
-                  if (this.files && this.files[0]) {
-                  var img = document.getElementById('image-data');
-                  img.src = URL.createObjectURL(this.files[0]); 
-              }
+            function prepareUpload(event){
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById('image-data');
+                    img.src = URL.createObjectURL(this.files[0]);
+                }
                 const files = event.target.files;
                 const fileName = files[0].name;
                 document.getElementsByClassName('file-data')[0].classList.add('disabled');
@@ -475,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(locationBut.length){
             var locationSupport = document.getElementsByClassName('location-support')[0]
             if (typeof(locationSupport) != 'undefined' && locationSupport != null){
-                //Geo Location    
+                //Geo Location
                 if ("geolocation" in navigator){
                     locationSupport.innerHTML = 'Your browser and device <strong class="color-green2-dark">support</strong> Geolocation.';
                 }else{
@@ -512,37 +505,37 @@ document.addEventListener('DOMContentLoaded', () => {
         //Card Effects
         const cardScale = document.querySelectorAll('.card-scale');
         if(cardScale.length){
-            cardScale.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-scale-image');}));  
+            cardScale.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-scale-image');}));
             cardScale.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-scale-image');}));
         }
 
         const cardHide = document.querySelectorAll('.card-hide');
         if(cardHide.length){
-            cardHide.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.add('card-hide-image');}));  
+            cardHide.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.add('card-hide-image');}));
             cardHide.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.remove('card-hide-image');}));
         }
 
         const cardRotate = document.querySelectorAll('.card-rotate');
         if(cardRotate.length){
-            cardRotate.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-rotate-image');}));  
+            cardRotate.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-rotate-image');}));
             cardRotate.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-rotate-image');}));
         }
 
         const cardGray = document.querySelectorAll('.card-grayscale');
         if (cardGray.length){
-            cardGray.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-grayscale-image');}));  
+            cardGray.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-grayscale-image');}));
             cardGray.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-grayscale-image');}));
         }
 
         const cardBlur = document.querySelectorAll('.card-blur');
         if(cardBlur.length){
-            cardBlur.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-blur-image');}));  
+            cardBlur.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-blur-image');}));
             cardBlur.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-blur-image');}));
         }
 
         //Adding Local Storage for Visited Links
         var checkVisited = document.querySelectorAll('.check-visited');
-            if(checkVisited.length){
+        if(checkVisited.length){
             function check_visited_links(){
                 var visited_links = JSON.parse(localStorage.getItem(pwaName+'_Visited_Links')) || [];
                 var links = document.querySelectorAll('.check-visited a');
@@ -555,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             localStorage.setItem(pwaName+'_Visited_Links', JSON.stringify(visited_links));
                         }
                     })
-                    if (visited_links.indexOf(that.href)!== -1) { 
+                    if (visited_links.indexOf(that.href)!== -1) {
                         that.className += ' visited-link';
                     }
                 }
@@ -598,12 +591,12 @@ document.addEventListener('DOMContentLoaded', () => {
         var stepperSub = document.querySelectorAll('.stepper-sub');
         if(stepperAdd.length){
             stepperAdd.forEach(el => el.addEventListener('click', event => {
-                var currentValue = el.parentElement.querySelector('input').value 
+                var currentValue = el.parentElement.querySelector('input').value
                 el.parentElement.querySelector('input').value = +currentValue + 1
             }))
 
             stepperSub.forEach(el => el.addEventListener('click', event => {
-                var currentValue = el.parentElement.querySelector('input').value 
+                var currentValue = el.parentElement.querySelector('input').value
                 el.parentElement.querySelector('input').value = +currentValue - 1
             }))
         }
@@ -617,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 getCheck.checked ? getCheck.checked = false : getCheck.checked = true;
             }))
         }
-        
+
         //Classic Toggle
         var classicToggle = document.querySelectorAll('.classic-toggle');
         if(classicToggle.length){
@@ -637,7 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 notificationToast.show();
             }));
         }
-        
+
 
         //Tooltips
         /*Deprecated feature for Mobiles. Requires popper.min.js v2 to work
@@ -655,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'))
         if(dropdownElementList.length){
             var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
-            return new bootstrap.Dropdown(dropdownToggleEl);
+                return new bootstrap.Dropdown(dropdownToggleEl);
             })
         }
 
@@ -683,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 openClass.forEach(function(e){e.classList.remove('disabled');})
                 closeClass.forEach(function(e){e.classList.add('disabled');})
             }
-             else {
+            else {
                 openClass.forEach(function(e){e.classList.add('disabled');})
                 closeClass.forEach(function(e){e.classList.remove('disabled');})
             }
@@ -697,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.querySelectorAll(matchData)[0].classList.add('bg-green-dark');
                         document.querySelectorAll(matchData +' p').forEach(function(whiteText){whiteText.classList.add('color-white')});
                     }
-                     else {
+                    else {
                         document.querySelectorAll(matchData)[0].classList.add('bg-red-dark');
                         document.querySelectorAll(matchData +' p').forEach(function(whiteText){whiteText.classList.add('color-white')});
                     }
@@ -734,16 +727,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 var timedAdData = el.getAttribute('data-menu');
                 var timedAdTimer = timedAdTime;
                 var timerAdFunction = setInterval(function(){
-                  if(timedAdTimer <= 1){
+                    if(timedAdTimer <= 1){
                         clearInterval(timerAdFunction);
                         document.getElementById(timedAdData).querySelectorAll('.fa-times')[0].classList.remove('disabled');
                         document.getElementById(timedAdData).querySelectorAll('.close-menu')[0].classList.remove('no-click');
                         document.getElementById(timedAdData).querySelectorAll('span')[0].style.display ="none";
-                  } else {
-                      //console.log(timedAdTimer);
-                  }
-                  document.getElementById(timedAdData).querySelectorAll('span')[0].innerHTML = timedAdTimer -= 1;
-                }, 1000);   
+                    } else {
+                        //console.log(timedAdTimer);
+                    }
+                    document.getElementById(timedAdData).querySelectorAll('span')[0].innerHTML = timedAdTimer -= 1;
+                }, 1000);
             }));
         }
 
@@ -766,10 +759,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.getElementById(autoAdId).querySelectorAll('span')[0].style.display ="none";
                         }
                         document.getElementById(autoAdId).querySelectorAll('span')[0].innerHTML = autoAdCloseTime -= 1;
-                    }, 1000);          
+                    }, 1000);
                 }
                 autoAdTime -= 1;
-            }, 1000);   
+            }, 1000);
         }
 
         //Reading Time
@@ -831,10 +824,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.location.protocol === "file:"){
             var linksLocal = document.querySelectorAll('a');
             linksLocal.forEach(el => el.addEventListener('mouseover', event => {
-               // console.log("You are seeing these errors because your file is on your local computer. For real life simulations please use a Live Server or a Local Server such as AMPPS or WAMPP or simulate a  Live Preview using a Code Editor like http://brackets.io (it's 100% free) - PWA functions and AJAX Page Transitions will only work in these scenarios.");
+                // console.log("You are seeing these errors because your file is on your local computer. For real life simulations please use a Live Server or a Local Server such as AMPPS or WAMPP or simulate a  Live Preview using a Code Editor like http://brackets.io (it's 100% free) - PWA functions and AJAX Page Transitions will only work in these scenarios.");
             }));
-        }         
-        
+        }
+
         //Search Page
         var searchField = document.querySelectorAll('[data-search]');
         if(searchField.length){
@@ -871,21 +864,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     searchNoResults[0].classList.add('disabled');
                     if(searchTrending.length){searchTrending[0].classList.remove('disabled');}
                 }
-            };      
-            
+            };
+
             searchField[0].addEventListener('keyup', function() {searchFunction();})
             searchField[0].addEventListener('click', function() {searchFunction();})
 
             var searchClick = document.querySelectorAll('.search-trending a');
             searchClick.forEach(el => el.addEventListener('click', event => {
                 var trendingResult = el.querySelectorAll('span')[0].textContent.toLowerCase();
-                searchField[0].value  = trendingResult; 
+                searchField[0].value  = trendingResult;
                 searchField[0].click();
             }));
-            
+
         }
 
-        //Sharing        
+        //Sharing
         var shareCheck = document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn');
         if(shareCheck.length){
             var share_link = window.location.href;
@@ -897,7 +890,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.shareToMail').forEach( x=> x.setAttribute("href", "mailto:?body=" + share_link));
             document.querySelectorAll('.shareToLinkedIn').forEach( x=> x.setAttribute("href", "https://www.linkedin.com/shareArticle?mini=true&url="+share_link+"&title="+share_title+"&summary=&source="));
         }
-        
+
         //Contact Form
         var contactForm = document.querySelectorAll('.contact-form');
         if(contactForm.length){
@@ -934,7 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         form.setAttribute('data-form','valid');
                         document.getElementById('validator-mail2').classList.add('disabled');
                         mailField.classList.remove('border-red-dark');
-                    }     
+                    }
                 }
                 if(textField.value === ''){
                     form.setAttribute('data-form','invalid');
@@ -982,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //Tabs
         var tabTrigger = document.querySelectorAll('.tab-controls a');
-            if(tabTrigger.length){
+        if(tabTrigger.length){
             tabTrigger.forEach(function(e){
                 if(e.hasAttribute('data-active')){
                     var highlightColor = e.parentNode.getAttribute('data-highlight');
@@ -1008,14 +1001,14 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(function(){
                 if(menuFunction === "show"){
                     return document.getElementById(menuName).classList.add('menu-active'),
-                    document.querySelectorAll('.menu-hider')[0].classList.add('menu-active')
+                        document.querySelectorAll('.menu-hider')[0].classList.add('menu-active')
                 } else {
                     return document.getElementById(menuName).classList.remove('menu-active'),
-                    document.querySelectorAll('.menu-hider')[0].classList.remove('menu-active')
+                        document.querySelectorAll('.menu-hider')[0].classList.remove('menu-active')
                 }
             },menuTimeout)
         }
-        
+
         var autoActivate = document.querySelectorAll('[data-auto-activate]');
         if(autoActivate.length){
             setTimeout(function(){
@@ -1023,11 +1016,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuHider[0].classList.add('menu-active');
             },0);
         }
-        
+
         //Copyright Year
         var copyrightYear = document.getElementById('copyright-year');
         if(copyrightYear){
-            var dteNow = new Date(); 
+            var dteNow = new Date();
             const intYear = dteNow.getFullYear();
             copyrightYear.textContent = intYear;
         }
@@ -1078,8 +1071,8 @@ document.addEventListener('DOMContentLoaded', () => {
             onlineAlert.textContent = 'You are back online';
             document.getElementsByTagName('body')[0].appendChild(offlineAlert);
             document.getElementsByTagName('body')[0].appendChild(onlineAlert);
-        }        
-        
+        }
+
         //Online / Offline Settings
         //Activating and Deactivating Links Based on Online / Offline State
         function offlinePage(){
@@ -1111,13 +1104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         function isOnline(){
             onlinePage(); onlineMessage.classList.add('online-message-active');
             setTimeout(function(){onlineMessage.classList.remove('online-message-active'); },2000)
-            console.info( 'Connection: Online'); 
+            console.info( 'Connection: Online');
         }
 
         function isOffline(){
             offlinePage(); offlineMessage.classList.add('offline-message-active');
             setTimeout(function(){offlineMessage.classList.remove('offline-message-active'); },2000)
-            console.info( 'Connection: Offline'); 
+            console.info( 'Connection: Offline');
         }
 
         var simulateOffline = document.querySelectorAll('.simulate-offline');
@@ -1153,7 +1146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementsByClassName('add-to-home')[0].classList.remove('add-to-home-visible');
         }));
 
-        //Detecting Mobile OS 
+        //Detecting Mobile OS
         let isMobile = {
             Android: function() {return navigator.userAgent.match(/Android/i);},
             iOS: function() {return navigator.userAgent.match(/iPhone|iPad|iPod/i);},
@@ -1177,16 +1170,16 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < noDev.length; i++) {noDev[i].classList.add('disabled');}
         }
 
-                
+
         //PWA Settings
-        if(isPWA === true){ 
+        if(isPWA === true){
             var checkPWA = document.getElementsByTagName('html')[0];
             if(!checkPWA.classList.contains('isPWA')){
                 if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', function() {
-                    navigator.serviceWorker.register(pwaLocation, {scope: pwaScope});
-                  });
-                }    
+                    window.addEventListener('load', function() {
+                        navigator.serviceWorker.register(pwaLocation, {scope: pwaScope});
+                    });
+                }
 
                 //Setting Timeout Before Prompt Shows Again if Dismissed
                 var hours = pwaRemind * 24; // Reset when storage is more than 24hours
@@ -1212,7 +1205,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //Trigger Install Prompt for Android
                 const pwaWindows = document.querySelectorAll('#menu-install-pwa-android, #menu-install-pwa-ios');
                 if(pwaWindows.length){
-                    if (isMobile.Android()) {        
+                    if (isMobile.Android()) {
                         if (localStorage.getItem(pwaName+'-PWA-Prompt') != "install-rejected") {
                             function showInstallPrompt() {
                                 setTimeout(function(){
@@ -1229,7 +1222,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 deferredPrompt = e;
                                 showInstallPrompt();
                             });
-                        } 
+                        }
                         const pwaInstall = document.querySelectorAll('.pwa-install');
                         pwaInstall.forEach(el => el.addEventListener('click', e => {
                             deferredPrompt.prompt();
@@ -1254,7 +1247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.getElementById('menu-install-pwa-android').classList.remove('menu-active');
                             document.querySelectorAll('.menu-hider')[0].classList.remove('menu-active');
                         });
-                    }  
+                    }
                     //Trigger Install Guide iOS
                     if (isMobile.iOS()) {
                         if (localStorage.getItem(pwaName+'-PWA-Prompt') != "install-rejected") {
@@ -1266,94 +1259,94 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                             },3500);
                         }
-                    }    
+                    }
                 }
             }
-            checkPWA.setAttribute('class','isPWA');            
+            checkPWA.setAttribute('class','isPWA');
         }
-        
+
         //End of isPWA
         if(pwaNoCache === true){
             caches.delete('workbox-runtime').then(function() {});
             sessionStorage.clear()
             caches.keys().then(cacheNames => {
-              cacheNames.forEach(cacheName => {
-                caches.delete(cacheName);
-              });
+                cacheNames.forEach(cacheName => {
+                    caches.delete(cacheName);
+                });
             });
-        }     
-        
+        }
+
         //Lazy Loading
         var lazyLoad = new LazyLoad();
-        
+
         // Check Documentation folder for detailed explanations on
         // Externally loading Javascript files for better performance.
-        
-        var plugIdent, plugClass, plugMain, plugCall; 
-        var plugLoc = "plugins/"
-        
-        let plugins = [
-          {
-            id: 'uniqueID', // to detect if loaded and unload if needed
-            plug: 'pluginName/plugin.js', // the main plugin javascript file
-            call: 'pluginName/pluginName-call.js', // the plugin call functions
-            style: 'pluginName/pluginName-style.css', // the plugin stylesheet
-            trigger: '.pluginTriggerClass' // the trigger that will activate the loading and initializing of the plugin
-          },
-          {
-            id: 'chart',
-            plug: 'charts/charts.js',
-            call: 'charts/charts-call-charts.js',
-            trigger: '.chart'
-          },
-          {
-            id: 'chart',
-            plug: 'charts/charts.js',
-            call: 'charts/charts-call-wallet.js',
-            trigger: '.wallet-chart'
-          },
-          {
-            id: 'graph',
-            plug: 'charts/charts.js',
-            call: 'charts/charts-call-graphs.js',
-            trigger: '.graph'
-          },
-          {
-            id: 'count',
-            plug: 'countdown/countdown.js',
-            trigger: '.countdown'
-          },
-          {
-            id: 'gallery',
-            plug: 'glightbox/glightbox.js',
-            call: 'glightbox/glightbox-call.js',
-            style: 'glightbox/glightbox.css',
-            trigger: '[data-gallery]'
-          },
-          {
-            id: 'gallery-views',
-            call: 'galleryViews/gallery-views.js',
-            trigger: '.gallery-view-controls'
-          },
-          {
-            id: 'filter',
-            plug: 'filterizr/filterizr.js',
-            call: 'filterizr/filterizr-call.js',
-            style: 'filterizr/filterizr.css',
-            trigger: '.gallery-filter'
-          },
-          {
-            id: 'ba-slider',
-            call: 'before-after/before-after.js',
-            style: 'before-after/before-after.css',
-            trigger: '#before-after-slider'
-          }
-        ];
-        
 
-        for (let i = 0; i < plugins.length; i++) {        
+        var plugIdent, plugClass, plugMain, plugCall;
+        var plugLoc = "plugins/"
+
+        let plugins = [
+            {
+                id: 'uniqueID', // to detect if loaded and unload if needed
+                plug: 'pluginName/plugin.js', // the main plugin javascript file
+                call: 'pluginName/pluginName-call.js', // the plugin call functions
+                style: 'pluginName/pluginName-style.css', // the plugin stylesheet
+                trigger: '.pluginTriggerClass' // the trigger that will activate the loading and initializing of the plugin
+            },
+            {
+                id: 'chart',
+                plug: 'charts/charts.js',
+                call: 'charts/charts-call-charts.js',
+                trigger: '.chart'
+            },
+            {
+                id: 'chart',
+                plug: 'charts/charts.js',
+                call: 'charts/charts-call-wallet.js',
+                trigger: '.wallet-chart'
+            },
+            {
+                id: 'graph',
+                plug: 'charts/charts.js',
+                call: 'charts/charts-call-graphs.js',
+                trigger: '.graph'
+            },
+            {
+                id: 'count',
+                plug: 'countdown/countdown.js',
+                trigger: '.countdown'
+            },
+            {
+                id: 'gallery',
+                plug: 'glightbox/glightbox.js',
+                call: 'glightbox/glightbox-call.js',
+                style: 'glightbox/glightbox.css',
+                trigger: '[data-gallery]'
+            },
+            {
+                id: 'gallery-views',
+                call: 'galleryViews/gallery-views.js',
+                trigger: '.gallery-view-controls'
+            },
+            {
+                id: 'filter',
+                plug: 'filterizr/filterizr.js',
+                call: 'filterizr/filterizr-call.js',
+                style: 'filterizr/filterizr.css',
+                trigger: '.gallery-filter'
+            },
+            {
+                id: 'ba-slider',
+                call: 'before-after/before-after.js',
+                style: 'before-after/before-after.css',
+                trigger: '#before-after-slider'
+            }
+        ];
+
+
+        for (let i = 0; i < plugins.length; i++) {
             //Remove Previous Calls
-            if(document.querySelectorAll('.'+plugins[i].id+'-c').length){document.querySelectorAll('.'+plugins[i].id+'-c')[0].remove();                }   
+            if(document.querySelectorAll('.'+plugins[i].id+'-c').length){document.querySelectorAll('.'+plugins[i].id+'-c')[0].remove();                }
 
             //Load Plugins
             var plugTrigger = document.querySelectorAll(plugins[i].trigger)
@@ -1380,12 +1373,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     //If plugin doesn't exist, only load the call function
                     setTimeout(function(){
-                    var loadScript = document.getElementsByTagName('script')[1],
-                        loadScriptJS = document.createElement('script');
-                    loadScriptJS.type = 'text/javascript'
-                    loadScriptJS.className = plugins[i].id+'-c'
-                    loadScriptJS.src = plugLoc + plugins[i].call;
-                    loadScript.parentNode.insertBefore(loadScriptJS, loadScript);                    
+                        var loadScript = document.getElementsByTagName('script')[1],
+                            loadScriptJS = document.createElement('script');
+                        loadScriptJS.type = 'text/javascript'
+                        loadScriptJS.className = plugins[i].id+'-c'
+                        loadScriptJS.src = plugLoc + plugins[i].call;
+                        loadScript.parentNode.insertBefore(loadScriptJS, loadScript);
                     },50);
                 }
                 //If Style doesn't exist in array, don't do anything
@@ -1400,15 +1393,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.getElementsByTagName("head")[0].appendChild(loadCSS);
                     }
                 }
-            }           
-        }        
+            }
+        }
     }
-    
+
     //Fix Scroll for AJAX pages.
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
-        
-    //End of Init Template
 
+    //End of Init Template
     if(isAJAX === true){
         if(window.location.protocol !== "file:"){
             const options = {
@@ -1420,11 +1412,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 linkSelector:'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'
             };
-            const swup = new Swup(options);    
+            const swup = new Swup(options);
             document.addEventListener('swup:pageView',(e) => { init_template(); })
         }
     }
 
-    init_template(firstPage);
+    init_template();
 });
 

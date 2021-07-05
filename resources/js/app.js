@@ -2,7 +2,10 @@ import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 
-InertiaProgress.init()
+InertiaProgress.init({
+    color: '#E96A57',
+    showSpinner: false,
+})
 
 createInertiaApp({
     resolve: name => require(`./Pages/${name}`),

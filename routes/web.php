@@ -60,3 +60,4 @@ Route::get('welcome/skip', function() {
 });
 
 Route::get('/', [\App\Http\Controllers\EventsController::class, 'show']);
+Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
