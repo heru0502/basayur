@@ -19,24 +19,23 @@
         <div class="row flex-row flex-nowrap overflow-auto mb-0">
 
           <div v-for="menu in newestMenus" class="card card-style-custom pb-3" style="width: 130px;" >
-            <a href="#" data-menu="menu-cart-edit-1"><img :src="menu.image"  class="rounded-sm shadow-xl img-fluid"></a>
-            <a href="#" data-menu="menu-cart-edit-1">
+            <a href="#"><img :src="menu.image"  class="rounded-sm shadow-xl img-fluid"></a>
+            <a href="#">
               <h5 class="mt-3" style="line-height: 0px">{{ menu.name }}</h5>
-              <span class="color-green-dark font-10">
-                  In Stock
-                </span>
+              <span v-if="menu.in_stock" class="color-green-dark font-10">In Stock</span>
+              <span v-else class="color-green-dark font-10">Tersedia: {{menu.stock}}</span>
             </a>
-            <span class=" font-10" style="line-height: 0px"><del>Rp 20000</del> <span class="badge bg-green-light color-white">Hemat 20%</span></span>
+            <span v-if="menu.original_price > menu.selling_price" class=" font-10" style="line-height: 0px"><del>Rp {{menu.original_price}}</del> <span class="badge bg-green-light color-white">Hemat {{menu.discount}}%</span></span>
 
-            <h5 class=" color-highlight">Rp 15000 <span class="color-gray-dark font-12 font-500">/ 1 kg</span></h5>
+            <h5 class=" color-highlight">Rp {{menu.selling_price}} <span class="color-gray-dark font-12 font-500">/ {{menu.size_per_unit}} {{menu.unit.name}}</span></h5>
 
-            <a href="#" wire:click="increase({{ $menu }})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
+            <a href="#" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
 
             <div class="align-self-center">
               <div class="stepper rounded-s float-start">
-                <a href="#" class="stepper-sub" wire:click.prevent="decrease({{ $menu->id }})"><i class="fa fa-minus color-red-dark"></i></a>
-                <input type="number" min="0" max="99" value="{{ getTotalBuyNumber($menu->id, $items) }}" readonly>
-                <a href="#" class="stepper-add" wire:click.prevent="increase({{ $menu }})"><i class="fa fa-plus color-green-dark"></i></a>
+                <a href="#" @click="qty=qty-1"><i class="fa fa-minus color-red-dark"></i></a>
+                <input type="number" min="0" max="99" :value="getTotalQty(menu.id)" readonly>
+                <a href="#" @click="addItem(menu)"><i class="fa fa-plus color-green-dark"></i></a>
               </div>
             </div>
 
@@ -52,7 +51,86 @@
 <script>
   export default {
     props: {
-      newestMenus: Object
+      newestMenus: Object,
+    },
+    data() {
+      return {
+        items: [],
+        totalQty: 0,
+        newItem: null,
+        qty: 0
+      }
+    },
+    mounted() {
+      // localStorage.removeItem('items');
+      console.log('oke');
+      if (localStorage.getItem('items')) {
+        try {
+          this.items = JSON.parse(localStorage.getItem('items'));
+          this.totalQty = localStorage.getItem('totalQty');
+          console.log(this.items);
+          console.log(this.totalQty);
+        } catch (e) {
+          localStorage.removeItem('items');
+        }
+      }
+    },
+    methods: {
+      getTotalQty(id) {
+        let checkItems = this.items.filter(function (item) {
+          return item.id === id;
+        });
+
+        if (checkItems.length) {
+          return checkItems[0].qty;
+        }
+
+        return 0;
+      },
+      addItem(menu) {
+        this.newItem = menu;
+
+        // Check menu exist or not
+        var checkItems = this.items.filter(function (item) {
+          return item.id === menu.id;
+        });
+
+        if (checkItems.length) {
+          // Update qty
+          const remapItems = this.items.map(item => {
+            if (item.id === menu.id) {
+              const ii = item;
+              ii.qty = item.qty + 1;
+              return ii;
+            }
+
+            return item;
+          });
+
+          this.items = remapItems;
+        }
+        else {
+          // Insert new item
+          this.newItem.qty = 1;
+          this.items.push(this.newItem);
+        }
+
+        // Count total qty
+        let n = 0;
+        this.items.map(item => {
+          n += item.qty;
+        });
+        this.totalQty = n;
+
+        this.newItem = '';
+        this.saveItems();
+      },
+      saveItems() {
+        localStorage.removeItem('items');
+        const parsed = JSON.stringify(this.items);
+        localStorage.setItem('items', parsed);
+        localStorage.setItem('totalQty', this.totalQty);
+      }
     }
   }
 </script>
