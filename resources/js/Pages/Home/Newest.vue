@@ -63,13 +63,10 @@
     },
     mounted() {
       // localStorage.removeItem('items');
-      console.log('oke');
       if (localStorage.getItem('items')) {
         try {
           this.items = JSON.parse(localStorage.getItem('items'));
-          this.totalQty = localStorage.getItem('totalQty');
-          console.log(this.items);
-          console.log(this.totalQty);
+          this.totalQty = this.$store.state.count;
         } catch (e) {
           localStorage.removeItem('items');
         }
@@ -88,6 +85,7 @@
         return 0;
       },
       addItem(menu) {
+        this.$store.commit('increment');
         this.newItem = menu;
 
         // Check menu exist or not
@@ -123,6 +121,7 @@
         this.totalQty = n;
 
         this.newItem = '';
+
         this.saveItems();
       },
       saveItems() {
