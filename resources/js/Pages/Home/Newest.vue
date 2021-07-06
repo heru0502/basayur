@@ -33,7 +33,7 @@
 
             <div class="align-self-center">
               <div class="stepper rounded-s float-start">
-                <a href="#" @click="qty=qty-1"><i class="fa fa-minus color-red-dark"></i></a>
+                <a href="#" @click="removeItem(menu)"><i class="fa fa-minus color-red-dark"></i></a>
                 <input type="number" min="0" max="99" :value="getTotalQty(menu.id)" readonly>
                 <a href="#" @click="addItem(menu)"><i class="fa fa-plus color-green-dark"></i></a>
               </div>
@@ -123,6 +123,50 @@
         this.newItem = '';
 
         this.saveItems();
+      },
+      removeItem(menu) {
+        this.newItem = menu;
+
+        // Check menu exist or not
+        var checkItems = this.items.filter(function (item) {
+          return item.id === menu.id;
+        });
+
+        if (checkItems.length) {
+
+          this.$store.commit('decrement');
+          // Update qty
+          let m = null;
+          const remapItems = this.items.map((item, index) => {
+            if (item.id === menu.id) {
+              const ii = item;
+              ii.qty = item.qty - 1;
+              if (ii.qty < 1) {
+                m = index;
+              }
+              return ii;
+            }
+
+            return item;
+          });
+
+          this.items = remapItems;
+          if (m) {
+            this.items.splice(m, 1);
+          }
+        }
+
+        // Count total qty
+        let n = 0;
+        this.items.map(item => {
+          n += item.qty;
+        });
+        this.totalQty = n;
+
+        this.newItem = '';
+
+        this.saveItems();
+
       },
       saveItems() {
         localStorage.removeItem('items');

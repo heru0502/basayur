@@ -19180,6 +19180,47 @@ __webpack_require__.r(__webpack_exports__);
       this.newItem = '';
       this.saveItems();
     },
+    removeItem: function removeItem(menu) {
+      this.newItem = menu; // Check menu exist or not
+
+      var checkItems = this.items.filter(function (item) {
+        return item.id === menu.id;
+      });
+
+      if (checkItems.length) {
+        this.$store.commit('decrement'); // Update qty
+
+        var m = null;
+        var remapItems = this.items.map(function (item, index) {
+          if (item.id === menu.id) {
+            var ii = item;
+            ii.qty = item.qty - 1;
+
+            if (ii.qty < 1) {
+              m = index;
+            }
+
+            return ii;
+          }
+
+          return item;
+        });
+        this.items = remapItems;
+
+        if (m) {
+          this.items.splice(m, 1);
+        }
+      } // Count total qty
+
+
+      var n = 0;
+      this.items.map(function (item) {
+        n += item.qty;
+      });
+      this.totalQty = n;
+      this.newItem = '';
+      this.saveItems();
+    },
     saveItems: function saveItems() {
       localStorage.removeItem('items');
       var parsed = JSON.stringify(this.items);
@@ -19807,10 +19848,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     )]), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
       href: "#",
-      onClick: _cache[1] || (_cache[1] = function ($event) {
-        return $data.qty = $data.qty - 1;
-      })
-    }, [_hoisted_19]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      onClick: function onClick($event) {
+        return $options.removeItem(menu);
+      }
+    }, [_hoisted_19], 8
+    /* PROPS */
+    , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
       type: "number",
       min: "0",
       max: "99",
@@ -19926,6 +19969,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_8 = {
+  key: 0,
   id: "total_item",
   "class": "badge bg-red-dark"
 };
@@ -19986,9 +20030,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "/cart"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("em", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.count), 1
+      return [_hoisted_6, _hoisted_7, _this.$store.state.count > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("em", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.count), 1
       /* TEXT */
-      )];
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */
@@ -20042,6 +20086,9 @@ __webpack_require__.r(__webpack_exports__);
   mutations: {
     increment: function increment(state) {
       state.count++;
+    },
+    decrement: function decrement(state) {
+      state.count--;
     }
   }
 });
