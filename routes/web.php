@@ -24,16 +24,16 @@ Route::prefix('admin')->group(function () {
 //});
 
 //Route::get('/', \App\Http\Livewire\Home::class)->name('home');
-Route::get('/menus', \App\Http\Livewire\MenuIndex::class)->name('menus');
-Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
-Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
-Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
-Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);
-Route::get('/cart', \App\Http\Livewire\Cart::class);
-Route::get('/checkout', \App\Http\Livewire\Checkout::class);
-Route::get('/payment-method', \App\Http\Livewire\PaymentMethod::class);
-Route::get('/search', \App\Http\Livewire\Search::class)->name('search');
-Route::get('/account', \App\Http\Livewire\Account::class)->name('account');
+//Route::get('/menus', \App\Http\Livewire\MenuIndex::class)->name('menus');
+//Route::get('/welcome', \App\Http\Livewire\Welcome::class)->name('welcome');
+//Route::get('/orders', \App\Http\Livewire\OrderIndex::class)->name('order');
+//Route::get('/order-histories', \App\Http\Livewire\OrderHistoryIndex::class);
+//Route::get('/order-detail', \App\Http\Livewire\OrderDetail::class);
+//Route::get('/cart', \App\Http\Livewire\Cart::class);
+//Route::get('/checkout', \App\Http\Livewire\Checkout::class);
+//Route::get('/payment-method', \App\Http\Livewire\PaymentMethod::class);
+//Route::get('/search', \App\Http\Livewire\Search::class)->name('search');
+//Route::get('/account', \App\Http\Livewire\Account::class)->name('account');
 
 Route::middleware('auth:customer')->group(function() {
     Route::get('/address', \App\Http\Livewire\AddressUpdate::class);
@@ -59,5 +59,7 @@ Route::get('welcome/skip', function() {
     return redirect()->route('home');
 });
 
-Route::get('/', [\App\Http\Controllers\EventsController::class, 'show']);
+Route::get('/', [\App\Http\Controllers\Customer\HomeController::class, 'index']);
 Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
+Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
+Route::get('/help', [\App\Http\Controllers\Customer\HelpController::class, 'index']);
