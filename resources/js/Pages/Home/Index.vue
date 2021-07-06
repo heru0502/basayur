@@ -11,6 +11,8 @@
 
     <categories/>
 
+    <newest :newestMenus="newestMenus"/>
+
   </div>
 </template>
 
@@ -18,12 +20,17 @@
 import Layout from '@/Shared/Layout'
 import Slider from '@/Pages/Home/Slider'
 import Categories from '@/Pages/Home/Categories'
+import Newest from '@/Pages/Home/Newest'
 
 export default {
   layout: Layout,
   components: {
     Slider,
-    Categories
+    Categories,
+    Newest
+  },
+  props: {
+    newestMenus: Object
   }
 }
 </script>
