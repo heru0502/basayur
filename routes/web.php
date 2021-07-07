@@ -63,3 +63,4 @@ Route::get('/', [\App\Http\Controllers\Customer\HomeController::class, 'index'])
 Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
 Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
 Route::get('/help', [\App\Http\Controllers\Customer\HelpController::class, 'index']);
+Route::get('/cart', [\App\Http\Controllers\Customer\CheckoutController::class, 'cart']);

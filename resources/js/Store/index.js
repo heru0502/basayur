@@ -72,7 +72,7 @@ export default {
 
                 state.items = remapItems;
 
-                if (m) {
+                if (m !== null) {
                     state.items.splice(m, 1);
                 }
             }
