@@ -14,7 +14,10 @@ class HomeController extends Controller
         return Inertia::render('Home/Index', [
             'newestMenus' => Menu::with('unit')
                 ->where('is_active', 1)
-                ->latest()->get()
+                ->latest()->get(),
+            'popularMenus' => Menu::with('unit')
+                ->where('is_active', 1)
+                ->oldest()->get(),
         ]);
     }
 }

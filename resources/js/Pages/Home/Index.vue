@@ -11,7 +11,9 @@
 
     <categories/>
 
-    <newest :newestMenus="newestMenus"/>
+    <newest-menus :listMenus="newestMenus" :title="'Menu Terbaru'" :subtitle="'Menu terbaru hari ini.'"/>
+
+    <popular-menus :listMenus="popularMenus" :title="'Menu Terpopuler'" :subtitle="'Menu terpopuler hari ini.'"/>
 
   </div>
 </template>
@@ -20,17 +22,20 @@
 import Layout from '@/Shared/Layout'
 import Slider from '@/Pages/Home/Slider'
 import Categories from '@/Pages/Home/Categories'
-import Newest from '@/Pages/Home/Newest'
+import NewestMenus from '@/Pages/Home/ListMenus'
+import PopularMenus from '@/Pages/Home/ListMenus'
 
 export default {
   layout: Layout,
   components: {
     Slider,
     Categories,
-    Newest
+    NewestMenus,
+    PopularMenus
   },
   props: {
-    newestMenus: Object
+    newestMenus: Object,
+    popularMenus: Object
   }
 }
 </script>

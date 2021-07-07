@@ -4,9 +4,9 @@
       <div class="content">
         <div class="d-flex mb-3">
           <div class="me-3">
-            <h3>Menu Terbaru</h3>
+            <h3>{{title}}</h3>
             <p class="mt-n2 color-gray-dark">
-              Menu terbaru hari ini
+              {{subtitle}}
             </p>
           </div>
           <div class="ms-auto">
@@ -18,7 +18,7 @@
       <div class="container-fluid">
         <div class="row flex-row flex-nowrap overflow-auto mb-0">
 
-          <div v-for="menu in newestMenus" class="card card-style-custom pb-3" style="width: 130px;" >
+          <div v-for="menu in listMenus" class="card card-style-custom pb-3" style="width: 130px;" >
             <a href="#"><img :src="menu.image"  class="rounded-sm shadow-xl img-fluid"></a>
             <a href="#">
               <h5 class="mt-3" style="line-height: 0px">{{ menu.name }}</h5>
@@ -29,13 +29,13 @@
 
             <h5 class=" color-highlight">Rp {{menu.selling_price}} <span class="color-gray-dark font-12 font-500">/ {{menu.size_per_unit}} {{menu.unit.name}}</span></h5>
 
-            <a href="#" v-if="getTotalQty(menu.id) < 1" @click="addItem(menu)" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
+            <button type="button" v-if="getTotalQty(menu.id) < 1" @click="addItem(menu)" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</button>
 
             <div v-else class="align-self-center">
               <div class="stepper rounded-s float-start">
-                <a href="#" @click="removeItem(menu)"><i class="fa fa-minus color-red-dark"></i></a>
+                <a @click="removeItem(menu)"><i class="fa fa-minus color-red-dark"></i></a>
                 <input type="number" min="0" max="99" :value="getTotalQty(menu.id)" readonly>
-                <a href="#" @click="addItem(menu)"><i class="fa fa-plus color-green-dark"></i></a>
+                <a @click="addItem(menu)"><i class="fa fa-plus color-green-dark"></i></a>
               </div>
             </div>
 
@@ -51,7 +51,9 @@
 <script>
   export default {
     props: {
-      newestMenus: Object,
+      listMenus: Object,
+      title: String,
+      subtitle: String
     },
     data() {
       return {
