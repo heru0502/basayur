@@ -19118,120 +19118,6 @@ __webpack_require__.r(__webpack_exports__);
     listMenus: Object,
     title: String,
     subtitle: String
-  },
-  data: function data() {
-    return {
-      items: [],
-      totalQty: 0,
-      newItem: null,
-      qty: 0
-    };
-  },
-  mounted: function mounted() {
-    // localStorage.removeItem('items');
-    if (localStorage.getItem('items')) {
-      try {
-        this.items = JSON.parse(localStorage.getItem('items'));
-        this.totalQty = this.$store.state.count;
-      } catch (e) {
-        localStorage.removeItem('items');
-      }
-    }
-  },
-  methods: {
-    getTotalQty: function getTotalQty(id) {
-      var checkItems = this.items.filter(function (item) {
-        return item.id === id;
-      });
-
-      if (checkItems.length) {
-        return checkItems[0].qty;
-      }
-
-      return 0;
-    },
-    addItem: function addItem(menu) {
-      this.$store.commit('increment');
-      this.newItem = menu; // Check menu exist or not
-
-      var checkItems = this.items.filter(function (item) {
-        return item.id === menu.id;
-      });
-
-      if (checkItems.length) {
-        // Update qty
-        var remapItems = this.items.map(function (item) {
-          if (item.id === menu.id) {
-            var ii = item;
-            ii.qty = item.qty + 1;
-            return ii;
-          }
-
-          return item;
-        });
-        this.items = remapItems;
-      } else {
-        // Insert new item
-        this.newItem.qty = 1;
-        this.items.push(this.newItem);
-      } // Count total qty
-
-
-      var n = 0;
-      this.items.map(function (item) {
-        n += item.qty;
-      });
-      this.totalQty = n;
-      this.newItem = '';
-      this.saveItems();
-    },
-    removeItem: function removeItem(menu) {
-      this.newItem = menu; // Check menu exist or not
-
-      var checkItems = this.items.filter(function (item) {
-        return item.id === menu.id;
-      });
-
-      if (checkItems.length) {
-        this.$store.commit('decrement'); // Update qty
-
-        var m = null;
-        var remapItems = this.items.map(function (item, index) {
-          if (item.id === menu.id) {
-            var ii = item;
-            ii.qty = item.qty - 1;
-
-            if (ii.qty < 1) {
-              m = index;
-            }
-
-            return ii;
-          }
-
-          return item;
-        });
-        this.items = remapItems;
-
-        if (m) {
-          this.items.splice(m, 1);
-        }
-      } // Count total qty
-
-
-      var n = 0;
-      this.items.map(function (item) {
-        n += item.qty;
-      });
-      this.totalQty = n;
-      this.newItem = '';
-      this.saveItems();
-    },
-    saveItems: function saveItems() {
-      localStorage.removeItem('items');
-      var parsed = JSON.stringify(this.items);
-      localStorage.setItem('items', parsed);
-      localStorage.setItem('totalQty', this.totalQty);
-    }
   }
 });
 
@@ -19855,6 +19741,8 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.subtitle), 1
@@ -19877,18 +19765,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_19, "/ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menu.size_per_unit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menu.unit.name), 1
     /* TEXT */
-    )]), $options.getTotalQty(menu.id) < 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+    )]), _this.$store.getters.getTotalQty(menu.id) < 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
       key: 1,
       type: "button",
       onClick: function onClick($event) {
-        return $options.addItem(menu);
+        return _this.$store.dispatch('addItem', {
+          menu: menu
+        });
       },
       "class": "btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight"
     }, "BELI", 8
     /* PROPS */
     , ["onClick"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
       onClick: function onClick($event) {
-        return $options.removeItem(menu);
+        return _this.$store.dispatch('removeItem', {
+          menu: menu
+        });
       }
     }, [_hoisted_22], 8
     /* PROPS */
@@ -19896,13 +19788,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "number",
       min: "0",
       max: "99",
-      value: $options.getTotalQty(menu.id),
+      value: _this.$store.getters.getTotalQty(menu.id),
       readonly: ""
     }, null, 8
     /* PROPS */
     , ["value"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
       onClick: function onClick($event) {
-        return $options.addItem(menu);
+        return _this.$store.dispatch('addItem', {
+          menu: menu
+        });
       }
     }, [_hoisted_23], 8
     /* PROPS */
@@ -20118,15 +20012,115 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: function state() {
     return {
-      count: localStorage.getItem('totalQty')
+      count: localStorage.getItem('totalQty'),
+      items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
     };
   },
   mutations: {
-    increment: function increment(state) {
+    increment: function increment(state, payload) {
       state.count++;
+      var newItem = payload.menu; // Check menu exist or not
+
+      var checkItems = state.items.filter(function (item) {
+        return item.id === newItem.id;
+      });
+
+      if (checkItems.length > 0) {
+        // Update qty
+        var remapItems = state.items.map(function (item) {
+          if (item.id === newItem.id) {
+            var c = item;
+            c.qty = item.qty + 1;
+            return c;
+          }
+
+          return item;
+        });
+        state.items = remapItems;
+      } else {
+        // Insert new item
+        newItem.qty = 1;
+        state.items.push(newItem);
+      } // Count total qty
+
+
+      var n = 0;
+      state.items.map(function (item) {
+        n += item.qty;
+      });
+      state.count = n;
     },
-    decrement: function decrement(state) {
+    decrement: function decrement(state, payload) {
       state.count--;
+      var newItem = payload.menu; // Check menu exist or not
+
+      var checkItems = state.items.filter(function (item) {
+        return item.id === newItem.id;
+      });
+
+      if (checkItems.length) {
+        // Update qty
+        var m = null;
+        var remapItems = state.items.map(function (item, index) {
+          if (item.id === newItem.id) {
+            var c = item;
+            c.qty = item.qty - 1;
+
+            if (c.qty < 1) {
+              m = index;
+            }
+
+            return c;
+          }
+
+          return item;
+        });
+        state.items = remapItems;
+
+        if (m) {
+          state.items.splice(m, 1);
+        }
+      } // Count total qty
+
+
+      var n = 0;
+      state.items.map(function (item) {
+        n += item.qty;
+      });
+      state.count = n;
+    },
+    saveItems: function saveItems(state) {
+      var parsed = JSON.stringify(state.items);
+      localStorage.setItem('items', parsed);
+      localStorage.setItem('totalQty', state.count);
+    }
+  },
+  getters: {
+    getTotalQty: function getTotalQty(state) {
+      return function (id) {
+        var items = state.items;
+        var checkItems = items.filter(function (item) {
+          return item.id === id;
+        });
+
+        if (checkItems.length) {
+          return checkItems[0].qty;
+        }
+
+        return 0;
+      };
+    }
+  },
+  actions: {
+    addItem: function addItem(_ref, menu) {
+      var commit = _ref.commit;
+      commit('increment', menu);
+      commit('saveItems');
+    },
+    removeItem: function removeItem(_ref2, menu) {
+      var commit = _ref2.commit;
+      commit('decrement', menu);
+      commit('saveItems');
     }
   }
 });

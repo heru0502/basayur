@@ -29,13 +29,13 @@
 
             <h5 class=" color-highlight">Rp {{menu.selling_price}} <span class="color-gray-dark font-12 font-500">/ {{menu.size_per_unit}} {{menu.unit.name}}</span></h5>
 
-            <button type="button" v-if="getTotalQty(menu.id) < 1" @click="addItem(menu)" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</button>
+            <button type="button" v-if="this.$store.getters.getTotalQty(menu.id) < 1" @click="this.$store.dispatch('addItem', {menu: menu})" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</button>
 
             <div v-else class="align-self-center">
               <div class="stepper rounded-s float-start">
-                <a @click="removeItem(menu)"><i class="fa fa-minus color-red-dark"></i></a>
-                <input type="number" min="0" max="99" :value="getTotalQty(menu.id)" readonly>
-                <a @click="addItem(menu)"><i class="fa fa-plus color-green-dark"></i></a>
+                <a @click="this.$store.dispatch('removeItem', {menu: menu})"><i class="fa fa-minus color-red-dark"></i></a>
+                <input type="number" min="0" max="99" :value="this.$store.getters.getTotalQty(menu.id)" readonly>
+                <a @click="this.$store.dispatch('addItem', {menu: menu})"><i class="fa fa-plus color-green-dark"></i></a>
               </div>
             </div>
 
@@ -54,128 +54,6 @@
       listMenus: Object,
       title: String,
       subtitle: String
-    },
-    data() {
-      return {
-        items: [],
-        totalQty: 0,
-        newItem: null,
-        qty: 0
-      }
-    },
-    mounted() {
-      // localStorage.removeItem('items');
-      if (localStorage.getItem('items')) {
-        try {
-          this.items = JSON.parse(localStorage.getItem('items'));
-          this.totalQty = this.$store.state.count;
-        } catch (e) {
-          localStorage.removeItem('items');
-        }
-      }
-    },
-    methods: {
-      getTotalQty(id) {
-        let checkItems = this.items.filter(function (item) {
-          return item.id === id;
-        });
-
-        if (checkItems.length) {
-          return checkItems[0].qty;
-        }
-
-        return 0;
-      },
-      addItem(menu) {
-        this.$store.commit('increment');
-        this.newItem = menu;
-
-        // Check menu exist or not
-        var checkItems = this.items.filter(function (item) {
-          return item.id === menu.id;
-        });
-
-        if (checkItems.length) {
-          // Update qty
-          const remapItems = this.items.map(item => {
-            if (item.id === menu.id) {
-              const ii = item;
-              ii.qty = item.qty + 1;
-              return ii;
-            }
-
-            return item;
-          });
-
-          this.items = remapItems;
-        }
-        else {
-          // Insert new item
-          this.newItem.qty = 1;
-          this.items.push(this.newItem);
-        }
-
-        // Count total qty
-        let n = 0;
-        this.items.map(item => {
-          n += item.qty;
-        });
-        this.totalQty = n;
-
-        this.newItem = '';
-
-        this.saveItems();
-      },
-      removeItem(menu) {
-        this.newItem = menu;
-
-        // Check menu exist or not
-        var checkItems = this.items.filter(function (item) {
-          return item.id === menu.id;
-        });
-
-        if (checkItems.length) {
-
-          this.$store.commit('decrement');
-          // Update qty
-          let m = null;
-          const remapItems = this.items.map((item, index) => {
-            if (item.id === menu.id) {
-              const ii = item;
-              ii.qty = item.qty - 1;
-              if (ii.qty < 1) {
-                m = index;
-              }
-              return ii;
-            }
-
-            return item;
-          });
-
-          this.items = remapItems;
-          if (m) {
-            this.items.splice(m, 1);
-          }
-        }
-
-        // Count total qty
-        let n = 0;
-        this.items.map(item => {
-          n += item.qty;
-        });
-        this.totalQty = n;
-
-        this.newItem = '';
-
-        this.saveItems();
-
-      },
-      saveItems() {
-        localStorage.removeItem('items');
-        const parsed = JSON.stringify(this.items);
-        localStorage.setItem('items', parsed);
-        localStorage.setItem('totalQty', this.totalQty);
-      }
     }
   }
 </script>
