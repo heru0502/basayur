@@ -29,9 +29,9 @@
 
             <h5 class=" color-highlight">Rp {{menu.selling_price}} <span class="color-gray-dark font-12 font-500">/ {{menu.size_per_unit}} {{menu.unit.name}}</span></h5>
 
-            <a href="#" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
+            <a href="#" v-if="getTotalQty(menu.id) < 1" @click="addItem(menu)" class="btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight">BELI</a>
 
-            <div class="align-self-center">
+            <div v-else class="align-self-center">
               <div class="stepper rounded-s float-start">
                 <a href="#" @click="removeItem(menu)"><i class="fa fa-minus color-red-dark"></i></a>
                 <input type="number" min="0" max="99" :value="getTotalQty(menu.id)" readonly>

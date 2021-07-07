@@ -19800,28 +19800,21 @@ var _hoisted_14 = {
 var _hoisted_15 = {
   "class": "color-gray-dark font-12 font-500"
 };
-
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "#",
-  "class": "btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight"
-}, "BELI", -1
-/* HOISTED */
-);
-
-var _hoisted_17 = {
+var _hoisted_16 = {
+  key: 2,
   "class": "align-self-center"
 };
-var _hoisted_18 = {
+var _hoisted_17 = {
   "class": "stepper rounded-s float-start"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "fa fa-minus color-red-dark"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "fa fa-plus color-green-dark"
 }, null, -1
 /* HOISTED */
@@ -19846,12 +19839,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_15, "/ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menu.size_per_unit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menu.unit.name), 1
     /* TEXT */
-    )]), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    )]), $options.getTotalQty(menu.id) < 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
+      key: 1,
+      href: "#",
+      onClick: function onClick($event) {
+        return $options.addItem(menu);
+      },
+      "class": "btn btn-xxs font-800 font-16 rounded-xl btn-full text-uppercase bg-highlight"
+    }, "BELI", 8
+    /* PROPS */
+    , ["onClick"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
       href: "#",
       onClick: function onClick($event) {
         return $options.removeItem(menu);
       }
-    }, [_hoisted_19], 8
+    }, [_hoisted_18], 8
     /* PROPS */
     , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
       type: "number",
@@ -19866,9 +19868,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return $options.addItem(menu);
       }
-    }, [_hoisted_20], 8
+    }, [_hoisted_19], 8
     /* PROPS */
-    , ["onClick"])])])]);
+    , ["onClick"])])]))]);
   }), 256
   /* UNKEYED_FRAGMENT */
   ))])])])]);
