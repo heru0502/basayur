@@ -6,7 +6,7 @@ import storeData from './Store/index'
 
 InertiaProgress.init({
     color: '#E96A57',
-    showSpinner: false,
+    showSpinner: true,
 })
 
 // Create a new store instance.
