@@ -20386,7 +20386,7 @@ __webpack_require__.r(__webpack_exports__);
 
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
   color: '#E96A57',
-  showSpinner: false
+  showSpinner: true
 }); // Create a new store instance.
 
 var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)(_Store_index__WEBPACK_IMPORTED_MODULE_3__.default);
