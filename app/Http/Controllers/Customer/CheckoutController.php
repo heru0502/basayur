@@ -20,6 +20,6 @@ class CheckoutController extends Controller
 
     public function selectPayment()
     {
-
+        return Inertia::render('Checkout/SelectPayment');
     }
 }

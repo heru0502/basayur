@@ -8,7 +8,7 @@
     <div class="fixed-bottom card mb-0" style="z-index: 1">
       <div class="d-flex flex-row-reverse m-1">
         <div class="p-2">
-          <a href="" id="next_page" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</a>
+          <inertia-link href="/select-payment" id="next_page" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</inertia-link>
         </div>
         <div class="p-2 text-end">
           <h3 class="mb-0 color-highlight">Rp 9000</h3>

@@ -19095,6 +19095,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/LayoutWithoutFooter */ "./resources/js/Shared/LayoutWithoutFooter.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Help/Index.vue?vue&type=script&lang=js":
 /*!***********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Help/Index.vue?vue&type=script&lang=js ***!
@@ -19426,11 +19445,9 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "p-2"
 };
-var _hoisted_5 = {
-  key: 0,
-  href: "/checkout",
-  "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
-};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Checkout");
+
 var _hoisted_6 = {
   key: 1,
   href: "#",
@@ -19453,9 +19470,22 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
   var _component_cart_list_menus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("cart-list-menus");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [this.$store.state.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_5, "Checkout")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [this.$store.state.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+    key: 0,
+    href: "/checkout",
+    "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_5];
+    }),
+    _: 1
+    /* STABLE */
+
+  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'cart'
   })])]);
 }
@@ -19476,17 +19506,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header header-fixed header-logo-center\"><a href=\"index.html\" class=\"header-title\">Checkout</a><a href=\"#\" data-back-button class=\"header-icon header-icon-1\"><i class=\"fas fa-arrow-left\"></i></a></div><div class=\"fixed-bottom card mb-0\" style=\"z-index:1;\"><div class=\"d-flex flex-row-reverse m-1\"><div class=\"p-2\"><a href=\"\" id=\"next_page\" class=\"btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight\">Bayar</a></div><div class=\"p-2 text-end\"><h3 class=\"mb-0 color-highlight\">Rp 9000</h3><img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span></div><div class=\"p-2 flex-fill\"> Total Pembayaran : </div></div></div>", 2);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "header header-fixed header-logo-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "index.html",
+  "class": "header-title"
+}, "Checkout"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  "data-back-button": "",
+  "class": "header-icon header-icon-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+})])], -1
+/* HOISTED */
+);
 
+var _hoisted_2 = {
+  "class": "fixed-bottom card mb-0",
+  style: {
+    "z-index": "1"
+  }
+};
 var _hoisted_3 = {
+  "class": "d-flex flex-row-reverse m-1"
+};
+var _hoisted_4 = {
+  "class": "p-2"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bayar");
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-2 text-end\"><h3 class=\"mb-0 color-highlight\">Rp 9000</h3><img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span></div><div class=\"p-2 flex-fill\"> Total Pembayaran : </div>", 2);
+
+var _hoisted_8 = {
   "class": "page-content header-clear-medium"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style card-danger border-red-dark\" id=\"address_card\"><div class=\"content border-red-dark\"><!--          @if($address)--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div><div class=\"flex-fill text-end\"><a href=\"/address\" class=\"color-theme opacity-50 \"><i class=\"fa fa-edit pe-2\"></i>Ubah</a></div></div><p class=\"my-2\" style=\"line-height:18px;\"> Kom. balitan </p><p> 087878 </p><!--          @else--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div></div><p class=\"color-red-light\">Anda belum menambahkan alamat.</p><a href=\"/address\" class=\"btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light\">Tambah Alamat</a></div></div>", 1);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style card-danger border-red-dark\" id=\"address_card\"><div class=\"content border-red-dark\"><!--          @if($address)--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div><div class=\"flex-fill text-end\"><a href=\"/address\" class=\"color-theme opacity-50 \"><i class=\"fa fa-edit pe-2\"></i>Ubah</a></div></div><p class=\"my-2\" style=\"line-height:18px;\"> Kom. balitan </p><p> 087878 </p><!--          @else--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div></div><p class=\"color-red-light\">Anda belum menambahkan alamat.</p><a href=\"/address\" class=\"btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light\">Tambah Alamat</a></div></div>", 1);
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style bg-yellow-light\"><p class=\"content color-white mb-4 text-center\"> Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja. </p></div><div class=\"card card-style\"><div class=\"content\"><div class=\"d-flex\"><div><h4>Waktu Pengiriman</h4></div></div><div class=\"d-flex mb-1\"><div> Tanggal Pengiriman </div><div class=\"flex-fill text-end\"> 01-02-2021 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-1\"><div> Waktu Pengiriman </div><div class=\"flex-fill text-end\"> 08:00 </div></div><div class=\"divider divider-margins mb-4\"></div><div class=\"input-style input-style-always-active has-borders validate-field mb-4\"><input type=\"text\" class=\"form-control\" id=\"note\" placeholder=\"Tulis catatan anda disini...\"><label for=\"note\" class=\"color-theme opacity-50 text-uppercase font-700 font-10\">Catatan</label><em>(opsional)</em></div></div></div>", 2);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style bg-yellow-light\"><p class=\"content color-white mb-4 text-center\"> Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja. </p></div><div class=\"card card-style\"><div class=\"content\"><div class=\"d-flex\"><div><h4>Waktu Pengiriman</h4></div></div><div class=\"d-flex mb-1\"><div> Tanggal Pengiriman </div><div class=\"flex-fill text-end\"> 01-02-2021 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-1\"><div> Waktu Pengiriman </div><div class=\"flex-fill text-end\"> 08:00 </div></div><div class=\"divider divider-margins mb-4\"></div><div class=\"input-style input-style-always-active has-borders validate-field mb-4\"><input type=\"text\" class=\"form-control\" id=\"note\" placeholder=\"Tulis catatan anda disini...\"><label for=\"note\" class=\"color-theme opacity-50 text-uppercase font-700 font-10\">Catatan</label><em>(opsional)</em></div></div></div>", 2);
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "card card-style"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "content"
@@ -19534,14 +19594,70 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"menu-cart-2\" class=\"menu menu-box-modal\"><div class=\"menu-title\"><h1>Pilih Kode Voucher</h1></div><div class=\"content mb-0\"><div><div class=\"input-style has-borders validate-field mb-4\"><input type=\"name\" class=\"form-control validate-name\" id=\"form1ab\" placeholder=\"Masukkan kode voucer.\"><i class=\"fa fa-times disabled invalid color-red-dark\"></i><i class=\"fa fa-check disabled valid color-green-dark\"></i></div></div><div class=\"row\"><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu\">Tutup</a></div><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light\">Pakai</a></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"><!--        @include(&#39;components.stickymobile.login&#39;)--></div></div>", 2);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"menu-cart-2\" class=\"menu menu-box-modal\"><div class=\"menu-title\"><h1>Pilih Kode Voucher</h1></div><div class=\"content mb-0\"><div><div class=\"input-style has-borders validate-field mb-4\"><input type=\"name\" class=\"form-control validate-name\" id=\"form1ab\" placeholder=\"Masukkan kode voucer.\"><i class=\"fa fa-times disabled invalid color-red-dark\"></i><i class=\"fa fa-check disabled valid color-green-dark\"></i></div></div><div class=\"row\"><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu\">Tutup</a></div><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light\">Pakai</a></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"><!--        @include(&#39;components.stickymobile.login&#39;)--></div></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
   var _component_cart_list_menus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("cart-list-menus");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: "/select-payment",
+    id: "next_page",
+    "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_5];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), _hoisted_6])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'checkout'
-  }), _hoisted_5, _hoisted_7]), _hoisted_8]);
+  }), _hoisted_10, _hoisted_12]), _hoisted_13]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=template&id=630cdcaa":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=template&id=630cdcaa ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "fixed-bottom card mb-0 p-2",
+  style: {
+    "z-index": "1"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" @auth('customer') "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  "wire:click": "createOrder()",
+  "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
+}, "Buat Pesanan"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" @else "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  "data-menu": "menu-login-1",
+  "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-yellow-dark"
+}, "Login untuk Pesan"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark mt-2",
+  disabled: ""
+}, "Buat Pesanan"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" @endauth ")], -1
+/* HOISTED */
+);
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"page-content header-clear-medium\"><div class=\"card card-style\"><div class=\"content\"><h5>Ringkasan Pembayaran</h5><div class=\"divider divider-margins my-3\"></div><div class=\"d-flex mb-0\"><div> Total Belanja </div><div class=\"flex-fill text-end\"> Rp 100.000 </div></div><div class=\"d-flex mb-0\"><div><p>Biaya Pengiriman</p></div><div class=\"flex-fill text-end color-red-light\"> Rp 0 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"row mb-0\"><div class=\"col-5\"> Total </div><div class=\"col-7 text-end\"> Rp 100.000 </div></div></div></div><div class=\"accordion\" id=\"accordion-1\"><div class=\"card card-style\"><div class=\"content m-0\"><button class=\"btn accordion-btn no-effect\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse2\"><span class=\"font-15\">Ringkasan Belanja</span><i class=\"fa fa-chevron-down font-10 accordion-icon\"></i></button><div id=\"collapse2\" class=\"collapse\" data-parent=\"#accordion-1\"><div class=\"pt-1 pb-2 ps-3 pe-3\"><div class=\"d-flex mb-0\"><div><p>3x Sayur</p></div><div class=\"flex-fill text-end\"> Rp 30.000 </div></div><div class=\"d-flex mb-0\"><div><p>2x Ayam Kampung</p></div><div class=\"flex-fill text-end\"> Rp 60.000 </div></div></div></div></div></div></div><div class=\"card card-style\"><div class=\"content\"><h5>Pilih metode pembayaran</h5><div class=\"divider divider-margins my-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/gopay.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">GOPAY</p><p class=\"font-11\" style=\"line-height:11pt;\">Pembayaran menggunakan aplikasi GOPAY</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio1\"><label class=\"form-check-label\" for=\"radio1\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/ovo.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">OVO</p><p class=\"font-11\" style=\"line-height:11pt;\">Pembayaran menggunakan aplikasi OVO</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio2\"><label class=\"form-check-label\" for=\"radio2\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/cod.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">COD (Cash on Delivery)</p><p class=\"font-11\" style=\"line-height:11pt;\">Bayar ketika barang anda terima</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio3\"><label class=\"form-check-label\" for=\"radio3\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"> @include(&#39;components.stickymobile.login&#39;) </div></div>", 2);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, _hoisted_2]);
 }
 
 /***/ }),
@@ -26282,6 +26398,32 @@ _Checkout_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__fil
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Checkout/SelectPayment.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/Pages/Checkout/SelectPayment.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SelectPayment_vue_vue_type_template_id_630cdcaa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectPayment.vue?vue&type=template&id=630cdcaa */ "./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=template&id=630cdcaa");
+/* harmony import */ var _SelectPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectPayment.vue?vue&type=script&lang=js */ "./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=script&lang=js");
+
+
+
+_SelectPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _SelectPayment_vue_vue_type_template_id_630cdcaa__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_SelectPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Checkout/SelectPayment.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_SelectPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Help/Index.vue":
 /*!*******************************************!*\
   !*** ./resources/js/Pages/Help/Index.vue ***!
@@ -26558,6 +26700,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SelectPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SelectPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SelectPayment.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Help/Index.vue?vue&type=script&lang=js":
 /*!*******************************************************************!*\
   !*** ./resources/js/Pages/Help/Index.vue?vue&type=script&lang=js ***!
@@ -26698,6 +26856,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Checkout_vue_vue_type_template_id_3d745636__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Checkout_vue_vue_type_template_id_3d745636__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Checkout.vue?vue&type=template&id=3d745636 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/Checkout.vue?vue&type=template&id=3d745636");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=template&id=630cdcaa":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=template&id=630cdcaa ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SelectPayment_vue_vue_type_template_id_630cdcaa__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SelectPayment_vue_vue_type_template_id_630cdcaa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SelectPayment.vue?vue&type=template&id=630cdcaa */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/SelectPayment.vue?vue&type=template&id=630cdcaa");
 
 
 /***/ }),
@@ -28557,6 +28731,8 @@ var map = {
 	"./Checkout/Cart.vue": "./resources/js/Pages/Checkout/Cart.vue",
 	"./Checkout/Checkout": "./resources/js/Pages/Checkout/Checkout.vue",
 	"./Checkout/Checkout.vue": "./resources/js/Pages/Checkout/Checkout.vue",
+	"./Checkout/SelectPayment": "./resources/js/Pages/Checkout/SelectPayment.vue",
+	"./Checkout/SelectPayment.vue": "./resources/js/Pages/Checkout/SelectPayment.vue",
 	"./Help/Index": "./resources/js/Pages/Help/Index.vue",
 	"./Help/Index.vue": "./resources/js/Pages/Help/Index.vue",
 	"./Home/Categories": "./resources/js/Pages/Home/Categories.vue",
