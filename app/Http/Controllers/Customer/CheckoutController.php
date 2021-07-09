@@ -15,7 +15,7 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
-
+        return Inertia::render('Checkout/Index');
     }
 
     public function selectPayment()
