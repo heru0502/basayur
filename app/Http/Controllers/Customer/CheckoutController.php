@@ -10,12 +10,12 @@ class CheckoutController extends Controller
 {
     public function cart()
     {
-        return Inertia::render('Cart/Index');
+        return Inertia::render('Checkout/Cart');
     }
 
     public function checkout()
     {
-        return Inertia::render('Checkout/Index');
+        return Inertia::render('Checkout/Checkout');
     }
 
     public function selectPayment()
