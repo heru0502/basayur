@@ -1,14 +1,14 @@
 export default {
     state () {
         return {
-            count: localStorage.getItem('totalQty'),
+            totalQty: localStorage.getItem('totalQty'),
             items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
 
         }
     },
     mutations: {
         increment (state, payload) {
-            state.count++;
+            state.totalQty++;
 
             let newItem = payload.menu;
 
@@ -42,12 +42,17 @@ export default {
             state.items.map(item => {
                 n += item.qty;
             });
-            state.count = n;
+            state.totalQty = n;
         },
         decrement (state, payload) {
-            state.count--;
-
             let newItem = payload.menu;
+            let qty = 1;
+
+            if (payload.isRemove) {
+                qty = newItem.qty;
+            }
+
+            state.totalQty -= qty;
 
             // Check menu exist or not
             var checkItems = state.items.filter(function (item) {
@@ -60,7 +65,7 @@ export default {
                 const remapItems = state.items.map((item, index) => {
                     if (item.id === newItem.id) {
                         const c = item;
-                        c.qty = item.qty - 1;
+                        c.qty = item.qty - qty;
                         if (c.qty < 1) {
                             m = index;
                         }
@@ -72,6 +77,7 @@ export default {
 
                 state.items = remapItems;
 
+                // Remove item
                 if (m !== null) {
                     state.items.splice(m, 1);
                 }
@@ -82,12 +88,12 @@ export default {
             state.items.map(item => {
                 n += item.qty;
             });
-            state.count = n;
+            state.totalQty = n;
         },
         saveItems(state) {
             const parsed = JSON.stringify(state.items);
             localStorage.setItem('items', parsed);
-            localStorage.setItem('totalQty', state.count);
+            localStorage.setItem('totalQty', state.totalQty);
         }
     },
     getters: {
@@ -111,6 +117,11 @@ export default {
             commit('saveItems');
         },
         removeItem({commit}, menu) {
+            commit('decrement', menu);
+            commit('saveItems');
+        },
+        removeItemDirect({commit}, menu) {
+            menu.isRemove = true;
             commit('decrement', menu);
             commit('saveItems');
         }

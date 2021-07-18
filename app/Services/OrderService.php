@@ -75,7 +75,7 @@ class OrderService
         }
 
         // If using voucher
-        if ($data['voucher_id']) {
+        if ( ! empty($data['voucher_id'])) {
 
         }
 
@@ -90,5 +90,23 @@ class OrderService
             'discount_price' => $discountPrice,
             'grand_total' => $grandTotal
         ];
+    }
+
+    public function checkStock(array $orderItems)
+    {
+        $orderItems = collect($orderItems);
+        $unavailableMenuIds = [];
+
+        foreach ($orderItems as $item) {
+            $menu = Menu::where('id', $item['menu_id'])
+                ->where('is_active', 1)
+                ->first();
+
+            if (!$menu) {
+                $unavailableMenuIds[] = $item['menu_id'];
+            }
+        }
+
+        return $unavailableMenuIds;
     }
 }

@@ -19066,7 +19066,54 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CartListMenus: _Shared_CartListMenus__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default
+  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default,
+  props: {
+    errors: Object
+  },
+  data: function data() {
+    return {
+      items: []
+    };
+  },
+  mounted: function mounted() {
+    this.checkStock();
+    this.setParamUrl();
+  },
+  methods: {
+    checkStock: function checkStock() {
+      var items = this.$store.state.items;
+      var store = this.$store;
+
+      if (this.errors.order_items) {
+        var snackID = document.getElementById('snackbar-5');
+        snackID = new bootstrap.Toast(snackID);
+        snackID.show();
+        var unavailbaleMenuIds = this.errors.unavailable_menu_ids;
+        unavailbaleMenuIds.forEach(function (menu_id, index) {
+          var checkItems = items.filter(function (item) {
+            return item.id === menu_id;
+          });
+
+          if (checkItems.length) {
+            store.dispatch('removeItemDirect', {
+              menu: checkItems[0]
+            });
+          }
+        });
+      }
+    },
+    setParamUrl: function setParamUrl() {
+      var items = this.$store.state.items;
+      items = items.map(function (item) {
+        var a = {};
+        a.menu_id = item.id;
+        a.qty = item.qty;
+        return a;
+      });
+      items = JSON.stringify(items);
+      this.items = items;
+    }
+  }
 });
 
 /***/ }),
@@ -19443,7 +19490,7 @@ var _hoisted_3 = {
   "class": "d-flex flex-row-reverse m-1"
 };
 var _hoisted_4 = {
-  "class": "p-2"
+  "class": "p-0"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Checkout");
@@ -19455,7 +19502,7 @@ var _hoisted_6 = {
   disabled: ""
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-2 text-end\"><h3 class=\"mb-0 color-highlight\">Rp 9000</h3><img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span></div><div class=\"p-2 flex-fill\"> Total Pembayaran : </div>", 2);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pe-2 text-end\"><h3 class=\"mb-0 color-highlight\">Rp 9000</h3><img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span></div><div class=\"p-2 flex-fill\"> Total Pembayaran : </div>", 2);
 
 var _hoisted_9 = {
   "class": "page-content header-clear-medium"
@@ -19469,6 +19516,19 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+var _hoisted_11 = {
+  id: "snackbar-5",
+  "class": "snackbar-toast bg-red-dark",
+  "data-bs-delay": "3000",
+  "data-bs-autohide": "true"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fa fa-times me-3"
+}, null, -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
@@ -19476,7 +19536,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [this.$store.state.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
     key: 0,
-    href: "/checkout",
+    href: '/checkout?order_items=' + $data.items,
     "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -19485,9 +19545,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  }, 8
+  /* PROPS */
+  , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'cart'
-  })])]);
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.order_items), 1
+  /* TEXT */
+  )])]);
 }
 
 /***/ }),
@@ -20443,7 +20507,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "/cart"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_6, _hoisted_7, _this.$store.state.count > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("em", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.count), 1
+      return [_hoisted_6, _hoisted_7, _this.$store.state.totalQty > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("em", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.totalQty), 1
       /* TEXT */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
@@ -20512,13 +20576,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: function state() {
     return {
-      count: localStorage.getItem('totalQty'),
+      totalQty: localStorage.getItem('totalQty'),
       items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
     };
   },
   mutations: {
     increment: function increment(state, payload) {
-      state.count++;
+      state.totalQty++;
       var newItem = payload.menu; // Check menu exist or not
 
       var checkItems = state.items.filter(function (item) {
@@ -20548,11 +20612,17 @@ __webpack_require__.r(__webpack_exports__);
       state.items.map(function (item) {
         n += item.qty;
       });
-      state.count = n;
+      state.totalQty = n;
     },
     decrement: function decrement(state, payload) {
-      state.count--;
-      var newItem = payload.menu; // Check menu exist or not
+      var newItem = payload.menu;
+      var qty = 1;
+
+      if (payload.isRemove) {
+        qty = newItem.qty;
+      }
+
+      state.totalQty -= qty; // Check menu exist or not
 
       var checkItems = state.items.filter(function (item) {
         return item.id === newItem.id;
@@ -20564,7 +20634,7 @@ __webpack_require__.r(__webpack_exports__);
         var remapItems = state.items.map(function (item, index) {
           if (item.id === newItem.id) {
             var c = item;
-            c.qty = item.qty - 1;
+            c.qty = item.qty - qty;
 
             if (c.qty < 1) {
               m = index;
@@ -20575,7 +20645,7 @@ __webpack_require__.r(__webpack_exports__);
 
           return item;
         });
-        state.items = remapItems;
+        state.items = remapItems; // Remove item
 
         if (m !== null) {
           state.items.splice(m, 1);
@@ -20587,12 +20657,12 @@ __webpack_require__.r(__webpack_exports__);
       state.items.map(function (item) {
         n += item.qty;
       });
-      state.count = n;
+      state.totalQty = n;
     },
     saveItems: function saveItems(state) {
       var parsed = JSON.stringify(state.items);
       localStorage.setItem('items', parsed);
-      localStorage.setItem('totalQty', state.count);
+      localStorage.setItem('totalQty', state.totalQty);
     }
   },
   getters: {
@@ -20619,6 +20689,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeItem: function removeItem(_ref2, menu) {
       var commit = _ref2.commit;
+      commit('decrement', menu);
+      commit('saveItems');
+    },
+    removeItemDirect: function removeItemDirect(_ref3, menu) {
+      var commit = _ref3.commit;
+      menu.isRemove = true;
       commit('decrement', menu);
       commit('saveItems');
     }
