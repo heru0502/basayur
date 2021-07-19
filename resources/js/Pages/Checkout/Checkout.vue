@@ -129,10 +129,10 @@
               (- Rp 0)
 
               <div class="input-style no-borders no-icon mb-4">
-                <a href="#" data-menu="menu-cart-2">
+                <inertia-link href="/voucher">
 
                   <input type="email" onfocus="blur()" class="form-control validate-text placeholder-color-green" id="form2a" placeholder="Punya Kode Voucher? Ketuk disini">
-                </a>
+                </inertia-link>
               </div>
             </div>
           </div>
@@ -141,37 +141,6 @@
       </div>
     </div>
 
-
-
-    <div id="menu-cart-2" class="menu menu-box-modal">
-      <div class="menu-title"><h1>Pilih Kode Voucher</h1></div>
-
-      <div class="content mb-0">
-        <div>
-          <div class="input-style has-borders validate-field mb-4">
-            <input type="name" class="form-control validate-name" id="form1ab" placeholder="Masukkan kode voucer.">
-            <i class="fa fa-times disabled invalid color-red-dark"></i>
-            <i class="fa fa-check disabled valid color-green-dark"></i>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6"><a href="#" class="btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu">Tutup</a></div>
-          <div class="col-6"><a href="#" class="btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light">Pakai</a></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="menu-login-1" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="600" data-menu-effect="menu-over">
-      <div class="menu-title mt-n1">
-        <h1>Login</h1>
-        <p class="color-theme opacity-50">Please enter your credentials below</p>
-        <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
-      </div>
-
-      <div class="content mb-0">
-<!--        @include('components.stickymobile.login')-->
-      </div>
-    </div>
   </div>
 </template>
 

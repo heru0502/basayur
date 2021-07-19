@@ -58,18 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
             }
 
-            var regularField = document.querySelectorAll('.input-style input:not([type="date"])')
-            regularField.forEach(el => el.addEventListener('keyup', e => {
-                if(!el.value == ""){
-                    el.parentElement.classList.add('input-style-active');
-                    el.parentElement.querySelector('em').classList.add('disabled');
-                } else {
-                    el.parentElement.querySelectorAll('.valid')[0].classList.add('disabled');
-                    el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
-                    el.parentElement.classList.remove('input-style-active');
-                    el.parentElement.querySelector('em').classList.remove('disabled');
-                }
-            }));
+            // var regularField = document.querySelectorAll('.input-style input:not([type="date"])')
+            // regularField.forEach(el => el.addEventListener('keyup', e => {
+            //     if(!el.value == ""){
+            //         el.parentElement.classList.add('input-style-active');
+            //         el.parentElement.querySelector('em').classList.add('disabled');
+            //     } else {
+            //         el.parentElement.querySelectorAll('.valid')[0].classList.add('disabled');
+            //         el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
+            //         el.parentElement.classList.remove('input-style-active');
+            //         el.parentElement.querySelector('em').classList.remove('disabled');
+            //     }
+            // }));
 
             var regularTextarea = document.querySelectorAll('.input-style textarea')
             regularTextarea.forEach(el => el.addEventListener('keyup', e => {

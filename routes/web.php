@@ -65,4 +65,5 @@ Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class,
 Route::get('/help', [\App\Http\Controllers\Customer\HelpController::class, 'index']);
 Route::get('/cart', [\App\Http\Controllers\Customer\CheckoutController::class, 'cart']);
 Route::get('/checkout', [\App\Http\Controllers\Customer\CheckoutController::class, 'checkout']);
+Route::get('/voucher', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucher']);
 Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Voucher;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -45,6 +46,13 @@ class CheckoutController extends Controller
 
         return Inertia::render('Checkout/Checkout', [
             'total_order' => Inertia::lazy(fn () => $orderService->countTotalOrder($data))
+        ]);
+    }
+
+    public function voucher(Request $request)
+    {
+        return Inertia::render('Checkout/Voucher', [
+            'voucher' => Inertia::lazy(fn () => Voucher::where('code', $request->code)->first())
         ]);
     }
 
