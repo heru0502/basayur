@@ -19131,13 +19131,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/LayoutWithoutFooter */ "./resources/js/Shared/LayoutWithoutFooter.vue");
 /* harmony import */ var _Shared_CartListMenus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Shared/CartListMenus */ "./resources/js/Shared/CartListMenus.vue");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     CartListMenus: _Shared_CartListMenus__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default
+  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default,
+  props: {
+    total_order: Object
+  },
+  data: function data() {
+    return {
+      note: this.$store.state.note
+    };
+  },
+  mounted: function mounted() {
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload({
+      only: ['total_order']
+    }); // Inertia.visit('/users', { search: 'John' }, { only: ['users'] })
+    // console.log(this.total_order);
+  },
+  methods: {
+    saveNote: function saveNote() {
+      localStorage.setItem('note', this.note);
+    }
+  }
 });
 
 /***/ }),
@@ -19501,14 +19522,24 @@ var _hoisted_6 = {
   "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark",
   disabled: ""
 };
+var _hoisted_7 = {
+  "class": "pe-2 text-end align-self-center"
+};
+var _hoisted_8 = {
+  "class": "color-highlight"
+};
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pe-2 text-end\"><h3 class=\"mb-0 color-highlight\">Rp 9000</h3><img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span></div><div class=\"p-2 flex-fill\"> Total Pembayaran : </div>", 2);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "p-2 flex-fill"
+}, " Total Belanja : ", -1
+/* HOISTED */
+);
 
-var _hoisted_9 = {
+var _hoisted_10 = {
   "class": "page-content header-clear-medium"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "card gradient-orange"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "content color-white mb-4 text-center"
@@ -19516,14 +19547,14 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_12 = {
   id: "snackbar-5",
   "class": "snackbar-toast bg-red-dark",
   "data-bs-delay": "3000",
   "data-bs-autohide": "true"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "fa fa-times me-3"
 }, null, -1
 /* HOISTED */
@@ -19547,9 +19578,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_8, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.$store.state.subtotal), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'cart'
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.order_items), 1
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.order_items), 1
   /* TEXT */
   )])]);
 }
@@ -19595,47 +19628,111 @@ var _hoisted_3 = {
   "class": "d-flex flex-row-reverse m-1"
 };
 var _hoisted_4 = {
-  "class": "p-2"
+  "class": "p-0"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bayar");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-2 text-end\"><h3 class=\"mb-0 color-highlight\">Rp 9000</h3><img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span></div><div class=\"p-2 flex-fill\"> Total Pembayaran : </div>", 2);
+var _hoisted_6 = {
+  "class": "pe-2 text-end align-self-center"
+};
+var _hoisted_7 = {
+  "class": "mb-0 color-highlight"
+};
 
-var _hoisted_8 = {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "p-2 flex-fill"
+}, " Total Pembayaran : ", -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
   "class": "page-content header-clear-medium"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style card-danger border-red-dark\" id=\"address_card\"><div class=\"content border-red-dark\"><!--          @if($address)--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div><div class=\"flex-fill text-end\"><a href=\"/address\" class=\"color-theme opacity-50 \"><i class=\"fa fa-edit pe-2\"></i>Ubah</a></div></div><p class=\"my-2\" style=\"line-height:18px;\"> Kom. balitan </p><p> 087878 </p><!--          @else--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div></div><p class=\"color-red-light\">Anda belum menambahkan alamat.</p><a href=\"/address\" class=\"btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light\">Tambah Alamat</a></div></div>", 1);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style card-danger border-red-dark\" id=\"address_card\"><div class=\"content border-red-dark\"><!--          @if($address)--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div><div class=\"flex-fill text-end\"><a href=\"/address\" class=\"color-theme opacity-50 \"><i class=\"fa fa-edit pe-2\"></i>Ubah</a></div></div><p class=\"my-2\" style=\"line-height:18px;\"> Kom. balitan </p><p> 087878 </p><!--          @else--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div></div><p class=\"color-red-light\">Anda belum menambahkan alamat.</p><a href=\"/address\" class=\"btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light\">Tambah Alamat</a></div></div>", 1);
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style bg-yellow-light\"><p class=\"content color-white mb-4 text-center\"> Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja. </p></div><div class=\"card card-style\"><div class=\"content\"><div class=\"d-flex\"><div><h4>Waktu Pengiriman</h4></div></div><div class=\"d-flex mb-1\"><div> Tanggal Pengiriman </div><div class=\"flex-fill text-end\"> 01-02-2021 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-1\"><div> Waktu Pengiriman </div><div class=\"flex-fill text-end\"> 08:00 </div></div><div class=\"divider divider-margins mb-4\"></div><div class=\"input-style input-style-always-active has-borders validate-field mb-4\"><input type=\"text\" class=\"form-control\" id=\"note\" placeholder=\"Tulis catatan anda disini...\"><label for=\"note\" class=\"color-theme opacity-50 text-uppercase font-700 font-10\">Catatan</label><em>(opsional)</em></div></div></div>", 2);
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = {
   "class": "card card-style"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+var _hoisted_12 = {
   "class": "content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex\"><div><h4>Waktu Pengiriman</h4></div></div><div class=\"d-flex mb-1\"><div> Tanggal Pengiriman </div><div class=\"flex-fill text-end\"> 01-02-2021 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-1\"><div> Waktu Pengiriman </div><div class=\"flex-fill text-end\"> 08:00 </div></div><div class=\"divider divider-margins mb-4\"></div>", 5);
+
+var _hoisted_18 = {
+  "class": "input-style input-style-always-active has-borders mb-4"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "note",
+  "class": "color-yellow-dark text-uppercase font-700 font-10"
+}, "Catatan", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("em", null, "(opsional)", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = {
+  "class": "card card-style"
+};
+var _hoisted_22 = {
+  "class": "content"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "d-flex"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Ringkasan Pembayaran")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Ringkasan Pembayaran")])], -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
   "class": "d-flex mb-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("              {{ \"Subtotal ($total_item item)\" }}")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, " Total Belanja ", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = {
   "class": "flex-fill text-end"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("              Rp {{ $subtotal }}")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_28 = {
   "class": "d-flex mb-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+};
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "mb-0",
   style: {
     "line-height": "8pt"
   }
 }, "Ongkos Kirim"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "font-11 color-orange-light"
-}, "GRATIS ONGKIR minimal belanja Rp 30.000")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+}, "GRATIS ONGKIR minimal belanja Rp 30.000")], -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
   "class": "flex-fill text-end"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("              Rp {{ $shipment_price }}")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "row mb-1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-5"
@@ -19652,13 +19749,17 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
   "class": "form-control validate-text placeholder-color-green",
   id: "form2a",
   placeholder: "Punya Kode Voucher? Ketuk disini"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "divider divider-margins mb-2"
-})])], -1
+})])])])], -1
 /* HOISTED */
 );
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"menu-cart-2\" class=\"menu menu-box-modal\"><div class=\"menu-title\"><h1>Pilih Kode Voucher</h1></div><div class=\"content mb-0\"><div><div class=\"input-style has-borders validate-field mb-4\"><input type=\"name\" class=\"form-control validate-name\" id=\"form1ab\" placeholder=\"Masukkan kode voucer.\"><i class=\"fa fa-times disabled invalid color-red-dark\"></i><i class=\"fa fa-check disabled valid color-green-dark\"></i></div></div><div class=\"row\"><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu\">Tutup</a></div><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light\">Pakai</a></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"><!--        @include(&#39;components.stickymobile.login&#39;)--></div></div>", 2);
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "divider divider-margins mb-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"menu-cart-2\" class=\"menu menu-box-modal\"><div class=\"menu-title\"><h1>Pilih Kode Voucher</h1></div><div class=\"content mb-0\"><div><div class=\"input-style has-borders validate-field mb-4\"><input type=\"name\" class=\"form-control validate-name\" id=\"form1ab\" placeholder=\"Masukkan kode voucer.\"><i class=\"fa fa-times disabled invalid color-red-dark\"></i><i class=\"fa fa-check disabled valid color-green-dark\"></i></div></div><div class=\"row\"><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-red-light close-menu\">Tutup</a></div><div class=\"col-6\"><a href=\"#\" class=\"btn btn-full btn-m font-800 rounded-sm text-uppercase bg-green-light\">Pakai</a></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"><!--        @include(&#39;components.stickymobile.login&#39;)--></div></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -19676,9 +19777,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), _hoisted_6])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_7, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.grand_total : 0), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_8])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'checkout'
-  }), _hoisted_10, _hoisted_12]), _hoisted_13]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"card card-style bg-yellow-light\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"content color-white mb-4 text-center\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja."), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "text",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.note = $event;
+    }),
+    onChange: _cache[2] || (_cache[2] = function () {
+      return $options.saveNote && $options.saveNote.apply($options, arguments);
+    }),
+    "class": "form-control",
+    placeholder: "..."
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.note]]), _hoisted_19, _hoisted_20])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.subtotal : 0), 1
+  /* TEXT */
+  )]), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.delivery_price : 0), 1
+  /* TEXT */
+  )]), _hoisted_31, _hoisted_32, _hoisted_33])])]), _hoisted_34]);
 }
 
 /***/ }),
@@ -20577,6 +20696,8 @@ __webpack_require__.r(__webpack_exports__);
   state: function state() {
     return {
       totalQty: localStorage.getItem('totalQty'),
+      subtotal: localStorage.getItem('subtotal'),
+      note: localStorage.getItem('note'),
       items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
     };
   },
@@ -20608,11 +20729,14 @@ __webpack_require__.r(__webpack_exports__);
       } // Count total qty
 
 
-      var n = 0;
+      var totalQty = 0;
+      var subtotal = 0;
       state.items.map(function (item) {
-        n += item.qty;
+        totalQty += item.qty;
+        subtotal += parseInt(item.selling_price) * totalQty;
       });
-      state.totalQty = n;
+      state.totalQty = totalQty;
+      state.subtotal = subtotal;
     },
     decrement: function decrement(state, payload) {
       var newItem = payload.menu;
@@ -20653,16 +20777,20 @@ __webpack_require__.r(__webpack_exports__);
       } // Count total qty
 
 
-      var n = 0;
+      var totalQty = 0;
+      var subtotal = 0;
       state.items.map(function (item) {
-        n += item.qty;
+        totalQty += item.qty;
+        subtotal += parseInt(item.selling_price) * totalQty;
       });
-      state.totalQty = n;
+      state.totalQty = totalQty;
+      state.subtotal = subtotal;
     },
     saveItems: function saveItems(state) {
       var parsed = JSON.stringify(state.items);
       localStorage.setItem('items', parsed);
       localStorage.setItem('totalQty', state.totalQty);
+      localStorage.setItem('subtotal', state.subtotal);
     }
   },
   getters: {

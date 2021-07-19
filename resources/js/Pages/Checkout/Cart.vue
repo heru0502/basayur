@@ -11,12 +11,12 @@
           <inertia-link :href="'/checkout?order_items='+items" v-if="this.$store.state.items.length" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</inertia-link>
           <a href="#" v-else class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark" disabled>Checkout</a>
         </div>
-        <div class="pe-2 text-end">
-          <h3 class="mb-0 color-highlight">Rp 9000</h3>
-          <img src="theme/images/pictures/coins.png" height="20"> <span class="color-highlight ">Dapatkan 50 poin</span>
+        <div class="pe-2 text-end align-self-center">
+          <h3 class="color-highlight">Rp {{this.$store.state.subtotal}}</h3>
+<!--          <img src="theme/images/pictures/coins.png" height="20"> <span class="color-highlight ">Dapatkan 50 poin</span>-->
         </div>
         <div class="p-2 flex-fill">
-          Total Pembayaran :
+          Total Belanja :
         </div>
       </div>
     </div>

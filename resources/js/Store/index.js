@@ -2,8 +2,9 @@ export default {
     state () {
         return {
             totalQty: localStorage.getItem('totalQty'),
+            subtotal: localStorage.getItem('subtotal'),
+            note: localStorage.getItem('note'),
             items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
-
         }
     },
     mutations: {
@@ -38,11 +39,14 @@ export default {
             }
 
             // Count total qty
-            let n = 0;
+            let totalQty = 0;
+            let subtotal = 0;
             state.items.map(item => {
-                n += item.qty;
+                totalQty += item.qty;
+                subtotal += parseInt(item.selling_price) * totalQty;
             });
-            state.totalQty = n;
+            state.totalQty = totalQty;
+            state.subtotal = subtotal;
         },
         decrement (state, payload) {
             let newItem = payload.menu;
@@ -84,16 +88,20 @@ export default {
             }
 
             // Count total qty
-            let n = 0;
+            let totalQty = 0;
+            let subtotal = 0;
             state.items.map(item => {
-                n += item.qty;
+                totalQty += item.qty;
+                subtotal += parseInt(item.selling_price) * totalQty;
             });
-            state.totalQty = n;
+            state.totalQty = totalQty;
+            state.subtotal = subtotal;
         },
         saveItems(state) {
             const parsed = JSON.stringify(state.items);
             localStorage.setItem('items', parsed);
             localStorage.setItem('totalQty', state.totalQty);
+            localStorage.setItem('subtotal', state.subtotal);
         }
     },
     getters: {

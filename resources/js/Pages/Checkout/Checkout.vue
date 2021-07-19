@@ -7,12 +7,12 @@
 
     <div class="fixed-bottom card mb-0" style="z-index: 1">
       <div class="d-flex flex-row-reverse m-1">
-        <div class="p-2">
+        <div class="p-0">
           <inertia-link href="/select-payment" id="next_page" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</inertia-link>
         </div>
-        <div class="p-2 text-end">
-          <h3 class="mb-0 color-highlight">Rp 9000</h3>
-          <img src="theme/images/pictures/coins.png" height="20"> <span class="color-highlight ">Dapatkan 50 poin</span>
+        <div class="pe-2 text-end align-self-center">
+          <h3 class="mb-0 color-highlight">Rp {{total_order ? total_order.grand_total : 0}}</h3>
+<!--          <img src="theme/images/pictures/coins.png" height="20"> <span class="color-highlight ">Dapatkan 50 poin</span>-->
         </div>
         <div class="p-2 flex-fill">
           Total Pembayaran :
@@ -52,11 +52,11 @@
 
       <cart-list-menus :page="'checkout'"/>
 
-      <div class="card card-style bg-yellow-light">
-        <p class="content color-white mb-4 text-center">
-          Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja.
-        </p>
-      </div>
+<!--      <div class="card card-style bg-yellow-light">-->
+<!--        <p class="content color-white mb-4 text-center">-->
+<!--          Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja.-->
+<!--        </p>-->
+<!--      </div>-->
 
       <div class="card card-style">
         <div class="content">
@@ -85,9 +85,9 @@
           </div>
           <div class="divider divider-margins mb-4"></div>
 
-          <div class="input-style input-style-always-active has-borders validate-field mb-4">
-            <input type="text" class="form-control" id="note" placeholder="Tulis catatan anda disini...">
-            <label for="note" class="color-theme opacity-50 text-uppercase font-700 font-10">Catatan</label>
+          <div class="input-style input-style-always-active has-borders mb-4">
+            <input type="text" v-model="note" @change="saveNote" class="form-control" placeholder="...">
+            <label for="note" class="color-yellow-dark text-uppercase font-700 font-10">Catatan</label>
             <em>(opsional)</em>
           </div>
         </div>
@@ -102,10 +102,10 @@
           </div>
           <div class="d-flex mb-1">
             <div>
-<!--              {{ "Subtotal ($total_item item)" }}-->
+              Total Belanja
             </div>
             <div class="flex-fill text-end">
-<!--              Rp {{ $subtotal }}-->
+              Rp {{ total_order ? total_order.subtotal : 0 }}
             </div>
           </div>
           <div class="divider divider-margins mb-2"></div>
@@ -116,7 +116,7 @@
               <span class="font-11 color-orange-light">GRATIS ONGKIR minimal belanja Rp 30.000</span>
             </div>
             <div class="flex-fill text-end">
-<!--              Rp {{ $shipment_price }}-->
+              Rp {{ total_order ? total_order.delivery_price : 0 }}
             </div>
           </div>
           <div class="divider divider-margins mb-2"></div>
@@ -140,6 +140,8 @@
         </div>
       </div>
     </div>
+
+
 
     <div id="menu-cart-2" class="menu menu-box-modal">
       <div class="menu-title"><h1>Pilih Kode Voucher</h1></div>
@@ -176,9 +178,28 @@
 <script>
 import LayoutWithoutFooter from '@/Shared/LayoutWithoutFooter'
 import CartListMenus from "@/Shared/CartListMenus";
+import { Inertia } from '@inertiajs/inertia'
 
 export default {
   components: {CartListMenus},
-  layout: LayoutWithoutFooter
+  layout: LayoutWithoutFooter,
+  props: {
+    total_order: Object
+  },
+  data() {
+    return {
+      note: this.$store.state.note
+    }
+  },
+  mounted() {
+    Inertia.reload({ only: ['total_order'] });
+    // Inertia.visit('/users', { search: 'John' }, { only: ['users'] })
+    // console.log(this.total_order);
+  },
+  methods: {
+    saveNote() {
+      localStorage.setItem('note', this.note);
+    }
+  }
 }
 </script>

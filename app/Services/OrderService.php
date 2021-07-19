@@ -84,6 +84,8 @@ class OrderService
             $deliveryPrice = 10000;
         }
 
+        $grandTotal = $subtotal + $deliveryPrice - $discountPrice;
+
         return [
             'subtotal' => $subtotal,
             'delivery_price' => $deliveryPrice,

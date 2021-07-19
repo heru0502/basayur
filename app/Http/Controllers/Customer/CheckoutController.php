@@ -41,8 +41,10 @@ class CheckoutController extends Controller
                 ->withInput();
         }
 
+        $data['order_items'] = json_decode($request->order_items, true);
+
         return Inertia::render('Checkout/Checkout', [
-            'total_order' => ''//$orderService->countTotalOrder($request->all())
+            'total_order' => Inertia::lazy(fn () => $orderService->countTotalOrder($data))
         ]);
     }
 
