@@ -4,6 +4,7 @@ export default {
             totalQty: localStorage.getItem('totalQty'),
             subtotal: localStorage.getItem('subtotal'),
             note: localStorage.getItem('note'),
+            voucherId: localStorage.getItem('voucherId'),
             items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
         }
     },

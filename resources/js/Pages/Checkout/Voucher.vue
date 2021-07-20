@@ -2,7 +2,7 @@
   <div>
     <div class="header header-fixed header-logo-center">
       <a href="index.html" class="header-title">Voucher</a>
-      <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
     <div class="page-content header-clear-medium">
@@ -11,7 +11,7 @@
           <div class="row mb-0">
             <div class="input-group input-style no-borders no-icon mb-0">
               <input type="text" v-model="code" @change="checkVoucherCode" class="form-control" placeholder="Masukkan kode promo">
-              <button :disabled="!voucher" class="btn btn-m btn-full mb-0 ms-1 rounded-xs text-uppercase font-900 shadow-s bg-green-dark">Terapkan</button>
+              <button :disabled="!voucher" @click="applyVoucher" class="btn btn-m btn-full mb-0 ms-1 rounded-xs text-uppercase font-900 shadow-s bg-green-dark">Terapkan</button>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
           <p class="mt-1 mb-0" style="line-height: 14pt">
             {{voucher.content}}
           </p>
-          <a href="#">Lihat detail</a>
+          <inertia-link :href="'/voucher/'+voucher.id">Lihat detail</inertia-link>
         </div>
       </div>
 
@@ -56,9 +56,19 @@ export default {
       isLoading: false
     }
   },
+  mounted() {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var c = url.searchParams.get("code");
+    this.code = c;
+  },
   methods: {
+    back() {
+      window.history.back();
+    },
     checkVoucherCode() {
       Inertia.reload({
+        replace: true,
         only: ['voucher'],
         data: {
           code: this.code
@@ -70,6 +80,13 @@ export default {
           this.isLoading = false;
         }
       });
+    },
+    applyVoucher() {
+      if (this.voucher) {
+        this.$store.state.voucherId = this.voucher.id;
+        localStorage.setItem('voucherId', this.voucher.id);
+        this.back();
+      }
     }
   }
 }

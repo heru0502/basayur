@@ -19080,6 +19080,9 @@ __webpack_require__.r(__webpack_exports__);
     this.setParamUrl();
   },
   methods: {
+    back: function back() {
+      window.history.back();
+    },
     checkStock: function checkStock() {
       var items = this.$store.state.items;
       var store = this.$store;
@@ -19157,6 +19160,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     saveNote: function saveNote() {
       localStorage.setItem('note', this.note);
+    },
+    back: function back() {
+      window.history.back();
     }
   }
 });
@@ -19177,7 +19183,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/LayoutWithoutFooter */ "./resources/js/Shared/LayoutWithoutFooter.vue");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default
+  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default,
+  methods: {
+    back: function back() {
+      window.history.back();
+    }
+  }
 });
 
 /***/ }),
@@ -19208,11 +19219,21 @@ __webpack_require__.r(__webpack_exports__);
       isLoading: false
     };
   },
+  mounted: function mounted() {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var c = url.searchParams.get("code");
+    this.code = c;
+  },
   methods: {
+    back: function back() {
+      window.history.back();
+    },
     checkVoucherCode: function checkVoucherCode() {
       var _this = this;
 
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.reload({
+        replace: true,
         only: ['voucher'],
         data: {
           code: this.code
@@ -19224,6 +19245,45 @@ __webpack_require__.r(__webpack_exports__);
           _this.isLoading = false;
         }
       });
+    },
+    applyVoucher: function applyVoucher() {
+      if (this.voucher) {
+        this.$store.state.voucherId = this.voucher.id;
+        localStorage.setItem('voucherId', this.voucher.id);
+        this.back();
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/LayoutWithoutFooter */ "./resources/js/Shared/LayoutWithoutFooter.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  layout: _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__.default,
+  props: {
+    voucher: Object,
+    end_at: String
+  },
+  data: function data() {
+    return {//
+    };
+  },
+  methods: {
+    back: function back() {
+      window.history.back();
     }
   }
 });
@@ -19536,58 +19596,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_1 = {
   "class": "header header-fixed header-logo-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
   href: "index.html",
   "class": "header-title"
-}, "Cart"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "#",
-  "data-back-button": "",
-  "class": "header-icon header-icon-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
-  "class": "fas fa-arrow-left"
-})])], -1
+}, "Cart", -1
 /* HOISTED */
 );
 
-var _hoisted_2 = {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
   "class": "fixed-bottom card mb-0"
 };
-var _hoisted_3 = {
+var _hoisted_5 = {
   "class": "d-flex flex-row-reverse m-1"
 };
-var _hoisted_4 = {
+var _hoisted_6 = {
   "class": "p-0"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Checkout");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Checkout");
 
-var _hoisted_6 = {
+var _hoisted_8 = {
   key: 1,
   href: "#",
   "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark",
   disabled: ""
 };
-var _hoisted_7 = {
+var _hoisted_9 = {
   "class": "pe-2 text-end align-self-center"
 };
-var _hoisted_8 = {
+var _hoisted_10 = {
   "class": "color-highlight"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "p-2 flex-fill"
 }, " Total Belanja : ", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = {
+var _hoisted_12 = {
   "class": "page-content header-clear-medium"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "card gradient-orange"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "content color-white mb-4 text-center"
@@ -19595,14 +19656,14 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_12 = {
+var _hoisted_14 = {
   id: "snackbar-5",
   "class": "snackbar-toast bg-red-dark",
   "data-bs-delay": "3000",
   "data-bs-autohide": "true"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "fa fa-times me-3"
 }, null, -1
 /* HOISTED */
@@ -19613,24 +19674,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_cart_list_menus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("cart-list-menus");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [this.$store.state.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: "#",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.back && $options.back.apply($options, arguments);
+    }),
+    "class": "header-icon header-icon-1"
+  }, [_hoisted_3])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [this.$store.state.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
     key: 0,
     href: '/checkout?order_items=' + $data.items,
     "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [_hoisted_7];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_6, "Checkout"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_8, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.$store.state.subtotal), 1
+  , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_8, "Checkout"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_10, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.$store.state.subtotal), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'cart'
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.order_items), 1
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.order_items), 1
   /* TEXT */
   )])]);
 }
@@ -19650,116 +19717,116 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_1 = {
   "class": "header header-fixed header-logo-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
   href: "index.html",
   "class": "header-title"
-}, "Checkout"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "#",
-  "data-back-button": "",
-  "class": "header-icon header-icon-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
-  "class": "fas fa-arrow-left"
-})])], -1
+}, "Checkout", -1
 /* HOISTED */
 );
 
-var _hoisted_2 = {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
   "class": "fixed-bottom card mb-0",
   style: {
     "z-index": "1"
   }
 };
-var _hoisted_3 = {
+var _hoisted_5 = {
   "class": "d-flex flex-row-reverse m-1"
 };
-var _hoisted_4 = {
+var _hoisted_6 = {
   "class": "p-0"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bayar");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bayar");
 
-var _hoisted_6 = {
+var _hoisted_8 = {
   "class": "pe-2 text-end align-self-center"
 };
-var _hoisted_7 = {
+var _hoisted_9 = {
   "class": "mb-0 color-highlight"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "p-2 flex-fill"
 }, " Total Pembayaran : ", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_11 = {
   "class": "page-content header-clear-medium"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style card-danger border-red-dark\" id=\"address_card\"><div class=\"content border-red-dark\"><!--          @if($address)--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div><div class=\"flex-fill text-end\"><a href=\"/address\" class=\"color-theme opacity-50 \"><i class=\"fa fa-edit pe-2\"></i>Ubah</a></div></div><p class=\"my-2\" style=\"line-height:18px;\"> Kom. balitan </p><p> 087878 </p><!--          @else--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div></div><p class=\"color-red-light\">Anda belum menambahkan alamat.</p><a href=\"/address\" class=\"btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light\">Tambah Alamat</a></div></div>", 1);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style card-danger border-red-dark\" id=\"address_card\"><div class=\"content border-red-dark\"><!--          @if($address)--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div><div class=\"flex-fill text-end\"><a href=\"/address\" class=\"color-theme opacity-50 \"><i class=\"fa fa-edit pe-2\"></i>Ubah</a></div></div><p class=\"my-2\" style=\"line-height:18px;\"> Kom. balitan </p><p> 087878 </p><!--          @else--><div class=\"d-flex\"><div><h4>Alamat Pengiriman</h4></div></div><p class=\"color-red-light\">Anda belum menambahkan alamat.</p><a href=\"/address\" class=\"btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light\">Tambah Alamat</a></div></div>", 1);
 
-var _hoisted_11 = {
+var _hoisted_13 = {
   "class": "card card-style"
 };
-var _hoisted_12 = {
+var _hoisted_14 = {
   "class": "content"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex\"><div><h4>Waktu Pengiriman</h4></div></div><div class=\"d-flex mb-1\"><div> Tanggal Pengiriman </div><div class=\"flex-fill text-end\"> 01-02-2021 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-1\"><div> Waktu Pengiriman </div><div class=\"flex-fill text-end\"> 08:00 </div></div><div class=\"divider divider-margins mb-4\"></div>", 5);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex\"><div><h4>Waktu Pengiriman</h4></div></div><div class=\"d-flex mb-1\"><div> Tanggal Pengiriman </div><div class=\"flex-fill text-end\"> 01-02-2021 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-1\"><div> Waktu Pengiriman </div><div class=\"flex-fill text-end\"> 08:00 </div></div><div class=\"divider divider-margins mb-4\"></div>", 5);
 
-var _hoisted_18 = {
+var _hoisted_20 = {
   "class": "input-style input-style-always-active has-borders mb-4"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "for": "note",
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "color-yellow-dark text-uppercase font-700 font-10"
 }, "Catatan", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("em", null, "(opsional)", -1
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("em", null, "(opsional)", -1
 /* HOISTED */
 );
 
-var _hoisted_21 = {
+var _hoisted_23 = {
   "class": "card card-style"
 };
-var _hoisted_22 = {
+var _hoisted_24 = {
   "class": "content"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "d-flex"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Ringkasan Pembayaran")])], -1
 /* HOISTED */
 );
 
-var _hoisted_24 = {
+var _hoisted_26 = {
   "class": "d-flex mb-1"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, " Total Belanja ", -1
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, " Total Belanja ", -1
 /* HOISTED */
 );
 
-var _hoisted_26 = {
+var _hoisted_28 = {
   "class": "flex-fill text-end"
 };
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_28 = {
+var _hoisted_30 = {
   "class": "d-flex mb-1"
 };
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "mb-0",
   style: {
     "line-height": "8pt"
@@ -19770,98 +19837,104 @@ var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_30 = {
+var _hoisted_32 = {
   "class": "flex-fill text-end"
 };
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_32 = {
+var _hoisted_34 = {
   "class": "row mb-1"
 };
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-5"
 }, " Voucher ", -1
 /* HOISTED */
 );
 
-var _hoisted_34 = {
+var _hoisted_36 = {
   "class": "col-7 text-end"
 };
 
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (- Rp 0) ");
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (- Rp 0) ");
 
-var _hoisted_36 = {
+var _hoisted_38 = {
   "class": "input-style no-borders no-icon mb-4"
 };
 
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-  type: "email",
-  onfocus: "blur()",
-  "class": "form-control validate-text placeholder-color-green",
-  id: "form2a",
-  placeholder: "Punya Kode Voucher? Ketuk disini"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
 }, null, -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_cart_list_menus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("cart-list-menus");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: "#",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.back && $options.back.apply($options, arguments);
+    }),
+    "class": "header-icon header-icon-1"
+  }, [_hoisted_3])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     href: "/select-payment",
     id: "next_page",
     "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [_hoisted_7];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_7, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.grand_total : 0), 1
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_9, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.grand_total : 0), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_8])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_10])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'checkout'
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"card card-style bg-yellow-light\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"content color-white mb-4 text-center\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja."), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"card card-style bg-yellow-light\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"content color-white mb-4 text-center\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          Apabila barang tidak tersedia, anda cukup membayar yang tersedia saja."), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "text",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.note = $event;
     }),
-    onChange: _cache[2] || (_cache[2] = function () {
+    onChange: _cache[3] || (_cache[3] = function () {
       return $options.saveNote && $options.saveNote.apply($options, arguments);
     }),
     "class": "form-control",
     placeholder: "..."
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.note]]), _hoisted_19, _hoisted_20])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.subtotal : 0), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.note]]), _hoisted_21, _hoisted_22])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.subtotal : 0), 1
   /* TEXT */
-  )]), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.delivery_price : 0), 1
+  )]), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.delivery_price : 0), 1
   /* TEXT */
-  )]), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  )]), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     href: "/voucher"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_37];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "text",
+        value: _this.$store.state.voucherId,
+        onfocus: "blur()",
+        "class": "form-control validate-text placeholder-color-green",
+        placeholder: "Punya Kode Voucher? Ketuk disini"
+      }, null, 8
+      /* PROPS */
+      , ["value"])];
     }),
     _: 1
     /* STABLE */
 
-  })])])]), _hoisted_38])])])]);
+  })])])]), _hoisted_39])])])]);
 }
 
 /***/ }),
@@ -19879,8 +19952,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "header header-fixed header-logo-center"
+};
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "index.html",
+  "class": "header-title"
+}, "PIlih Pembayaran", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "fixed-bottom card mb-0 p-2",
   style: {
     "z-index": "1"
@@ -19901,10 +19990,16 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"page-content header-clear-medium\"><div class=\"card card-style\"><div class=\"content\"><h5>Ringkasan Pembayaran</h5><div class=\"divider divider-margins my-3\"></div><div class=\"d-flex mb-0\"><div> Total Belanja </div><div class=\"flex-fill text-end\"> Rp 100.000 </div></div><div class=\"d-flex mb-0\"><div><p>Biaya Pengiriman</p></div><div class=\"flex-fill text-end color-red-light\"> Rp 0 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"row mb-0\"><div class=\"col-5\"> Total </div><div class=\"col-7 text-end\"> Rp 100.000 </div></div></div></div><div class=\"accordion\" id=\"accordion-1\"><div class=\"card card-style\"><div class=\"content m-0\"><button class=\"btn accordion-btn no-effect\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse2\"><span class=\"font-15\">Ringkasan Belanja</span><i class=\"fa fa-chevron-down font-10 accordion-icon\"></i></button><div id=\"collapse2\" class=\"collapse\" data-parent=\"#accordion-1\"><div class=\"pt-1 pb-2 ps-3 pe-3\"><div class=\"d-flex mb-0\"><div><p>3x Sayur</p></div><div class=\"flex-fill text-end\"> Rp 30.000 </div></div><div class=\"d-flex mb-0\"><div><p>2x Ayam Kampung</p></div><div class=\"flex-fill text-end\"> Rp 60.000 </div></div></div></div></div></div></div><div class=\"card card-style\"><div class=\"content\"><h5>Pilih metode pembayaran</h5><div class=\"divider divider-margins my-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/gopay.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">GOPAY</p><p class=\"font-11\" style=\"line-height:11pt;\">Pembayaran menggunakan aplikasi GOPAY</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio1\"><label class=\"form-check-label\" for=\"radio1\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/ovo.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">OVO</p><p class=\"font-11\" style=\"line-height:11pt;\">Pembayaran menggunakan aplikasi OVO</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio2\"><label class=\"form-check-label\" for=\"radio2\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/cod.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">COD (Cash on Delivery)</p><p class=\"font-11\" style=\"line-height:11pt;\">Bayar ketika barang anda terima</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio3\"><label class=\"form-check-label\" for=\"radio3\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"> @include(&#39;components.stickymobile.login&#39;) </div></div>", 2);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"page-content header-clear-medium\"><div class=\"card card-style\"><div class=\"content\"><h5>Ringkasan Pembayaran</h5><div class=\"divider divider-margins my-3\"></div><div class=\"d-flex mb-0\"><div> Total Belanja </div><div class=\"flex-fill text-end\"> Rp 100.000 </div></div><div class=\"d-flex mb-0\"><div><p>Biaya Pengiriman</p></div><div class=\"flex-fill text-end color-red-light\"> Rp 0 </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"row mb-0\"><div class=\"col-5\"> Total </div><div class=\"col-7 text-end\"> Rp 100.000 </div></div></div></div><div class=\"accordion\" id=\"accordion-1\"><div class=\"card card-style\"><div class=\"content m-0\"><button class=\"btn accordion-btn no-effect\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse2\"><span class=\"font-15\">Ringkasan Belanja</span><i class=\"fa fa-chevron-down font-10 accordion-icon\"></i></button><div id=\"collapse2\" class=\"collapse\" data-parent=\"#accordion-1\"><div class=\"pt-1 pb-2 ps-3 pe-3\"><div class=\"d-flex mb-0\"><div><p>3x Sayur</p></div><div class=\"flex-fill text-end\"> Rp 30.000 </div></div><div class=\"d-flex mb-0\"><div><p>2x Ayam Kampung</p></div><div class=\"flex-fill text-end\"> Rp 60.000 </div></div></div></div></div></div></div><div class=\"card card-style\"><div class=\"content\"><h5>Pilih metode pembayaran</h5><div class=\"divider divider-margins my-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/gopay.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">GOPAY</p><p class=\"font-11\" style=\"line-height:11pt;\">Pembayaran menggunakan aplikasi GOPAY</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio1\"><label class=\"form-check-label\" for=\"radio1\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/ovo.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">OVO</p><p class=\"font-11\" style=\"line-height:11pt;\">Pembayaran menggunakan aplikasi OVO</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio2\"><label class=\"form-check-label\" for=\"radio2\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div><div class=\"row mb-0\"><div class=\"col-3\"><img src=\"theme/images/icons/payment-methods/cod.png\" class=\"img-fluid\"></div><div class=\"col-7 p-0 align-self-center\"><p class=\"mb-1\" style=\"line-height:11pt;\">COD (Cash on Delivery)</p><p class=\"font-11\" style=\"line-height:11pt;\">Bayar ketika barang anda terima</p></div><div class=\"col-2 align-self-center\"><div class=\"form-check icon-check\"><input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" value=\"\" id=\"radio3\"><label class=\"form-check-label\" for=\"radio3\"> </label><i class=\"icon-check-1 fa fa-circle color-gray-dark font-16\"></i><i class=\"icon-check-2 fa fa-check-circle font-16 color-highlight\"></i></div></div></div><div class=\"divider divider-margins mb-3\"></div></div></div></div><div id=\"menu-login-1\" class=\"menu menu-box-bottom menu-box-detached rounded-m\" data-menu-height=\"600\" data-menu-effect=\"menu-over\"><div class=\"menu-title mt-n1\"><h1>Login</h1><p class=\"color-theme opacity-50\">Please enter your credentials below</p><a href=\"#\" class=\"close-menu\"><i class=\"fa fa-times\"></i></a></div><div class=\"content mb-0\"> @include(&#39;components.stickymobile.login&#39;) </div></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, _hoisted_2]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: "#",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.back && $options.back.apply($options, arguments);
+    }),
+    "class": "header-icon header-icon-1"
+  }, [_hoisted_3])]), _hoisted_4, _hoisted_5]);
 }
 
 /***/ }),
@@ -19922,43 +20017,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_1 = {
   "class": "header header-fixed header-logo-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
   href: "index.html",
   "class": "header-title"
-}, "Voucher"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "#",
-  "data-back-button": "",
-  "class": "header-icon header-icon-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
-  "class": "fas fa-arrow-left"
-})])], -1
+}, "Voucher", -1
 /* HOISTED */
 );
 
-var _hoisted_2 = {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
   "class": "page-content header-clear-medium"
 };
-var _hoisted_3 = {
+var _hoisted_5 = {
   "class": "card card-style"
 };
-var _hoisted_4 = {
+var _hoisted_6 = {
   "class": "content"
 };
-var _hoisted_5 = {
+var _hoisted_7 = {
   "class": "row mb-0"
 };
-var _hoisted_6 = {
+var _hoisted_8 = {
   "class": "input-group input-style no-borders no-icon mb-0"
 };
-var _hoisted_7 = {
+var _hoisted_9 = {
   key: 0,
   "class": "d-flex justify-content-center"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "spinner-border color-red-dark",
   role: "status"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
@@ -19967,45 +20063,49 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_11 = {
   key: 1,
   "class": "card card-style",
   style: {
     "box-shadow": "0px 0px 5px green"
   }
 };
-var _hoisted_10 = {
+var _hoisted_12 = {
   "class": "content"
 };
-var _hoisted_11 = {
+var _hoisted_13 = {
   "class": "mt-1 mb-0",
   style: {
     "line-height": "14pt"
   }
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "#"
-}, "Lihat detail", -1
-/* HOISTED */
-);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lihat detail");
 
-var _hoisted_13 = {
+var _hoisted_15 = {
   key: 2,
   "class": "d-flex justify-content-center"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Voucher tidak ditemukan", -1
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Voucher tidak ditemukan", -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: "#",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.back && $options.back.apply($options, arguments);
+    }),
+    "class": "header-icon header-icon-1"
+  }, [_hoisted_3])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "text",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.code = $event;
     }),
-    onChange: _cache[2] || (_cache[2] = function () {
+    onChange: _cache[3] || (_cache[3] = function () {
       return $options.checkVoucherCode && $options.checkVoucherCode.apply($options, arguments);
     }),
     "class": "form-control",
@@ -20014,14 +20114,181 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS, NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.code]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     disabled: !$props.voucher,
+    onClick: _cache[4] || (_cache[4] = function () {
+      return $options.applyVoucher && $options.applyVoucher.apply($options, arguments);
+    }),
     "class": "btn btn-m btn-full mb-0 ms-1 rounded-xs text-uppercase font-900 shadow-s bg-green-dark"
   }, "Terapkan", 8
   /* PROPS */
-  , ["disabled"])])])])]), $data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_7, [_hoisted_8])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.voucher ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.voucher.title), 1
+  , ["disabled"])])])])]), $data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [_hoisted_10])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.voucher ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.voucher.title), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.voucher.content), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.voucher.content), 1
   /* TEXT */
-  ), _hoisted_12])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$props.voucher && !$data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_13, [_hoisted_14])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: '/voucher/' + $props.voucher.id
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_14];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$props.voucher && !$data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_15, [_hoisted_16])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=template&id=68bbb8ea":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=template&id=68bbb8ea ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "header header-fixed header-logo-center"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "index.html",
+  "class": "header-title"
+}, "Detail Voucher", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "page-content header-clear-medium"
+};
+var _hoisted_5 = {
+  "class": "card"
+};
+var _hoisted_6 = {
+  "class": "content"
+};
+var _hoisted_7 = {
+  "class": "row"
+};
+var _hoisted_8 = {
+  "class": "row"
+};
+var _hoisted_9 = {
+  "class": "col"
+};
+var _hoisted_10 = {
+  "class": "d-flex"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "align-self-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fa fa-clock fa-2x color-highlight-light opacity-80"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "ms-3"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "color-gray-dark",
+  style: {
+    "line-height": "12pt"
+  }
+}, "Berlaku hingga", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "font-16"
+};
+var _hoisted_15 = {
+  "class": "col"
+};
+var _hoisted_16 = {
+  "class": "d-flex"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "align-self-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-money-bill-wave-alt fa-2x color-highlight-light opacity-80"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  key: 0,
+  "class": "ms-3"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "color-gray-dark",
+  style: {
+    "line-height": "12pt"
+  }
+}, "Minimum transaksi", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
+  "class": "font-16"
+};
+var _hoisted_21 = {
+  key: 1,
+  "class": "ms-3"
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "color-gray-dark",
+  style: {
+    "line-height": "14pt"
+  }
+}, "Tanpa minimum transaksi", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
+  "class": "row"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("b", null, "Syarat & Ketentuan", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: "#",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.back && $options.back.apply($options, arguments);
+    }),
+    "class": "header-icon header-icon-1"
+  }, [_hoisted_3])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+    "class": "p-0",
+    src: $props.voucher.image_url
+  }, null, 8
+  /* PROPS */
+  , ["src"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.end_at), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, $props.voucher.min_purchase ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.voucher.min_purchase), 1
+  /* TEXT */
+  )])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_21, [_hoisted_22]))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.voucher.content), 1
+  /* TEXT */
+  )])])])])]);
 }
 
 /***/ }),
@@ -20879,6 +21146,7 @@ __webpack_require__.r(__webpack_exports__);
       totalQty: localStorage.getItem('totalQty'),
       subtotal: localStorage.getItem('subtotal'),
       note: localStorage.getItem('note'),
+      voucherId: localStorage.getItem('voucherId'),
       items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
     };
   },
@@ -26835,6 +27103,32 @@ _Voucher_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Checkout/VoucherShow.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/Pages/Checkout/VoucherShow.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _VoucherShow_vue_vue_type_template_id_68bbb8ea__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VoucherShow.vue?vue&type=template&id=68bbb8ea */ "./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=template&id=68bbb8ea");
+/* harmony import */ var _VoucherShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VoucherShow.vue?vue&type=script&lang=js */ "./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=script&lang=js");
+
+
+
+_VoucherShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _VoucherShow_vue_vue_type_template_id_68bbb8ea__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_VoucherShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Checkout/VoucherShow.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_VoucherShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Help/Index.vue":
 /*!*******************************************!*\
   !*** ./resources/js/Pages/Help/Index.vue ***!
@@ -27143,6 +27437,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=script&lang=js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VoucherShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VoucherShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./VoucherShow.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Help/Index.vue?vue&type=script&lang=js":
 /*!*******************************************************************!*\
   !*** ./resources/js/Pages/Help/Index.vue?vue&type=script&lang=js ***!
@@ -27315,6 +27625,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Voucher_vue_vue_type_template_id_27e745ee__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Voucher_vue_vue_type_template_id_27e745ee__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Voucher.vue?vue&type=template&id=27e745ee */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/Voucher.vue?vue&type=template&id=27e745ee");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=template&id=68bbb8ea":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=template&id=68bbb8ea ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VoucherShow_vue_vue_type_template_id_68bbb8ea__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VoucherShow_vue_vue_type_template_id_68bbb8ea__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./VoucherShow.vue?vue&type=template&id=68bbb8ea */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Checkout/VoucherShow.vue?vue&type=template&id=68bbb8ea");
 
 
 /***/ }),
@@ -29178,6 +29504,8 @@ var map = {
 	"./Checkout/SelectPayment.vue": "./resources/js/Pages/Checkout/SelectPayment.vue",
 	"./Checkout/Voucher": "./resources/js/Pages/Checkout/Voucher.vue",
 	"./Checkout/Voucher.vue": "./resources/js/Pages/Checkout/Voucher.vue",
+	"./Checkout/VoucherShow": "./resources/js/Pages/Checkout/VoucherShow.vue",
+	"./Checkout/VoucherShow.vue": "./resources/js/Pages/Checkout/VoucherShow.vue",
 	"./Help/Index": "./resources/js/Pages/Help/Index.vue",
 	"./Help/Index.vue": "./resources/js/Pages/Help/Index.vue",
 	"./Home/Categories": "./resources/js/Pages/Home/Categories.vue",

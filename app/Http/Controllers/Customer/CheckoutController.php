@@ -56,6 +56,16 @@ class CheckoutController extends Controller
         ]);
     }
 
+    public function voucherShow($id)
+    {
+        $voucher = Voucher::find($id);
+
+        return Inertia::render('Checkout/VoucherShow', [
+            'voucher' => $voucher,
+            'end_at' => $voucher->end_at->format('d M Y')
+        ]);
+    }
+
     public function selectPayment()
     {
         return Inertia::render('Checkout/SelectPayment');

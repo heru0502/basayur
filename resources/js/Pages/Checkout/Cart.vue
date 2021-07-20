@@ -2,7 +2,7 @@
   <div>
     <div class="header header-fixed header-logo-center">
       <a href="index.html" class="header-title">Cart</a>
-      <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
     <div class="fixed-bottom card mb-0">
@@ -65,6 +65,9 @@ export default {
     this.setParamUrl();
   },
   methods: {
+    back() {
+      window.history.back();
+    },
     checkStock() {
       let items = this.$store.state.items;
       let store = this.$store;

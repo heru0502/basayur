@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="header header-fixed header-logo-center">
+      <a href="index.html" class="header-title">PIlih Pembayaran</a>
+      <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+    </div>
+
     <div class="fixed-bottom card mb-0 p-2" style="z-index: 1">
       @auth('customer')
       <a href="#" wire:click="createOrder()" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
@@ -160,6 +165,11 @@
 import LayoutWithoutFooter from '@/Shared/LayoutWithoutFooter'
 
 export default {
-  layout: LayoutWithoutFooter
+  layout: LayoutWithoutFooter,
+  methods: {
+    back() {
+      window.history.back();
+    },
+  }
 }
 </script>

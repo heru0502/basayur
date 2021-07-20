@@ -2,7 +2,7 @@
   <div>
     <div class="header header-fixed header-logo-center">
       <a href="index.html" class="header-title">Checkout</a>
-      <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
     <div class="fixed-bottom card mb-0" style="z-index: 1">
@@ -87,7 +87,7 @@
 
           <div class="input-style input-style-always-active has-borders mb-4">
             <input type="text" v-model="note" @change="saveNote" class="form-control" placeholder="...">
-            <label for="note" class="color-yellow-dark text-uppercase font-700 font-10">Catatan</label>
+            <label class="color-yellow-dark text-uppercase font-700 font-10">Catatan</label>
             <em>(opsional)</em>
           </div>
         </div>
@@ -131,7 +131,7 @@
               <div class="input-style no-borders no-icon mb-4">
                 <inertia-link href="/voucher">
 
-                  <input type="email" onfocus="blur()" class="form-control validate-text placeholder-color-green" id="form2a" placeholder="Punya Kode Voucher? Ketuk disini">
+                  <input type="text" :value="this.$store.state.voucherId" onfocus="blur()" class="form-control validate-text placeholder-color-green" placeholder="Punya Kode Voucher? Ketuk disini">
                 </inertia-link>
               </div>
             </div>
@@ -168,7 +168,10 @@ export default {
   methods: {
     saveNote() {
       localStorage.setItem('note', this.note);
-    }
+    },
+    back() {
+      window.history.back();
+    },
   }
 }
 </script>
