@@ -126,13 +126,19 @@
               Voucher
             </div>
             <div class="col-7 text-end">
-              (- Rp {{ total_order ? total_order.discount_price : 0 }})
+              <span :class="this.$store.state.voucherId ? 'color-green-dark' : ''">(- Rp {{ total_order ? total_order.discount_price : 0 }})</span>
 
               <div class="input-style no-borders no-icon mb-4">
-                <inertia-link href="/voucher">
-
-                  <input type="text" :value="'('+this.$store.state.voucherCode+') '+ this.$store.state.voucherTitle" onfocus="blur()" class="form-control validate-text placeholder-color-green color-green-dark" placeholder="Punya Kode Voucher? Ketuk disini">
-                </inertia-link>
+                <div class="d-flex">
+                  <div class="align-self-center">
+                    <i v-if="this.$store.state.voucherId" @click="removeVoucher" class="fa fa-times color-red-dark"></i>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <inertia-link href="/voucher">
+                      <input type="text" v-model="voucherUsage" onfocus="blur()" class="form-control validate-text placeholder-color-green color-green-dark" placeholder="Punya Kode Voucher? Ketuk disini">
+                    </inertia-link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -158,22 +164,13 @@ export default {
   data() {
     return {
       note: this.$store.state.note,
+      voucherUsage: this.$store.state.voucherId ? '('+this.$store.state.voucherCode+') '+ this.$store.state.voucherTitle : '',
       items: []
     }
   },
   mounted() {
     this.setParamUrl();
-
-    Inertia.reload({
-      replace: true,
-      only: ['total_order'],
-      data: {
-        order_items: this.items,
-        voucher_id: this.$store.state.voucherId
-      },
-    });
-    // Inertia.visit('/users', { search: 'John' }, { only: ['users'] })
-    // console.log(this.total_order);
+    this.reCountTotal();
   },
   methods: {
     saveNote() {
@@ -182,6 +179,26 @@ export default {
     },
     back() {
       window.history.back();
+    },
+    reCountTotal() {
+      Inertia.reload({
+        replace: true,
+        only: ['total_order'],
+        data: {
+          order_items: this.items,
+          voucher_id: this.$store.state.voucherId
+        },
+      });
+    },
+    removeVoucher() {
+      this.$store.state.voucherId = '';
+      this.$store.state.voucherCode = '';
+      this.$store.state.voucherTitle = '';
+      localStorage.removeItem('voucherId');
+      localStorage.removeItem('voucherCode');
+      localStorage.removeItem('voucherTitle');
+      this.reCountTotal();
+      this.voucherUsage = '';
     },
     setParamUrl() {
       let items = this.$store.state.items;

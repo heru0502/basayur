@@ -19149,20 +19149,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       note: this.$store.state.note,
+      voucherUsage: this.$store.state.voucherId ? '(' + this.$store.state.voucherCode + ') ' + this.$store.state.voucherTitle : '',
       items: []
     };
   },
   mounted: function mounted() {
     this.setParamUrl();
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload({
-      replace: true,
-      only: ['total_order'],
-      data: {
-        order_items: this.items,
-        voucher_id: this.$store.state.voucherId
-      }
-    }); // Inertia.visit('/users', { search: 'John' }, { only: ['users'] })
-    // console.log(this.total_order);
+    this.reCountTotal();
   },
   methods: {
     saveNote: function saveNote() {
@@ -19171,6 +19164,26 @@ __webpack_require__.r(__webpack_exports__);
     },
     back: function back() {
       window.history.back();
+    },
+    reCountTotal: function reCountTotal() {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload({
+        replace: true,
+        only: ['total_order'],
+        data: {
+          order_items: this.items,
+          voucher_id: this.$store.state.voucherId
+        }
+      });
+    },
+    removeVoucher: function removeVoucher() {
+      this.$store.state.voucherId = '';
+      this.$store.state.voucherCode = '';
+      this.$store.state.voucherTitle = '';
+      localStorage.removeItem('voucherId');
+      localStorage.removeItem('voucherCode');
+      localStorage.removeItem('voucherTitle');
+      this.reCountTotal();
+      this.voucherUsage = '';
     },
     setParamUrl: function setParamUrl() {
       var items = this.$store.state.items;
@@ -19890,16 +19903,23 @@ var _hoisted_36 = {
 var _hoisted_37 = {
   "class": "input-style no-borders no-icon mb-4"
 };
+var _hoisted_38 = {
+  "class": "d-flex"
+};
+var _hoisted_39 = {
+  "class": "align-self-center"
+};
+var _hoisted_40 = {
+  "class": "flex-fill ms-3"
+};
 
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
 }, null, -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _this = this;
-
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_cart_list_menus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("cart-list-menus");
@@ -19941,26 +19961,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.delivery_price : 0), 1
   /* TEXT */
-  )]), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (- Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.discount_price : 0) + ") ", 1
-  /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  )]), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+    "class": this.$store.state.voucherId ? 'color-green-dark' : ''
+  }, "(- Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.discount_price : 0) + ")", 3
+  /* TEXT, CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_39, [this.$store.state.voucherId ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("i", {
+    key: 0,
+    onClick: _cache[4] || (_cache[4] = function () {
+      return $options.removeVoucher && $options.removeVoucher.apply($options, arguments);
+    }),
+    "class": "fa fa-times color-red-dark"
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     href: "/voucher"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "text",
-        value: '(' + _this.$store.state.voucherCode + ') ' + _this.$store.state.voucherTitle,
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $data.voucherUsage = $event;
+        }),
         onfocus: "blur()",
         "class": "form-control validate-text placeholder-color-green color-green-dark",
         placeholder: "Punya Kode Voucher? Ketuk disini"
-      }, null, 8
-      /* PROPS */
-      , ["value"])];
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.voucherUsage]])];
     }),
     _: 1
     /* STABLE */
 
-  })])])]), _hoisted_38])])])]);
+  })])])])])]), _hoisted_41])])])]);
 }
 
 /***/ }),
