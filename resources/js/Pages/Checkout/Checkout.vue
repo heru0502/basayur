@@ -177,6 +177,7 @@ export default {
   },
   methods: {
     saveNote() {
+      this.$store.state.note = this.note;
       localStorage.setItem('note', this.note);
     },
     back() {

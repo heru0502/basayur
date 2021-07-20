@@ -19166,6 +19166,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     saveNote: function saveNote() {
+      this.$store.state.note = this.note;
       localStorage.setItem('note', this.note);
     },
     back: function back() {
