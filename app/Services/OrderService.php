@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\CustomerOrder;
 use App\Models\CustomerOrderItem;
 use App\Models\Menu;
+use App\Models\Voucher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -76,7 +77,9 @@ class OrderService
 
         // If using voucher
         if ( ! empty($data['voucher_id'])) {
-
+            $voucher = Voucher::find($data['voucher_id']);
+            $percentage = $voucher->percentage;
+            $discountPrice = ($subtotal * $percentage) / 100;
         }
 
         // Delivery

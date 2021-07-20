@@ -8,7 +8,7 @@
     <div class="fixed-bottom card mb-0">
       <div class="d-flex flex-row-reverse m-1">
         <div class="p-0">
-          <inertia-link :href="'/checkout?order_items='+items" v-if="this.$store.state.items.length" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</inertia-link>
+          <inertia-link href="/checkout" v-if="this.$store.state.items.length" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</inertia-link>
           <a href="#" v-else class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-gray-dark" disabled>Checkout</a>
         </div>
         <div class="pe-2 text-end align-self-center">

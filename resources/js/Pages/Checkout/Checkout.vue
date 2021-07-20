@@ -126,12 +126,12 @@
               Voucher
             </div>
             <div class="col-7 text-end">
-              (- Rp 0)
+              (- Rp {{ total_order ? total_order.discount_price : 0 }})
 
               <div class="input-style no-borders no-icon mb-4">
                 <inertia-link href="/voucher">
 
-                  <input type="text" :value="this.$store.state.voucherId" onfocus="blur()" class="form-control validate-text placeholder-color-green" placeholder="Punya Kode Voucher? Ketuk disini">
+                  <input type="text" :value="'('+this.$store.state.voucherCode+') '+ this.$store.state.voucherTitle" onfocus="blur()" class="form-control validate-text placeholder-color-green color-green-dark" placeholder="Punya Kode Voucher? Ketuk disini">
                 </inertia-link>
               </div>
             </div>
@@ -157,11 +157,21 @@ export default {
   },
   data() {
     return {
-      note: this.$store.state.note
+      note: this.$store.state.note,
+      items: []
     }
   },
   mounted() {
-    Inertia.reload({ only: ['total_order'] });
+    this.setParamUrl();
+
+    Inertia.reload({
+      replace: true,
+      only: ['total_order'],
+      data: {
+        order_items: this.items,
+        voucher_id: this.$store.state.voucherId
+      },
+    });
     // Inertia.visit('/users', { search: 'John' }, { only: ['users'] })
     // console.log(this.total_order);
   },
@@ -172,6 +182,19 @@ export default {
     back() {
       window.history.back();
     },
+    setParamUrl() {
+      let items = this.$store.state.items;
+
+      items = items.map(function(item) {
+        let a = {};
+        a.menu_id = item.id;
+        a.qty = item.qty;
+        return a;
+      });
+
+      items = JSON.stringify(items);
+      this.items = items;
+    }
   }
 }
 </script>

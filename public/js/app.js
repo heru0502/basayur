@@ -19148,12 +19148,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      note: this.$store.state.note
+      note: this.$store.state.note,
+      items: []
     };
   },
   mounted: function mounted() {
+    this.setParamUrl();
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload({
-      only: ['total_order']
+      replace: true,
+      only: ['total_order'],
+      data: {
+        order_items: this.items,
+        voucher_id: this.$store.state.voucherId
+      }
     }); // Inertia.visit('/users', { search: 'John' }, { only: ['users'] })
     // console.log(this.total_order);
   },
@@ -19163,6 +19170,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     back: function back() {
       window.history.back();
+    },
+    setParamUrl: function setParamUrl() {
+      var items = this.$store.state.items;
+      items = items.map(function (item) {
+        var a = {};
+        a.menu_id = item.id;
+        a.qty = item.qty;
+        return a;
+      });
+      items = JSON.stringify(items);
+      this.items = items;
     }
   }
 });
@@ -19215,19 +19233,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      code: '',
+      code: this.$store.state.voucherCode,
       isLoading: false
     };
   },
   mounted: function mounted() {
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var c = url.searchParams.get("code");
-    this.code = c;
+    this.setDefaultCode();
+    this.checkVoucherCode();
   },
   methods: {
     back: function back() {
       window.history.back();
+    },
+    setDefaultCode: function setDefaultCode() {
+      if (!this.code) {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var c = url.searchParams.get("code");
+        this.code = c;
+      }
     },
     checkVoucherCode: function checkVoucherCode() {
       var _this = this;
@@ -19249,7 +19273,11 @@ __webpack_require__.r(__webpack_exports__);
     applyVoucher: function applyVoucher() {
       if (this.voucher) {
         this.$store.state.voucherId = this.voucher.id;
+        this.$store.state.voucherCode = this.voucher.code;
+        this.$store.state.voucherTitle = this.voucher.title;
         localStorage.setItem('voucherId', this.voucher.id);
+        localStorage.setItem('voucherCode', this.voucher.code);
+        localStorage.setItem('voucherTitle', this.voucher.title);
         this.back();
       }
     }
@@ -19682,7 +19710,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "header-icon header-icon-1"
   }, [_hoisted_3])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [this.$store.state.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
     key: 0,
-    href: '/checkout?order_items=' + $data.items,
+    href: "/checkout",
     "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -19691,9 +19719,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }, 8
-  /* PROPS */
-  , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_8, "Checkout"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_10, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.$store.state.subtotal), 1
+  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", _hoisted_8, "Checkout"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_10, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.$store.state.subtotal), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <img src=\"theme/images/pictures/coins.png\" height=\"20\"> <span class=\"color-highlight \">Dapatkan 50 poin</span>")]), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"row mb-0 text-center p-5\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <img class=\"img-fluid\" src=\"{{ asset('theme/images/cart-empty.png') }}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <p class=\"font-14 font-700 mt-3\">Keranjang masih kosong</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_cart_list_menus, {
     page: 'cart'
@@ -19860,14 +19886,11 @@ var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_36 = {
   "class": "col-7 text-end"
 };
-
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (- Rp 0) ");
-
-var _hoisted_38 = {
+var _hoisted_37 = {
   "class": "input-style no-borders no-icon mb-4"
 };
 
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "divider divider-margins mb-2"
 }, null, -1
 /* HOISTED */
@@ -19917,15 +19940,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.delivery_price : 0), 1
   /* TEXT */
-  )]), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  )]), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (- Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.discount_price : 0) + ") ", 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     href: "/voucher"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "text",
-        value: _this.$store.state.voucherId,
+        value: '(' + _this.$store.state.voucherCode + ') ' + _this.$store.state.voucherTitle,
         onfocus: "blur()",
-        "class": "form-control validate-text placeholder-color-green",
+        "class": "form-control validate-text placeholder-color-green color-green-dark",
         placeholder: "Punya Kode Voucher? Ketuk disini"
       }, null, 8
       /* PROPS */
@@ -19934,7 +19959,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])])]), _hoisted_39])])])]);
+  })])])]), _hoisted_38])])])]);
 }
 
 /***/ }),
@@ -21147,6 +21172,8 @@ __webpack_require__.r(__webpack_exports__);
       subtotal: localStorage.getItem('subtotal'),
       note: localStorage.getItem('note'),
       voucherId: localStorage.getItem('voucherId'),
+      voucherCode: localStorage.getItem('voucherCode'),
+      voucherTitle: localStorage.getItem('voucherTitle'),
       items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
     };
   },

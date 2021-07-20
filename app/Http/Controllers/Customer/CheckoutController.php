@@ -45,7 +45,11 @@ class CheckoutController extends Controller
         $data['order_items'] = json_decode($request->order_items, true);
 
         return Inertia::render('Checkout/Checkout', [
-            'total_order' => Inertia::lazy(fn () => $orderService->countTotalOrder($data))
+            'total_order' => Inertia::lazy(function() use($orderService, $request) {
+                $data['order_items'] = json_decode($_GET['order_items'] ?? null, true);
+                $data['voucher_id'] = $_GET['voucher_id'] ?? null;
+                return $orderService->countTotalOrder($data);
+            })
         ]);
     }
 

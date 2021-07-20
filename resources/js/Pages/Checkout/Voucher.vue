@@ -52,19 +52,25 @@ export default {
   },
   data() {
     return {
-      code: '',
+      code: this.$store.state.voucherCode,
       isLoading: false
     }
   },
   mounted() {
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var c = url.searchParams.get("code");
-    this.code = c;
+    this.setDefaultCode();
+    this.checkVoucherCode();
   },
   methods: {
     back() {
       window.history.back();
+    },
+    setDefaultCode() {
+      if (!this.code) {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var c = url.searchParams.get("code");
+        this.code = c;
+      }
     },
     checkVoucherCode() {
       Inertia.reload({
@@ -84,7 +90,11 @@ export default {
     applyVoucher() {
       if (this.voucher) {
         this.$store.state.voucherId = this.voucher.id;
+        this.$store.state.voucherCode = this.voucher.code;
+        this.$store.state.voucherTitle = this.voucher.title;
         localStorage.setItem('voucherId', this.voucher.id);
+        localStorage.setItem('voucherCode', this.voucher.code);
+        localStorage.setItem('voucherTitle', this.voucher.title);
         this.back();
       }
     }
