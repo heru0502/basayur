@@ -19439,9 +19439,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/Layout */ "./resources/js/Shared/Layout.vue");
+/* harmony import */ var _Shared_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Shared/Login */ "./resources/js/Shared/Login.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__.default
+  layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__.default,
+  components: {
+    Login: _Shared_Login__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  data: function data() {
+    return {
+      user: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.value.auth.user
+    };
+  },
+  methods: {
+    logout: function logout() {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post('auth/logout');
+    }
+  }
 });
 
 /***/ }),
@@ -20845,10 +20864,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header header-fixed header-logo-center\"><a href=\"index.html\" class=\"header-title\">List Order</a><a href=\"/order-histories\" class=\"header-icon header-icon-4 me-3 color-highlight font-800\">Riwayat</a></div><div class=\"page-content header-clear-medium\"><div class=\"card card-style bg-theme pb-0\"><div class=\"content\"><a href=\"/order-detail\" style=\"color:inherit;text-decoration:inherit;\"><div class=\"row mb-0 opacity-50\"><div class=\"col-7\"> Order ID </div><div class=\"col-5 text-end\"> Tanggal Pengiriman </div></div><div class=\"row mb-0\" style=\"line-height:12pt;\"><div class=\"col-7\"> #HK-0849 </div><div class=\"col-5 text-end\"> Minggu, 25 April 2021 </div></div><div class=\"row mb-0 mt-3 opacity-50\"><div class=\"col-7\"> Status Pemesanan </div><div class=\"col-5 text-end\"> Total Tagihan </div></div><div class=\"row mb-0\" style=\"line-height:12pt;\"><div class=\"col-7\"><a href=\"#\" class=\"chip chip-small bg-gray-light\"><i class=\"fa fa-check bg-green-dark\"></i><strong class=\"color-black font-400\">Belum Dibayar</strong></a></div><div class=\"col-5 text-end\"> Rp 100.000 </div></div></a><div class=\"divider mb-3\"></div><div class=\"row mx-1 mb-0\"><div class=\"col-9\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight\">Ubah Metode Pembayaran</a></div><div class=\"col-3\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme\"><i class=\"fa fa-lg fa-comment-dots\"></i></a></div></div></div></div></div>", 2);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "header header-fixed header-logo-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "index.html",
+  "class": "header-title"
+}, "List Order"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "/order-histories",
+  "class": "header-icon header-icon-4 me-3 color-highlight font-800"
+}, "Riwayat")], -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  "class": "page-content header-clear-medium"
+};
+var _hoisted_3 = {
+  key: 0
+};
+var _hoisted_4 = {
+  key: 1
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style bg-theme pb-0\"><div class=\"content\"><a href=\"/order-detail\" style=\"color:inherit;text-decoration:inherit;\"><div class=\"row mb-0 opacity-50\"><div class=\"col-7\"> Order ID </div><div class=\"col-5 text-end\"> Tanggal Pengiriman </div></div><div class=\"row mb-0\" style=\"line-height:12pt;\"><div class=\"col-7\"> #HK-0849 </div><div class=\"col-5 text-end\"> Minggu, 25 April 2021 </div></div><div class=\"row mb-0 mt-3 opacity-50\"><div class=\"col-7\"> Status Pemesanan </div><div class=\"col-5 text-end\"> Total Tagihan </div></div><div class=\"row mb-0\" style=\"line-height:12pt;\"><div class=\"col-7\"><a href=\"#\" class=\"chip chip-small bg-gray-light\"><i class=\"fa fa-check bg-green-dark\"></i><strong class=\"color-black font-400\">Belum Dibayar</strong></a></div><div class=\"col-5 text-end\"> Rp 100.000 </div></div></a><div class=\"divider mb-3\"></div><div class=\"row mx-1 mb-0\"><div class=\"col-9\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight\">Ubah Metode Pembayaran</a></div><div class=\"col-3\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme\"><i class=\"fa fa-lg fa-comment-dots\"></i></a></div></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1]);
+  var _component_login = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("login");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [!$data.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [_hoisted_5]))])]);
 }
 
 /***/ }),
