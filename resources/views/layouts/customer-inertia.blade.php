@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/theme/app/icons/icon-192x192.png">
 
 {{--  <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />--}}
-  <script src="{{ mix('/js/app.js') }}" defer></script>
+{{--  <script src="{{ mix('/js/app.js') }}" defer></script>--}}
 </head>
 
 <body class="theme-light" data-highlight="highlight-orange" data-gradient="body-default">
@@ -179,5 +179,7 @@
 <script type="text/javascript" src="/theme/scripts/custom.js"></script>
 
 @stack('javascript')
+
+<script type="text/javascript" src="{{ mix('/js/app.js') }}" defer></script>
 
 </body>

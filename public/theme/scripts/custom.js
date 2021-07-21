@@ -124,62 +124,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         //Image Sliders
-        var splide = document.getElementsByClassName('splide');
-        if(splide.length){
-            var singleSlider = document.querySelectorAll('.single-slider');
-            if(singleSlider.length){
-                singleSlider.forEach(function(e){
-                    var single = new Splide( '#'+e.id, {
-                        type:'loop',
-                        autoplay:true,
-                        interval:4000,
-                        perPage: 1,
-                    }).mount();
-                    var sliderNext = document.querySelectorAll('.slider-next');
-                    var sliderPrev = document.querySelectorAll('.slider-prev');
-                    sliderNext.forEach(el => el.addEventListener('click', el => {single.go('>');}));
-                    sliderPrev.forEach(el => el.addEventListener('click', el => {single.go('<');}));
-                });
-            }
-
-            var doubleSlider = document.querySelectorAll('.double-slider');
-            if(doubleSlider.length){
-                doubleSlider.forEach(function(e){
-                    var double = new Splide( '#'+e.id, {
-                        type:'loop',
-                        autoplay:true,
-                        interval:4000,
-                        arrows:false,
-                        perPage: 2,
-                    }).mount();
-                });
-            }
-
-            var trippleSlider = document.querySelectorAll('.tripple-slider');
-            if(trippleSlider.length){
-                trippleSlider.forEach(function(e){
-                    var tripple = new Splide( '#'+e.id, {
-                        type:'loop',
-                        autoplay:true,
-                        padding: {
-                            left   :'0px',
-                            right: '80px',
-                        },
-                        interval:4000,
-                        arrows:false,
-                        perPage: 2,
-                        perMove: 1,
-                    }).mount();
-                });
-            }
-        }
+        // var splide = document.getElementsByClassName('splide');
+        // if(splide.length){
+        //     var singleSlider = document.querySelectorAll('.single-slider');
+        //     if(singleSlider.length){
+        //         singleSlider.forEach(function(e){
+        //             var single = new Splide( '#'+e.id, {
+        //                 type:'loop',
+        //                 autoplay:true,
+        //                 interval:4000,
+        //                 perPage: 1,
+        //             }).mount();
+        //             var sliderNext = document.querySelectorAll('.slider-next');
+        //             var sliderPrev = document.querySelectorAll('.slider-prev');
+        //             sliderNext.forEach(el => el.addEventListener('click', el => {single.go('>');}));
+        //             sliderPrev.forEach(el => el.addEventListener('click', el => {single.go('<');}));
+        //         });
+        //     }
+        //
+        //     var doubleSlider = document.querySelectorAll('.double-slider');
+        //     if(doubleSlider.length){
+        //         doubleSlider.forEach(function(e){
+        //             var double = new Splide( '#'+e.id, {
+        //                 type:'loop',
+        //                 autoplay:true,
+        //                 interval:4000,
+        //                 arrows:false,
+        //                 perPage: 2,
+        //             }).mount();
+        //         });
+        //     }
+        //
+        //     var trippleSlider = document.querySelectorAll('.tripple-slider');
+        //     if(trippleSlider.length){
+        //         trippleSlider.forEach(function(e){
+        //             var tripple = new Splide( '#'+e.id, {
+        //                 type:'loop',
+        //                 autoplay:true,
+        //                 padding: {
+        //                     left   :'0px',
+        //                     right: '80px',
+        //                 },
+        //                 interval:4000,
+        //                 arrows:false,
+        //                 perPage: 2,
+        //                 perMove: 1,
+        //             }).mount();
+        //         });
+        //     }
+        // }
 
         //Don't jump on Empty Links
-        const emptyHref = document.querySelectorAll('a[href="#"]')
-        emptyHref.forEach(el => el.addEventListener('click', e => {
-            e.preventDefault();
-            return false;
-        }));
+        // const emptyHref = document.querySelectorAll('a[href="#"]')
+        // emptyHref.forEach(el => el.addEventListener('click', e => {
+        //     e.preventDefault();
+        //     return false;
+        // }));
 
         //Map Page
         var fullMap = document.querySelectorAll('.map-full');
