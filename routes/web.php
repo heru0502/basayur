@@ -53,7 +53,7 @@ Route::get('/auth/{provider}/redirect', function ($provider) {
 });
 
 Route::get('auth/{provider}/callback', [AuthController::class, 'callbackOAuth']);
-Route::delete('auth/logout', [AuthController::class, 'logout'])->name('logout-customer');
+Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout-customer');
 Route::get('welcome/skip', function() {
     Cookie::queue(Cookie::make('welcome', true, 10080));
     return redirect()->route('home');
@@ -61,10 +61,13 @@ Route::get('welcome/skip', function() {
 
 Route::get('/', [\App\Http\Controllers\Customer\HomeController::class, 'index']);
 Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
-Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
 Route::get('/help', [\App\Http\Controllers\Customer\HelpController::class, 'index']);
 Route::get('/cart', [\App\Http\Controllers\Customer\CheckoutController::class, 'cart']);
 Route::get('/checkout', [\App\Http\Controllers\Customer\CheckoutController::class, 'checkout']);
 Route::get('/voucher', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucher']);
 Route::get('/voucher/{id}', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucherShow']);
 Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);
+
+Route::middleware('auth:customer')->group(function() {
+    Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
+});
