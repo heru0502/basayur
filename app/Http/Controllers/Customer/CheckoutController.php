@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\CustomerAddress;
 use App\Models\Voucher;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
@@ -45,6 +47,7 @@ class CheckoutController extends Controller
         $data['order_items'] = json_decode($request->order_items, true);
 
         return Inertia::render('Checkout/Checkout', [
+            'address' => CustomerAddress::where('user_id', Auth::id())->first(),
             'total_order' => Inertia::lazy(function() use($orderService, $request) {
                 $data['order_items'] = json_decode($_GET['order_items'] ?? null, true);
                 $data['voucher_id'] = $_GET['voucher_id'] ?? null;

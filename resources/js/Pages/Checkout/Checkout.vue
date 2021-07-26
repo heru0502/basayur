@@ -23,30 +23,33 @@
     <div class="page-content header-clear-medium">
       <div class="card card-style card-danger border-red-dark" id="address_card">
         <div class="content border-red-dark">
-<!--          @if($address)-->
-          <div class="d-flex">
-            <div>
-              <h4>Alamat Pengiriman</h4>
+          <div v-if="address">
+            <div class="d-flex">
+              <div>
+                <h4>Alamat Pengiriman</h4>
+              </div>
+              <div class="flex-fill text-end">
+                <a href="/address" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
+              </div>
             </div>
-            <div class="flex-fill text-end">
-              <a href="/address" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
-            </div>
+            <p class="my-2" style="line-height: 18px">
+              Kom. balitan
+            </p>
+            <p>
+              087878
+            </p>
           </div>
-          <p class="my-2" style="line-height: 18px">
-            Kom. balitan
-          </p>
-          <p>
-            087878
-          </p>
-<!--          @else-->
-          <div class="d-flex">
-            <div>
-              <h4>Alamat Pengiriman</h4>
-            </div>
-          </div>
-          <p class="color-red-light">Anda belum menambahkan alamat.</p>
 
-          <a href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
+          <div v-else>
+            <div class="d-flex">
+              <div>
+                <h4>Alamat Pengiriman</h4>
+              </div>
+            </div>
+            <p class="color-red-light">Anda belum menambahkan alamat.</p>
+
+            <inertia-link href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</inertia-link>
+          </div>
         </div>
       </div>
 
@@ -159,6 +162,7 @@ export default {
   components: {CartListMenus},
   layout: LayoutWithoutFooter,
   props: {
+    address: Object,
     total_order: Object
   },
   data() {

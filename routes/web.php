@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
 //Route::get('/account', \App\Http\Livewire\Account::class)->name('account');
 
 Route::middleware('auth:customer')->group(function() {
-    Route::get('/address', \App\Http\Livewire\AddressUpdate::class);
+//    Route::get('/address', \App\Http\Livewire\AddressUpdate::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -67,6 +67,7 @@ Route::get('/checkout', [\App\Http\Controllers\Customer\CheckoutController::clas
 Route::get('/voucher', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucher']);
 Route::get('/voucher/{id}', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucherShow']);
 Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);
+Route::get('/address', [\App\Http\Controllers\Customer\AddressController::class, 'edit']);
 
 Route::middleware('auth:customer')->group(function() {
     Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
