@@ -139,7 +139,7 @@
         });
       },
       submit() {
-        this.$inertia.post('/address', this.formCrea);
+        this.$inertia.post('/address', this.form);
       }
       // geoLocate() {
       //   function success(position) {
