@@ -23,20 +23,21 @@
     <div class="page-content header-clear-medium">
       <div class="card card-style card-danger border-red-dark" id="address_card">
         <div class="content border-red-dark">
+
           <div v-if="address">
             <div class="d-flex">
               <div>
                 <h4>Alamat Pengiriman</h4>
               </div>
               <div class="flex-fill text-end">
-                <a href="/address" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</a>
+                <inertia-link href="/address" class="color-theme opacity-50 "><i class="fa fa-edit pe-2"></i>Ubah</inertia-link>
               </div>
             </div>
-            <p class="my-2" style="line-height: 18px">
-              Kom. balitan
+            <p class="mb-0" style="line-height: 18px">
+              {{address.address}}
             </p>
             <p>
-              087878
+              {{address.phone_number}}
             </p>
           </div>
 
@@ -48,7 +49,8 @@
             </div>
             <p class="color-red-light">Anda belum menambahkan alamat.</p>
 
-            <inertia-link href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</inertia-link>
+            <inertia-link v-if="user" href="/address" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</inertia-link>
+            <a v-else @click="errorNoAuth" href="#" class="btn btn-m btn-full rounded-xl text-uppercase font-500 shadow-s bg-green-light">Tambah Alamat</a>
           </div>
         </div>
       </div>
@@ -157,6 +159,8 @@
 import LayoutWithoutFooter from '@/Shared/LayoutWithoutFooter'
 import CartListMenus from "@/Shared/CartListMenus";
 import { Inertia } from '@inertiajs/inertia'
+import { usePage } from '@inertiajs/inertia-vue3'
+import Swal from 'sweetalert2'
 
 export default {
   components: {CartListMenus},
@@ -167,6 +171,7 @@ export default {
   },
   data() {
     return {
+      user: usePage().props.value.auth.user,
       note: this.$store.state.note,
       voucherUsage: this.$store.state.voucherId ? '('+this.$store.state.voucherCode+') '+ this.$store.state.voucherTitle : '',
       items: []
@@ -216,6 +221,20 @@ export default {
 
       items = JSON.stringify(items);
       this.items = items;
+    },
+    errorNoAuth() {
+      Swal.fire({
+        title: 'Anda Belum Login!',
+        text: 'Untuk melanjutkan silahkan login terlebih dahulu',
+        icon: 'warning',
+        confirmButtonText: 'Daftar / Login',
+        confirmButtonColor: '#A0D468',
+        showCloseButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Inertia.get('/account');
+        }
+      });
     }
   }
 }

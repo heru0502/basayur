@@ -9,6 +9,7 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Village;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AddressController extends Controller
@@ -17,6 +18,16 @@ class AddressController extends Controller
     {
         $regencyId = $request->regency_id;
         $districtId = $request->district_id;
+
+        $userId = Auth::guard('customer')->id();
+        $address = CustomerAddress::with('village.district.regency')
+            ->where('user_id', $userId)
+            ->first();
+
+        if ($address) {
+            $districtId = $address->village->district_id;
+            $regencyId = $address->village->district->regency_id;
+        }
 
         return Inertia::render('Address/Edit', [
             'provinces' => Province::where('id', 63)->get(),
@@ -29,7 +40,8 @@ class AddressController extends Controller
                                         $q->whereIn('id', [6372010, 6372031, 6372032]);
                                     })
                                     ->get(),
-            'villages' => Village::where('district_id', $districtId)->get()
+            'villages' => Village::where('district_id', $districtId)->get(),
+            'address' => $address->toArray()
         ]);
     }
 
@@ -43,7 +55,14 @@ class AddressController extends Controller
             'phone_number' => 'required',
         ]);
 
-        $Address = CustomerAddress::first();
+        CustomerAddress::updateOrInsert(
+            ['user_id' => Auth::guard('customer')->id()],
+            [
+                'village_id' => $request->village_id,
+                'address' => $request->address,
+                'phone_number' => $request->phone_number
+            ]
+        );
 
         return redirect()->to('/checkout');
     }

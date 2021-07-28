@@ -98,6 +98,7 @@
 
   export default {
     props: {
+      address: Object,
       provinces: Object,
       regencies: Object,
       districts: Object,
@@ -107,16 +108,16 @@
     data() {
       return {
         form: {
-          regency_id: '',
-          district_id: '',
-          village_id: '',
-          address: '',
-          phone_number: ''
+          regency_id: this.address ? this.address.village.district.regency.id : '',
+          district_id: this.address ? this.address.village.district.id : '',
+          village_id: this.address ? this.address.village_id : '',
+          address: this.address ? this.address.address : '',
+          phone_number: this.address ? this.address.phone_number : ''
         }
       }
     },
     mounted() {
-
+      console.log(this.address)
     },
     methods: {
       back() {
