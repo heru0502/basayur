@@ -56,6 +56,17 @@ class CheckoutController extends Controller
         ]);
     }
 
+    public function selectPayment(Request $request, OrderService $orderService)
+    {
+        return Inertia::render('Checkout/SelectPayment', [
+            'total_order' => Inertia::lazy(function() use($orderService, $request) {
+                $data['order_items'] = json_decode($_GET['order_items'] ?? null, true);
+                $data['voucher_id'] = $_GET['voucher_id'] ?? null;
+                return $orderService->countTotalOrder($data);
+            })
+        ]);
+    }
+
     public function voucher(Request $request)
     {
         return Inertia::render('Checkout/Voucher', [
@@ -71,10 +82,5 @@ class CheckoutController extends Controller
             'voucher' => $voucher,
             'end_at' => $voucher->end_at->format('d M Y')
         ]);
-    }
-
-    public function selectPayment()
-    {
-        return Inertia::render('Checkout/SelectPayment');
     }
 }

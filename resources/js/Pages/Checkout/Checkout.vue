@@ -5,10 +5,11 @@
       <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
-    <div class="fixed-bottom card mb-0" style="z-index: 1">
+    <div class="fixed-bottom card mb-0 px-2 py-3" style="z-index: 1">
       <div class="d-flex flex-row-reverse m-1">
         <div class="p-0">
-          <inertia-link href="/select-payment" id="next_page" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</inertia-link>
+          <inertia-link v-if="user" href="/select-payment" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</inertia-link>
+          <inertia-link v-else @click="errorNoAuth" href="#" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Bayar</inertia-link>
         </div>
         <div class="pe-2 text-end align-self-center">
           <h3 class="mb-0 color-highlight">Rp {{total_order ? total_order.grand_total : 0}}</h3>

@@ -5,7 +5,7 @@
       <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
-    <div class="fixed-bottom card mb-0">
+    <div class="fixed-bottom card mb-0 px-2 py-3">
       <div class="d-flex flex-row-reverse m-1">
         <div class="p-0">
           <inertia-link href="/checkout" v-if="this.$store.state.items.length" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Checkout</inertia-link>
