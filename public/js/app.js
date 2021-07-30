@@ -19708,6 +19708,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Login: _Shared_Login__WEBPACK_IMPORTED_MODULE_1__.default
   },
+  props: {
+    orders: Object
+  },
   data: function data() {
     return {
       user: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.value.auth.user
@@ -21719,13 +21722,93 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   key: 1
 };
+var _hoisted_5 = {
+  "class": "card card-style bg-theme pb-0"
+};
+var _hoisted_6 = {
+  "class": "content"
+};
+var _hoisted_7 = {
+  href: "/order-detail",
+  style: {
+    "color": "inherit",
+    "text-decoration": "inherit"
+  }
+};
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-style bg-theme pb-0\"><div class=\"content\"><a href=\"/order-detail\" style=\"color:inherit;text-decoration:inherit;\"><div class=\"row mb-0 opacity-50\"><div class=\"col-7\"> Order ID </div><div class=\"col-5 text-end\"> Tanggal Pengiriman </div></div><div class=\"row mb-0\" style=\"line-height:12pt;\"><div class=\"col-7\"> #HK-0849 </div><div class=\"col-5 text-end\"> Minggu, 25 April 2021 </div></div><div class=\"row mb-0 mt-3 opacity-50\"><div class=\"col-7\"> Status Pemesanan </div><div class=\"col-5 text-end\"> Total Tagihan </div></div><div class=\"row mb-0\" style=\"line-height:12pt;\"><div class=\"col-7\"><a href=\"#\" class=\"chip chip-small bg-gray-light\"><i class=\"fa fa-check bg-green-dark\"></i><strong class=\"color-black font-400\">Belum Dibayar</strong></a></div><div class=\"col-5 text-end\"> Rp 100.000 </div></div></a><div class=\"divider mb-3\"></div><div class=\"row mx-1 mb-0\"><div class=\"col-9\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight\">Ubah Metode Pembayaran</a></div><div class=\"col-3\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme\"><i class=\"fa fa-lg fa-comment-dots\"></i></a></div></div></div></div>", 1);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "row mb-0 opacity-50"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-7"
+}, " Order ID "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-5 text-end"
+}, " Tanggal Pengiriman ")], -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "row mb-0",
+  style: {
+    "line-height": "12pt"
+  }
+};
+var _hoisted_10 = {
+  "class": "col-7"
+};
+var _hoisted_11 = {
+  "class": "col-5 text-end"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "row mb-0 mt-3 opacity-50"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-7"
+}, " Status Pemesanan "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-5 text-end"
+}, " Total Tagihan ")], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "row mb-0",
+  style: {
+    "line-height": "12pt"
+  }
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-7"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  "class": "chip chip-small bg-gray-light"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fa fa-check bg-green-dark"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", {
+  "class": "color-black font-400"
+}, "Belum Dibayar")])], -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "col-5 text-end"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"divider mb-3\"></div><div class=\"row mx-1 mb-0\"><div class=\"col-9\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight\">Ubah Metode Pembayaran</a></div><div class=\"col-3\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme\"><i class=\"fa fa-lg fa-comment-dots\"></i></a></div></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_login = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("login");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [!$data.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [_hoisted_5]))])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [!$data.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.orders, function (order) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, " #" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.order_number), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.delivery_date), 1
+    /* TEXT */
+    )]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.grand_total), 1
+    /* TEXT */
+    )])]), _hoisted_16])]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))]))])]);
 }
 
 /***/ }),

@@ -60,7 +60,7 @@ Route::get('welcome/skip', function() {
 });
 
 Route::get('/', [\App\Http\Controllers\Customer\HomeController::class, 'index']);
-Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
+//Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
 Route::get('/help', [\App\Http\Controllers\Customer\HelpController::class, 'index']);
 Route::get('/cart', [\App\Http\Controllers\Customer\CheckoutController::class, 'cart']);
 Route::get('/checkout', [\App\Http\Controllers\Customer\CheckoutController::class, 'checkout']);
@@ -73,5 +73,6 @@ Route::middleware('auth:customer')->group(function() {
     Route::get('/address', [\App\Http\Controllers\Customer\AddressController::class, 'edit']);
     Route::post('/address', [\App\Http\Controllers\Customer\AddressController::class, 'update']);
     Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);
+    Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
     Route::post('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'store']);
 });

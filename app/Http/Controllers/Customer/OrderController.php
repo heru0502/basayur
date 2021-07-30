@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\CustomerAddress;
+use App\Models\CustomerOrder;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
@@ -12,7 +15,19 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Order/Index');
+        $orders = CustomerOrder::where('customer_id', Auth::guard('customer')->id())
+            ->latest()
+            ->get();
+
+        foreach ($orders as $order) {
+            $order->delivery_date = $order->created_at->translatedFormat('l, d F Y');
+
+
+        }
+
+        return Inertia::render('Order/Index', [
+            'orders' => $orders
+        ]);
     }
 
     public function store(Request $request, OrderService $orderService)

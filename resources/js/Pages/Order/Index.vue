@@ -12,7 +12,7 @@
       </div>
 
       <div v-else>
-        <div class="card card-style bg-theme pb-0">
+        <div v-for="order in orders" class="card card-style bg-theme pb-0">
           <div class="content">
             <a href="/order-detail" style="color: inherit; text-decoration: inherit;">
               <div class="row mb-0 opacity-50">
@@ -25,10 +25,10 @@
               </div>
               <div class="row mb-0" style="line-height: 12pt">
                 <div class="col-7">
-                  #HK-0849
+                  #{{order.order_number}}
                 </div>
                 <div class="col-5 text-end">
-                  Minggu, 25 April 2021
+                  {{order.delivery_date}}
                 </div>
               </div>
 
@@ -48,7 +48,7 @@
                   </a>
                 </div>
                 <div class="col-5 text-end">
-                  Rp 100.000
+                  Rp {{order.grand_total}}
                 </div>
               </div>
             </a>
@@ -80,6 +80,9 @@ import {Inertia} from "@inertiajs/inertia";
 export default {
   layout: Layout,
   components: {Login},
+  props: {
+    orders: Object
+  },
   data() {
     return {
       user: usePage().props.value.auth.user
