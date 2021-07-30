@@ -11,6 +11,16 @@ export default {
         }
     },
     mutations: {
+        clearState(state) {
+            state.totalQty = null;
+            state.subtotal = null;
+            state.note = null;
+            state.voucherId = null;
+            state.voucherCode = null;
+            state.voucherTitle = null;
+            state.items = [];
+            localStorage.clear();
+        },
         increment (state, payload) {
             state.totalQty++;
 

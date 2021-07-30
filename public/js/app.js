@@ -19352,6 +19352,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Shared_LayoutWithoutFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/LayoutWithoutFooter */ "./resources/js/Shared/LayoutWithoutFooter.vue");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19365,15 +19368,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.setParamUrl();
+    this.checkOrderItemExist();
     this.reCountTotal();
-    console.log(this.total_order);
   },
   methods: {
     back: function back() {
       window.history.back();
     },
     reCountTotal: function reCountTotal() {
+      this.setParamUrl();
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.reload({
         replace: true,
         only: ['total_order'],
@@ -19393,6 +19396,59 @@ __webpack_require__.r(__webpack_exports__);
       });
       items = JSON.stringify(items);
       this.items = items;
+    },
+    createOrder: function createOrder() {
+      var _this = this;
+
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post('/orders', {
+        order_items: this.$store.state.items,
+        voucher_id: this.$store.state.voucherId,
+        note: this.$store.state.note
+      }, {
+        replace: true,
+        onBefore: function onBefore(visit) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+            text: 'Sedang memproses order',
+            allowOutsideClick: false,
+            didOpen: function didOpen(popup) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().showLoading();
+            }
+          });
+        },
+        onSuccess: function onSuccess() {
+          _this.$store.commit('clearState');
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+            title: 'Order Berhasil!',
+            text: 'Anda akan segera diarahkan ke halaman daftar pesanan',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+            timerProgressBar: true,
+            allowOutsideClick: false
+          }).then(function () {
+            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get('/orders');
+          });
+        },
+        onError: function onError(errors) {
+          _this.reCountTotal();
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire('Ada Masalah', errors.order_items, 'error');
+        }
+      });
+    },
+    checkOrderItemExist: function checkOrderItemExist() {
+      console.log(this.$store.state.items.length);
+
+      if (!this.$store.state.items.length) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+          text: 'Tidak Ada Item Dikeranjang!',
+          icon: 'warning',
+          allowOutsideClick: false
+        }).then(function () {
+          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get('/');
+        });
+      }
     }
   }
 });
@@ -20675,19 +20731,12 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_4 = {
   "class": "fixed-bottom card mb-0 px-2 py-3",
   style: {
     "z-index": "1"
   }
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "#",
-  "wire:click": "createOrder()",
-  "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
-}, "Buat Pesanan")], -1
-/* HOISTED */
-);
-
+};
 var _hoisted_5 = {
   "class": "page-content header-clear-medium"
 };
@@ -20810,7 +20859,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.back && $options.back.apply($options, arguments);
     }),
     "class": "header-icon header-icon-1"
-  }, [_hoisted_3])]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.subtotal : 0), 1
+  }, [_hoisted_3])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: "#",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.createOrder();
+    }),
+    "class": "btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight"
+  }, "Buat Pesanan")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.subtotal : 0), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.total_order ? $props.total_order.delivery_price : 0), 1
   /* TEXT */
@@ -22026,6 +22081,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mutations: {
+    clearState: function clearState(state) {
+      state.totalQty = null;
+      state.subtotal = null;
+      state.note = null;
+      state.voucherId = null;
+      state.voucherCode = null;
+      state.voucherTitle = null;
+      state.items = [];
+      localStorage.clear();
+    },
     increment: function increment(state, payload) {
       state.totalQty++;
       var newItem = payload.menu; // Check menu exist or not

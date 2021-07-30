@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Models\CustomerAddress;
 use App\Models\CustomerOrder;
 use App\Models\CustomerOrderItem;
 use App\Models\Menu;
@@ -13,11 +14,14 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService
 {
-    public function create(array $data)
+    public function create(array $data, array $totalOrder)
     {
         $customerId = Auth::guard('customer')->id();
-        $paymentId = $data['payment_id'];
-        $subtotal = $data['subtotal'];
+        $subtotal = $totalOrder['subtotal'];
+        $deliveryPrice = $totalOrder['delivery_price'];
+        $discountPrice = $totalOrder['discount_price'];
+        $grandTotal = $totalOrder['grand_total'];
+        $address = CustomerAddress::where('user_id', $customerId)->first();
 
         $order = CustomerOrder::create([
             'customer_id' => $customerId,
@@ -25,11 +29,20 @@ class OrderService
             'status_order_id' => 1,
             'status_payment_id' => 1,
             'status_delivery_id' => 1,
-            'subtotal' => $data['subtotal']
+            'voucher_id' => $data['voucher_id'] ?? null,
+            'payment_id' => 1,
+            'delivery_id' => 1,
+            'customer_address_id' => $address->id,
+            'note' => $data['note'] ?? null,
+            'subtotal' => $subtotal,
+            'delivery_price' => $deliveryPrice,
+            'discount_price' => $discountPrice,
+            'grand_total' => $grandTotal
         ]);
 
         foreach ($data['order_items'] as $orderItem) {
-            $menu = Menu::find($orderItem['menu_id']);
+            $menuId = $orderItem['menu_id'] ?? $orderItem['id'];
+            $menu = Menu::find($menuId);
 
             CustomerOrderItem::create([
                 'order_id' => $order->id,
@@ -37,7 +50,7 @@ class OrderService
                 'original_price' => $menu->original_price,
                 'discount' => $menu->discount,
                 'selling_price' => $menu->selling_price,
-                'qty' => $orderItem->qty,
+                'qty' => $orderItem['qty'],
                 'total_price' => $menu->selling_price * $orderItem['qty'],
                 'size_per_unit' => $menu->size_per_unit,
                 'unit_id' => $menu->unit_id
@@ -68,7 +81,8 @@ class OrderService
         $grandTotal = 0;
 
         foreach ($data['order_items'] as $orderItem) {
-            $menu = Menu::find($orderItem['menu_id']);
+            $menuId = $orderItem['menu_id'] ?? $orderItem['id'];
+            $menu = Menu::find($menuId);
             $qty = $orderItem['qty'];
 
             $total = $menu->selling_price * $qty;
@@ -103,12 +117,13 @@ class OrderService
         $unavailableMenuIds = [];
 
         foreach ($orderItems as $item) {
-            $menu = Menu::where('id', $item['menu_id'])
+            $menuId = $item['menu_id'] ?? $item['id'];
+            $menu = Menu::where('id', $menuId)
                 ->where('is_active', 1)
                 ->first();
 
             if (!$menu) {
-                $unavailableMenuIds[] = $item['menu_id'];
+                $unavailableMenuIds[] = $menuId;
             }
         }
 

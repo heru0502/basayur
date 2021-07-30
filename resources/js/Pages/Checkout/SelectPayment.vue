@@ -6,7 +6,7 @@
     </div>
 
     <div class="fixed-bottom card mb-0 px-2 py-3" style="z-index: 1">
-      <a href="#" wire:click="createOrder()" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
+      <a href="#" @click="createOrder()" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">Buat Pesanan</a>
     </div>
 
     <div class="page-content header-clear-medium">
@@ -158,7 +158,8 @@
 
 <script>
 import LayoutWithoutFooter from '@/Shared/LayoutWithoutFooter'
-import {Inertia} from "@inertiajs/inertia";
+import {Inertia} from "@inertiajs/inertia"
+import Swal from 'sweetalert2'
 
 export default {
   layout: LayoutWithoutFooter,
@@ -171,21 +172,22 @@ export default {
     }
   },
   mounted() {
-    this.setParamUrl();
+    this.checkOrderItemExist();
     this.reCountTotal();
-    console.log(this.total_order);
   },
   methods: {
     back() {
       window.history.back();
     },
     reCountTotal() {
+      this.setParamUrl();
+
       Inertia.reload({
         replace: true,
         only: ['total_order'],
         data: {
           order_items: this.items,
-          voucher_id: this.$store.state.voucherId
+          voucher_id: this.$store.state.voucherId,
         },
       });
     },
@@ -202,6 +204,59 @@ export default {
       items = JSON.stringify(items);
       this.items = items;
     },
+    createOrder() {
+      Inertia.post('/orders', {
+        order_items: this.$store.state.items,
+        voucher_id: this.$store.state.voucherId,
+        note: this.$store.state.note
+      }, {
+        replace: true,
+        onBefore: (visit) => {
+          Swal.fire({
+            text: 'Sedang memproses order',
+            allowOutsideClick: false,
+            didOpen(popup) {
+              Swal.showLoading();
+            }
+          })
+        },
+        onSuccess: () => {
+          this.$store.commit('clearState');
+
+          Swal.fire({
+            title: 'Order Berhasil!',
+            text: 'Anda akan segera diarahkan ke halaman daftar pesanan',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+            timerProgressBar: true,
+            allowOutsideClick: false
+          }).then(() => {
+            Inertia.get('/orders');
+          });
+        },
+        onError: (errors) => {
+          this.reCountTotal();
+          Swal.fire(
+            'Ada Masalah',
+              errors.order_items,
+              'error'
+          )
+        }
+      })
+    },
+    checkOrderItemExist() {
+      console.log(this.$store.state.items.length);
+      if (!this.$store.state.items.length) {
+        Swal.fire({
+          text: 'Tidak Ada Item Dikeranjang!',
+          icon: 'warning',
+          allowOutsideClick: false,
+        }).then(() => {
+          Inertia.get('/');
+        });
+      }
+    }
   }
 }
 </script>
