@@ -14,6 +14,28 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService
 {
+    public function all()
+    {
+        $orders = CustomerOrder::where('customer_id', Auth::guard('customer')->id())
+            ->latest()
+            ->get();
+
+        foreach ($orders as $order) {
+            $order->delivery_date = $order->created_at->addDay()->translatedFormat('l, j F Y');
+            $order->created_at_string = $order->created_at->translatedFormat('l, j F Y ~ H.i');
+
+            $statusOrders = array_filter($this->getStatusOrderCOD($order->id), function ($val) {
+                if ($val['color'] !== 'bg-white') {
+                    return $val;
+                }
+            });
+            $statusOrdersLastIndex = count($statusOrders) -1;
+            $order->status_order = $statusOrders[$statusOrdersLastIndex];
+        }
+
+        return $orders;
+    }
+
     public function show(int $id)
     {
         $order = CustomerOrder::with(
@@ -212,7 +234,7 @@ class OrderService
             $result[2] = [
                 'color' => 'bg-yellow-light',
                 'icon' => 'fa fa-truck',
-                'title' => 'OTW',
+                'title' => 'Driver Sedang OTW',
                 'message' => 'Siap-siap ya, kurir kami sedang dalam perjalanan mengatarkan pesanan kamu'
             ];
         }

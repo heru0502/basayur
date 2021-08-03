@@ -182,7 +182,7 @@ export default {
     status_orders: Object
   },
   mounted() {
-    console.log(this.order)
+
   }
 }
 </script>

@@ -13,17 +13,9 @@ use Inertia\Inertia;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(OrderService $orderService)
     {
-        $orders = CustomerOrder::where('customer_id', Auth::guard('customer')->id())
-            ->latest()
-            ->get();
-
-        foreach ($orders as $order) {
-            $order->delivery_date = $order->created_at->translatedFormat('l, d F Y');
-
-
-        }
+        $orders = $orderService->all();
 
         return Inertia::render('Order/Index', [
             'orders' => $orders

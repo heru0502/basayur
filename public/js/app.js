@@ -19711,6 +19711,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     orders: Object
   },
+  mounted: function mounted() {
+    console.log(this.orders);
+  },
   data: function data() {
     return {
       user: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.value.auth.user
@@ -19741,9 +19744,7 @@ __webpack_require__.r(__webpack_exports__);
     order: Object,
     status_orders: Object
   },
-  mounted: function mounted() {
-    console.log(this.order);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -21791,25 +21792,21 @@ var _hoisted_12 = {
     "line-height": "12pt"
   }
 };
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_13 = {
   "class": "col-7"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+};
+var _hoisted_14 = {
   href: "#",
   "class": "chip chip-small bg-gray-light"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
-  "class": "fa fa-check bg-green-dark"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", {
+};
+var _hoisted_15 = {
   "class": "color-black font-400"
-}, "Belum Dibayar")])], -1
-/* HOISTED */
-);
-
-var _hoisted_14 = {
+};
+var _hoisted_16 = {
   "class": "col-5 text-end"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"divider mb-3\"></div><div class=\"row mx-1 mb-0\"><div class=\"col-9\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight\">Ubah Metode Pembayaran</a></div><div class=\"col-3\"><a href=\"#\" class=\"btn btn-xxs btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme\"><i class=\"fa fa-lg fa-comment-dots\"></i></a></div></div>", 2);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"divider mb-3\"></div><div class=\"row mx-1 mb-0\"><!--              &lt;div class=&quot;col-9&quot;&gt;--><!--                &lt;a href=&quot;#&quot; class=&quot;btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight&quot;&gt;Ubah Metode Pembayaran&lt;/a&gt;--><!--              &lt;/div&gt;--><div class=\"col\"><a href=\"https://wa.me/62895325270701\" target=\"_blank\" class=\"btn btn-xxs btn-full has-icon rounded-xl font-800 text-uppercase shadow-s border-highlight color-highlight bg-theme\"> Hubungi CS <i class=\"far fa-lg fa-comment-dots\"></i></a></div></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_login = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("login");
@@ -21829,7 +21826,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.delivery_date), 1
         /* TEXT */
-        )]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.grand_total), 1
+        )]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+          "class": order.status_order.icon + ' ' + order.status_order.color
+        }, null, 2
+        /* CLASS */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.status_order.title), 1
+        /* TEXT */
+        )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order.grand_total), 1
         /* TEXT */
         )])];
       }),
@@ -21838,7 +21841,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["href"]), _hoisted_15])]);
+    , ["href"]), _hoisted_17])]);
   }), 256
   /* UNKEYED_FRAGMENT */
   ))]))])]);

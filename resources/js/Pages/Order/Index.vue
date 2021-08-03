@@ -43,8 +43,8 @@
               <div class="row mb-0" style="line-height: 12pt">
                 <div class="col-7">
                   <a href="#" class="chip chip-small bg-gray-light">
-                    <i class="fa fa-check bg-green-dark"></i>
-                    <strong class="color-black font-400">Belum Dibayar</strong>
+                    <i :class="order.status_order.icon +' '+ order.status_order.color"></i>
+                    <strong class="color-black font-400">{{order.status_order.title}}</strong>
                   </a>
                 </div>
                 <div class="col-5 text-end">
@@ -56,11 +56,13 @@
             <div class="divider mb-3"></div>
 
             <div class="row mx-1 mb-0">
-              <div class="col-9">
-                <a href="#" class="btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight">Ubah Metode Pembayaran</a>
-              </div>
-              <div class="col-3">
-                <a href="#" class="btn btn-xxs btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme"><i class="fa fa-lg fa-comment-dots"></i></a>
+<!--              <div class="col-9">-->
+<!--                <a href="#" class="btn btn-xxs btn-full rounded-xl font-500 shadow-s bg-highlight">Ubah Metode Pembayaran</a>-->
+<!--              </div>-->
+              <div class="col">
+                <a href="https://wa.me/62895325270701" target="_blank" class="btn btn-xxs btn-full has-icon rounded-xl font-800 text-uppercase shadow-s border-highlight color-highlight bg-theme">
+                  Hubungi CS <i class="far fa-lg fa-comment-dots"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -82,6 +84,9 @@ export default {
   components: {Login},
   props: {
     orders: Object
+  },
+  mounted() {
+    console.log(this.orders)
   },
   data() {
     return {
