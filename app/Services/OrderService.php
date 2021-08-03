@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService
 {
+    public function show(int $id)
+    {
+        $order = CustomerOrder::with(
+                'items.menu',
+                'items.unit',
+                'address.customer',
+                'address.village.district.regency.province',
+                'payment'
+            )
+            ->where('id', $id)
+            ->first();
+
+        $order->delivery_date = $order->created_at->addDay()->translatedFormat('l, j F Y');
+        $order->created_at_string = $order->created_at->translatedFormat('l, j F Y ~ H.i');
+
+        return $order;
+    }
+
     public function create(array $data, array $totalOrder)
     {
         $customerId = Auth::guard('customer')->id();

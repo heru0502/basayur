@@ -32,8 +32,7 @@ class OrderController extends Controller
 
     public function show($id, OrderService $orderService)
     {
-        $order = CustomerOrder::find($id);
-        $order->delivery_date = $order->created_at->translatedFormat('l, d F Y');
+        $order = $orderService->show($id);
         $statusOrders = $orderService->getStatusOrderCOD($id);
 
         return Inertia::render('Order/Show', [

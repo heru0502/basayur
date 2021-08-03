@@ -21,4 +21,12 @@ class CustomerOrderItem extends Model
         'unit_id',
         'note',
     ];
+
+    public function menu() {
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function unit() {
+        return $this->belongsTo(Unit::class);
+    }
 }

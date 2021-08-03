@@ -2,16 +2,18 @@
   <div>
     <div class="header header-fixed header-logo-center">
       <a href="#" class="header-title">Detail Order</a>
-      <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" onclick="window.history.back();" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
     <div class="fixed-bottom card mb-0 p-2">
       <div class="row mx-1 mb-0">
-        <div class="col-9">
-          <a href="#" class="btn btn-m btn-full rounded-xl font-500 shadow-s bg-highlight">Ubah Metode Pembayaran</a>
-        </div>
-        <div class="col-3">
-          <a href="#" class="btn btn-m btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme"><i class="fa fa-lg fa-comment-dots"></i></a>
+<!--        <div class="col-9">-->
+<!--          <a href="#" class="btn btn-m btn-full rounded-xl font-500 shadow-s bg-highlight">Ubah Metode Pembayaran</a>-->
+<!--        </div>-->
+        <div class="col">
+          <a href="https://wa.me/62895325270701" target="_blank" class="btn btn-m btn-full has-icon rounded-xl font-800 text-uppercase shadow-s border-highlight color-highlight bg-theme">
+            Hubungi CS <i class="far fa-lg fa-comment-dots"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -25,18 +27,23 @@
           </div>
 
           <div class="mb-3">
-            <p class="mb-0" style="line-height: 8pt">Batas Waktu Pembayaran</p>
-            <p class="font-700 font-14">{{order.delivery_date}}, 23.00</p>
+            <p class="mb-0" style="line-height: 8pt">Tanggal Pesan</p>
+            <p class="font-700 font-14">{{order.created_at_string}}</p>
+          </div>
+
+          <div class="mb-3">
+            <p class="mb-0" style="line-height: 8pt">Waktu Pengiriman</p>
+            <p class="font-700 font-14 color-highlight">{{order.delivery_date}} ~ 07.00 - 10.00</p>
           </div>
 
           <div class="mb-3">
             <p class="mb-1" style="line-height: 8pt">Total Tagihan</p>
-            <p class="font-700 font-18">Rp 100.000</p>
+            <p class="font-700 font-18">Rp {{order.grand_total}}</p>
           </div>
 
           <div class="mb-3">
             <p class="mb-0" style="line-height: 8pt">Metode Pembayaran</p>
-            <p class="font-700 font-14">GOPAY</p>
+            <p class="font-700 font-14">COD (Bayar ditempat)</p>
           </div>
 
           <div>
@@ -71,36 +78,18 @@
             </button>
             <div id="collapse1" class="collapse show" data-parent="#accordion-1">
               <div class="pt-1 pb-2 px-3">
-                <div class="d-flex mb-2">
+                <div v-for="item in order.items" class="d-flex mb-2">
                   <div>
-                    <img src="/theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="60">
+                    <img :src="item.menu.image" class="rounded-m shadow-xl" width="60">
                   </div>
                   <div class="ms-3 flex-fill">
-                    <h5 class="mt-0">Brilliant Headset</h5>
+                    <h5 class="mt-0">{{item.menu.name}}</h5>
                     <div class="d-flex m-1">
                       <div class="">
-                        <h5 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h5>
+                        <h5 class=" color-highlight">Rp {{item.selling_price}} <span class="color-gray-dark font-14 font-500">/ {{item.size_per_unit}} {{item.unit.name}}</span></h5>
                       </div>
                       <div class="flex-fill text-end">
-                        <p>x3</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="divider divider-margins mb-2"></div>
-
-                <div class="d-flex mb-2">
-                  <div>
-                    <img src="/theme/images/pictures/9s.jpg" class="rounded-m shadow-xl" width="60">
-                  </div>
-                  <div class="ms-3 flex-fill">
-                    <h5 class="mt-0">Brilliant Headset</h5>
-                    <div class="d-flex m-1">
-                      <div class="">
-                        <h5 class=" color-highlight">Rp 40.000 <span class="color-gray-dark font-14 font-500">/ 1 kg</span></h5>
-                      </div>
-                      <div class="flex-fill text-end">
-                        <p>x3</p>
+                        <p>x{{item.qty}}</p>
                       </div>
                     </div>
                   </div>
@@ -112,7 +101,7 @@
                     Subtotal
                   </div>
                   <div class="flex-fill text-end">
-                    Rp 100.000
+                    Rp {{order.subtotal}}
                   </div>
                 </div>
 
@@ -121,7 +110,8 @@
                     <p>Biaya Pengiriman</p>
                   </div>
                   <div class="flex-fill text-end">
-                    Gratis Ongkir
+                    <span v-if="order.delivery_price > 0">{{order.delivery_price}}</span>
+                    <span v-else>Gratis Ongkir</span>
                   </div>
                 </div>
                 <div class="divider divider-margins mb-2"></div>
@@ -131,7 +121,7 @@
                     Total
                   </div>
                   <div class="col-7 text-end">
-                    Rp 100.000
+                    Rp {{order.grand_total}}
                   </div>
                 </div>
               </div>
@@ -150,9 +140,13 @@
             <div id="collapse2" class="collapse"  data-parent="#accordion-2">
               <div class="pt-1 pb-2 ps-3 pe-3">
                 <p class="mb-0" style="line-height: 14pt">
-                  <span class="font-800">Heru Firmansyah</span><br>
-                  No. HP (+6287815932909)<br>
-                  Komp. Balitra Jaya Permai jl.Brunai no. B14 Loktabat, Banjarbaru, Kalimantan Selatan
+                  <span class="font-800"></span>{{order.address.customer.name}}<br>
+                  No. HP ({{order.address.phone_number}})<br>
+                  {{order.address.address}},
+                  {{order.address.village.name}},
+                  {{order.address.village.district.name}},
+                  {{order.address.village.district.regency.name}},
+                  {{order.address.village.district.regency.province.name}}
                 </p>
               </div>
             </div>
@@ -170,7 +164,7 @@
             <div id="collapse3" class="collapse"  data-parent="#accordion-3">
               <div class="pt-1 pb-2 ps-3 pe-3">
                 <p class="mb-0" style="line-height: 14pt">
-                  Pesanan anda akan dikirim pada Minggu, 25 April 2021 pada pukul 06.00 - 09.00
+                  Pesanan anda akan dikirim pada <b>{{order.delivery_date}}</b> pada pukul <b>07.00 - 10.00</b>
                 </p>
               </div>
             </div>
@@ -186,6 +180,9 @@ export default {
   props: {
     order: Object,
     status_orders: Object
+  },
+  mounted() {
+    console.log(this.order)
   }
 }
 </script>

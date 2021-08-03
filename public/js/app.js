@@ -19740,6 +19740,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     order: Object,
     status_orders: Object
+  },
+  mounted: function mounted() {
+    console.log(this.order);
   }
 });
 
@@ -21857,7 +21860,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header header-fixed header-logo-center\"><a href=\"#\" class=\"header-title\">Detail Order</a><a href=\"#\" data-back-button class=\"header-icon header-icon-1\"><i class=\"fas fa-arrow-left\"></i></a></div><div class=\"fixed-bottom card mb-0 p-2\"><div class=\"row mx-1 mb-0\"><div class=\"col-9\"><a href=\"#\" class=\"btn btn-m btn-full rounded-xl font-500 shadow-s bg-highlight\">Ubah Metode Pembayaran</a></div><div class=\"col-3\"><a href=\"#\" class=\"btn btn-m btn-full rounded-xl font-500 shadow-s border-highlight color-highlight bg-theme\"><i class=\"fa fa-lg fa-comment-dots\"></i></a></div></div></div>", 2);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "header header-fixed header-logo-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  "class": "header-title"
+}, "Detail Order"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#",
+  onclick: "window.history.back();",
+  "class": "header-icon header-icon-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fas fa-arrow-left"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"fixed-bottom card mb-0 p-2\"><div class=\"row mx-1 mb-0\"><!--        &lt;div class=&quot;col-9&quot;&gt;--><!--          &lt;a href=&quot;#&quot; class=&quot;btn btn-m btn-full rounded-xl font-500 shadow-s bg-highlight&quot;&gt;Ubah Metode Pembayaran&lt;/a&gt;--><!--        &lt;/div&gt;--><div class=\"col\"><a href=\"https://wa.me/62895325270701\" target=\"_blank\" class=\"btn btn-m btn-full has-icon rounded-xl font-800 text-uppercase shadow-s border-highlight color-highlight bg-theme\"> Hubungi CS <i class=\"far fa-lg fa-comment-dots\"></i></a></div></div></div>", 1);
 
 var _hoisted_3 = {
   "class": "page-content header-clear-medium"
@@ -21893,62 +21911,335 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
   style: {
     "line-height": "8pt"
   }
-}, "Batas Waktu Pembayaran", -1
+}, "Tanggal Pesan", -1
 /* HOISTED */
 );
 
 var _hoisted_11 = {
   "class": "font-700 font-14"
 };
+var _hoisted_12 = {
+  "class": "mb-3"
+};
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"mb-3\"><p class=\"mb-1\" style=\"line-height:8pt;\">Total Tagihan</p><p class=\"font-700 font-18\">Rp 100.000</p></div><div class=\"mb-3\"><p class=\"mb-0\" style=\"line-height:8pt;\">Metode Pembayaran</p><p class=\"font-700 font-14\">GOPAY</p></div><div><div class=\"card bg-yellow-light opacity-50 mb-0\"><div class=\"content text-center color-black m-3\" style=\"line-height:12pt;\"> Kami sedang melakukan konfirmasi pembayaran anda, jika anda belum melakukan pembayaran, maka diharapkan untuk melakukan pembayaran </div></div></div>", 3);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "mb-0",
+  style: {
+    "line-height": "8pt"
+  }
+}, "Waktu Pengiriman", -1
+/* HOISTED */
+);
 
+var _hoisted_14 = {
+  "class": "font-700 font-14 color-highlight"
+};
 var _hoisted_15 = {
+  "class": "mb-3"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "mb-1",
+  style: {
+    "line-height": "8pt"
+  }
+}, "Total Tagihan", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  "class": "font-700 font-18"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"mb-3\"><p class=\"mb-0\" style=\"line-height:8pt;\">Metode Pembayaran</p><p class=\"font-700 font-14\">COD (Bayar ditempat)</p></div><div><div class=\"card bg-yellow-light opacity-50 mb-0\"><div class=\"content text-center color-black m-3\" style=\"line-height:12pt;\"> Kami sedang melakukan konfirmasi pembayaran anda, jika anda belum melakukan pembayaran, maka diharapkan untuk melakukan pembayaran </div></div></div>", 2);
+
+var _hoisted_20 = {
   "class": "timeline-body mt-0"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "timeline-deco"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
+var _hoisted_22 = {
   "class": "timeline-item"
 };
-var _hoisted_18 = {
+var _hoisted_23 = {
   "class": "timeline-item-content rounded-s py-1 my-2"
 };
-var _hoisted_19 = {
+var _hoisted_24 = {
   "class": "font-400 pt-1"
 };
-var _hoisted_20 = {
+var _hoisted_25 = {
   "class": "opacity-50 font-14 mb-2",
   style: {
     "line-height": "12pt"
   }
 };
+var _hoisted_26 = {
+  "class": "accordion",
+  id: "accordion-1"
+};
+var _hoisted_27 = {
+  "class": "card card-style"
+};
+var _hoisted_28 = {
+  "class": "content m-0"
+};
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"accordion\" id=\"accordion-1\"><div class=\"card card-style\"><div class=\"content m-0\"><button class=\"btn accordion-btn no-effect\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse1\"><span class=\"font-15\">Ringkasan Belanja</span><i class=\"fa fa-chevron-down font-10 accordion-icon\"></i></button><div id=\"collapse1\" class=\"collapse show\" data-parent=\"#accordion-1\"><div class=\"pt-1 pb-2 px-3\"><div class=\"d-flex mb-2\"><div><img src=\"/theme/images/pictures/9s.jpg\" class=\"rounded-m shadow-xl\" width=\"60\"></div><div class=\"ms-3 flex-fill\"><h5 class=\"mt-0\">Brilliant Headset</h5><div class=\"d-flex m-1\"><div class=\"\"><h5 class=\" color-highlight\">Rp 40.000 <span class=\"color-gray-dark font-14 font-500\">/ 1 kg</span></h5></div><div class=\"flex-fill text-end\"><p>x3</p></div></div></div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-2\"><div><img src=\"/theme/images/pictures/9s.jpg\" class=\"rounded-m shadow-xl\" width=\"60\"></div><div class=\"ms-3 flex-fill\"><h5 class=\"mt-0\">Brilliant Headset</h5><div class=\"d-flex m-1\"><div class=\"\"><h5 class=\" color-highlight\">Rp 40.000 <span class=\"color-gray-dark font-14 font-500\">/ 1 kg</span></h5></div><div class=\"flex-fill text-end\"><p>x3</p></div></div></div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"d-flex mb-0\"><div> Subtotal </div><div class=\"flex-fill text-end\"> Rp 100.000 </div></div><div class=\"d-flex mb-0\"><div><p>Biaya Pengiriman</p></div><div class=\"flex-fill text-end\"> Gratis Ongkir </div></div><div class=\"divider divider-margins mb-2\"></div><div class=\"row mb-0\"><div class=\"col-5\"> Total </div><div class=\"col-7 text-end\"> Rp 100.000 </div></div></div></div></div></div></div><div class=\"accordion\" id=\"accordion-2\"><div class=\"card card-style\"><div class=\"content m-0\"><button class=\"btn accordion-btn no-effect\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse2\"><span class=\"font-15\">Alamat Pengiriman</span><i class=\"fa fa-chevron-down font-10 accordion-icon\"></i></button><div id=\"collapse2\" class=\"collapse\" data-parent=\"#accordion-2\"><div class=\"pt-1 pb-2 ps-3 pe-3\"><p class=\"mb-0\" style=\"line-height:14pt;\"><span class=\"font-800\">Heru Firmansyah</span><br> No. HP (+6287815932909)<br> Komp. Balitra Jaya Permai jl.Brunai no. B14 Loktabat, Banjarbaru, Kalimantan Selatan </p></div></div></div></div></div><div class=\"accordion\" id=\"accordion-3\"><div class=\"card card-style\"><div class=\"content m-0\"><button class=\"btn accordion-btn no-effect\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse3\"><span class=\"font-15\">Tanggal &amp; Waktu Pengiriman</span><i class=\"fa fa-chevron-down font-10 accordion-icon\"></i></button><div id=\"collapse3\" class=\"collapse\" data-parent=\"#accordion-3\"><div class=\"pt-1 pb-2 ps-3 pe-3\"><p class=\"mb-0\" style=\"line-height:14pt;\"> Pesanan anda akan dikirim pada Minggu, 25 April 2021 pada pukul 06.00 - 09.00 </p></div></div></div></div></div>", 3);
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  "class": "btn accordion-btn no-effect",
+  "data-bs-toggle": "collapse",
+  "data-bs-target": "#collapse1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "font-15"
+}, "Ringkasan Belanja"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fa fa-chevron-down font-10 accordion-icon"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  id: "collapse1",
+  "class": "collapse show",
+  "data-parent": "#accordion-1"
+};
+var _hoisted_31 = {
+  "class": "pt-1 pb-2 px-3"
+};
+var _hoisted_32 = {
+  "class": "d-flex mb-2"
+};
+var _hoisted_33 = {
+  "class": "ms-3 flex-fill"
+};
+var _hoisted_34 = {
+  "class": "mt-0"
+};
+var _hoisted_35 = {
+  "class": "d-flex m-1"
+};
+var _hoisted_36 = {
+  "class": ""
+};
+var _hoisted_37 = {
+  "class": " color-highlight"
+};
+var _hoisted_38 = {
+  "class": "color-gray-dark font-14 font-500"
+};
+var _hoisted_39 = {
+  "class": "flex-fill text-end"
+};
+
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "divider divider-margins mb-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_41 = {
+  "class": "d-flex mb-0"
+};
+
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, " Subtotal ", -1
+/* HOISTED */
+);
+
+var _hoisted_43 = {
+  "class": "flex-fill text-end"
+};
+var _hoisted_44 = {
+  "class": "d-flex mb-0"
+};
+
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Biaya Pengiriman")], -1
+/* HOISTED */
+);
+
+var _hoisted_46 = {
+  "class": "flex-fill text-end"
+};
+var _hoisted_47 = {
+  key: 0
+};
+var _hoisted_48 = {
+  key: 1
+};
+
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "divider divider-margins mb-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_50 = {
+  "class": "row mb-0"
+};
+
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-5"
+}, " Total ", -1
+/* HOISTED */
+);
+
+var _hoisted_52 = {
+  "class": "col-7 text-end"
+};
+var _hoisted_53 = {
+  "class": "accordion",
+  id: "accordion-2"
+};
+var _hoisted_54 = {
+  "class": "card card-style"
+};
+var _hoisted_55 = {
+  "class": "content m-0"
+};
+
+var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  "class": "btn accordion-btn no-effect",
+  "data-bs-toggle": "collapse",
+  "data-bs-target": "#collapse2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "font-15"
+}, "Alamat Pengiriman"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fa fa-chevron-down font-10 accordion-icon"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_57 = {
+  id: "collapse2",
+  "class": "collapse",
+  "data-parent": "#accordion-2"
+};
+var _hoisted_58 = {
+  "class": "pt-1 pb-2 ps-3 pe-3"
+};
+var _hoisted_59 = {
+  "class": "mb-0",
+  style: {
+    "line-height": "14pt"
+  }
+};
+
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "font-800"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_63 = {
+  "class": "accordion",
+  id: "accordion-3"
+};
+var _hoisted_64 = {
+  "class": "card card-style"
+};
+var _hoisted_65 = {
+  "class": "content m-0"
+};
+
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  "class": "btn accordion-btn no-effect",
+  "data-bs-toggle": "collapse",
+  "data-bs-target": "#collapse3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "font-15"
+}, "Tanggal & Waktu Pengiriman"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fa fa-chevron-down font-10 accordion-icon"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_67 = {
+  id: "collapse3",
+  "class": "collapse",
+  "data-parent": "#accordion-3"
+};
+var _hoisted_68 = {
+  "class": "pt-1 pb-2 ps-3 pe-3"
+};
+var _hoisted_69 = {
+  "class": "mb-0",
+  style: {
+    "line-height": "14pt"
+  }
+};
+
+var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Pesanan anda akan dikirim pada ");
+
+var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" pada pukul ");
+
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("b", null, "07.00 - 10.00", -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_8, "#" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.order_number), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_8, "#" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.order_number), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.delivery_date) + ", 23.00", 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.created_at_string), 1
   /* TEXT */
-  )]), _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.status_orders, function (status) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.delivery_date) + " ~ 07.00 - 10.00", 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_17, "Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.grand_total), 1
+  /* TEXT */
+  )]), _hoisted_18])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [_hoisted_21, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.status_orders, function (status) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
       "class": status.icon + ' ' + status.color + ' shadow-l timeline-icon top-0'
     }, null, 2
     /* CLASS */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(status.title), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(status.title), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(status.message), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(status.message), 1
     /* TEXT */
     )])]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))]), _hoisted_21])]);
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.order.items, function (item) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+      src: item.menu.image,
+      "class": "rounded-m shadow-xl",
+      width: "60"
+    }, null, 8
+    /* PROPS */
+    , ["src"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.menu.name), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.selling_price) + " ", 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_38, "/ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.size_per_unit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.unit.name), 1
+    /* TEXT */
+    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "x" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.qty), 1
+    /* TEXT */
+    )])])])]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  )), _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_43, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.subtotal), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_44, [_hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_46, [$props.order.delivery_price > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.delivery_price), 1
+  /* TEXT */
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_48, "Gratis Ongkir"))])]), _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_52, " Rp " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.grand_total), 1
+  /* TEXT */
+  )])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_55, [_hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_59, [_hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.customer.name), 1
+  /* TEXT */
+  ), _hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No. HP (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.phone_number) + ")", 1
+  /* TEXT */
+  ), _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.address) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.village.name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.village.district.name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.village.district.regency.name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.address.village.district.regency.province.name), 1
+  /* TEXT */
+  )])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_65, [_hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_69, [_hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.order.delivery_date), 1
+  /* TEXT */
+  ), _hoisted_71, _hoisted_72])])])])])])])]);
 }
 
 /***/ }),

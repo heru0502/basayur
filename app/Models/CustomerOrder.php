@@ -25,4 +25,20 @@ class CustomerOrder extends Model
         'customer_address_id',
         'note',
     ];
+
+    public function items() {
+        return $this->hasMany(CustomerOrderItem::class, 'order_id');
+    }
+
+    public function customer() {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
+
+    public function address() {
+        return $this->belongsTo(CustomerAddress::class, 'customer_address_id');
+    }
+
+    public function payment() {
+        return $this->belongsTo(Payment::class);
+    }
 }

@@ -18,4 +18,8 @@ class CustomerAddress extends Model
     public function village() {
         return $this->belongsTo(Village::class);
     }
+
+    public function customer() {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
 }
