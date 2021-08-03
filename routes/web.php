@@ -74,5 +74,6 @@ Route::middleware('auth:customer')->group(function() {
     Route::post('/address', [\App\Http\Controllers\Customer\AddressController::class, 'update']);
     Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);
     Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
+    Route::get('/orders/{id}', [\App\Http\Controllers\Customer\OrderController::class, 'show']);
     Route::post('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'store']);
 });

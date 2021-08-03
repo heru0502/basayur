@@ -30,6 +30,18 @@ class OrderController extends Controller
         ]);
     }
 
+    public function show($id, OrderService $orderService)
+    {
+        $order = CustomerOrder::find($id);
+        $order->delivery_date = $order->created_at->translatedFormat('l, d F Y');
+        $statusOrders = $orderService->getStatusOrderCOD($id);
+
+        return Inertia::render('Order/Show', [
+            'order' => $order,
+            'status_orders' => $statusOrders
+        ]);
+    }
+
     public function store(Request $request, OrderService $orderService)
     {
         $validator = Validator::make($request->all(), [

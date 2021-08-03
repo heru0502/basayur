@@ -129,4 +129,112 @@ class OrderService
 
         return $unavailableMenuIds;
     }
+
+    public function getStatusOrderCOD(int $orderId)
+    {
+        $order = CustomerOrder::find($orderId);
+        $statusOrderId = $order->status_order_id;
+        $statusDeliveryId = $order->status_delivery_id;
+
+        $result = [
+            [
+                'color' => 'bg-white',
+                'icon' => 'fa fa-shopping-basket',
+                'title' => '-',
+                'message' => '-'
+            ],
+            [
+                'color' => 'bg-white',
+                'icon' => 'fa fa-people-carry',
+                'title' => '-',
+                'message' => '-'
+            ],
+            [
+                'color' => 'bg-white',
+                'icon' => 'fa fa-truck',
+                'title' => '-',
+                'message' => '-'
+            ],
+            [
+                'color' => 'bg-white',
+                'icon' => 'fa fa-check',
+                'title' => '-',
+                'message' => '-'
+            ],
+        ];
+
+        if (in_array($statusOrderId, [1,2,3,4]) && in_array($statusDeliveryId, [1,2,3,4])) {
+            $result[0] = [
+                'color' => 'bg-green-light',
+                'icon' => 'fa fa-shopping-basket',
+                'title' => 'Pesanan Aktif',
+                'message' => 'Pesanan sudah dicatat dan akan diproses pada pukul 23.00'
+            ];
+        }
+
+        if (in_array($statusOrderId, [2,3,4]) && in_array($statusDeliveryId, [1,2,3,4])) {
+            $result[1] = [
+                'color' => 'bg-yellow-light',
+                'icon' => 'fa fa-people-carry',
+                'title' => 'Diproses',
+                'message' => 'Pesanan kamu sedang kami siapkan'
+            ];
+        }
+
+        if (in_array($statusOrderId, [2,3,4]) && in_array($statusDeliveryId, [2,3,4])) {
+            $result[1] = [
+                'color' => 'bg-green-light',
+                'icon' => 'fa fa-people-carry',
+                'title' => 'Selesai Dikemas',
+                'message' => 'Pesanan selesa dikemas'
+            ];
+        }
+
+        if (in_array($statusOrderId, [2,3,4]) && $statusDeliveryId === 2) {
+            $result[2] = [
+                'color' => 'bg-yellow-light',
+                'icon' => 'fa fa-truck',
+                'title' => 'OTW',
+                'message' => 'Siap-siap ya, kurir kami sedang dalam perjalanan mengatarkan pesanan kamu'
+            ];
+        }
+
+        if ($statusDeliveryId === 3) {
+            $result[2] = [
+                'color' => 'bg-red-light',
+                'icon' => 'fa fa-truck',
+                'title' => 'Pengantaran Gagal',
+                'message' => 'Maaf pesanan gagal dikirimkan kurir kami'
+            ];
+        }
+
+        if ($statusDeliveryId === 4) {
+            $result[2] = [
+                'color' => 'bg-green-light',
+                'icon' => 'fa fa-truck',
+                'title' => 'Pesanan Diterima',
+                'message' => 'Pesanan telah diterima pelanggan'
+            ];
+        }
+
+        if ($statusOrderId === 3 && $statusDeliveryId === 3) {
+            $result[3] = [
+                'color' => 'bg-red-light',
+                'icon' => 'fa fa-times',
+                'title' => 'Pesanan Batal',
+                'message' => 'Pesanan telah dibatalkan'
+            ];
+        }
+
+        if ($statusOrderId === 4 && $statusDeliveryId === 4) {
+            $result[3] = [
+                'color' => 'bg-green-light',
+                'icon' => 'fa fa-check',
+                'title' => 'Pesanan Selesai',
+                'message' => 'Selamat menikmati'
+            ];
+        }
+
+        return $result;
+    }
 }

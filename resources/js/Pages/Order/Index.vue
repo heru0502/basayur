@@ -14,7 +14,7 @@
       <div v-else>
         <div v-for="order in orders" class="card card-style bg-theme pb-0">
           <div class="content">
-            <a href="/order-detail" style="color: inherit; text-decoration: inherit;">
+            <inertia-link :href="'/orders/'+order.id" style="color: inherit; text-decoration: inherit;">
               <div class="row mb-0 opacity-50">
                 <div class="col-7">
                   Order ID
@@ -51,7 +51,7 @@
                   Rp {{order.grand_total}}
                 </div>
               </div>
-            </a>
+            </inertia-link>
 
             <div class="divider mb-3"></div>
 

@@ -15,7 +15,8 @@ class StatusOrderTableSeeder extends Seeder
     public function run()
     {
         DB::table('status_orders')->insertOrIgnore(['id' => 1, 'name' => 'active']);
-        DB::table('status_orders')->insertOrIgnore(['id' => 2, 'name' => 'failed']);
-        DB::table('status_orders')->insertOrIgnore(['id' => 3, 'name' => 'done']);
+        DB::table('status_orders')->insertOrIgnore(['id' => 2, 'name' => 'on progress']);
+        DB::table('status_orders')->insertOrIgnore(['id' => 3, 'name' => 'failed']);
+        DB::table('status_orders')->insertOrIgnore(['id' => 4, 'name' => 'done']);
     }
 }
