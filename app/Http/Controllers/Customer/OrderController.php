@@ -15,11 +15,18 @@ class OrderController extends Controller
 {
     public function index(OrderService $orderService)
     {
-//        $orders = $orderService->all();
-
         return Inertia::render('Order/Index', [
-            'orders' => Inertia::lazy(function() use($orderService) {
-                return $orderService->all();
+            'orders' => Inertia::lazy(function(Request $request) use($orderService) {
+                return $orderService->all($request->event);
+            })
+        ]);
+    }
+
+    public function indexHistory(OrderService $orderService)
+    {
+        return Inertia::render('Order/IndexHistory', [
+            'orders' => Inertia::lazy(function(Request $request) use($orderService) {
+                return $orderService->all($request->event);
             })
         ]);
     }

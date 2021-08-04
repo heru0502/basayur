@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService
 {
-    public function all()
+    public function all(string $event)
     {
         $orders = CustomerOrder::where('customer_id', Auth::guard('customer')->id())
+            ->where(function($q) use($event) {
+                if ($event === 'active') {
+                    $q->whereIn('status_order_id', [1,2]);
+                }
+                else {
+                    $q->whereIn('status_order_id', [3,4]);
+                }
+            })
             ->latest()
             ->get();
 

@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="header header-fixed header-logo-center">
-      <a href="#" class="header-title">List Order</a>
-
-      <inertia-link href="/order-histories" class="header-icon header-icon-4 me-3 color-highlight font-800">Riwayat</inertia-link>
+      <a href="#" class="header-title">Riwayat List Order</a>
+      <a href="#" onclick="window.history.back();" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
     <div class="page-content header-clear-medium">
@@ -12,7 +11,7 @@
       </div>
 
       <div v-else>
-        <list-card-order :orders="orders" :event="'active'"/>
+        <list-card-order :orders="orders" :event="'inactive'"/>
       </div>
     </div>
   </div>
@@ -20,13 +19,11 @@
 </template>
 
 <script>
-import Layout from '@/Shared/Layout'
 import Login from "@/Shared/Login"
 import ListCardOrder from "./ListCardOrder";
 import {usePage} from "@inertiajs/inertia-vue3";
 
 export default {
-  layout: Layout,
   components: {Login, ListCardOrder},
   props: {
     orders: Object
