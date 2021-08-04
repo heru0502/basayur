@@ -12,6 +12,12 @@
       </div>
 
       <div v-else>
+        <div v-if="isLoading" class="d-flex justify-content-center">
+          <div class="spinner-border color-highlight" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
         <div v-for="order in orders" class="card card-style bg-theme pb-0">
           <div class="content">
             <inertia-link :href="'/orders/'+order.id" style="color: inherit; text-decoration: inherit;">
@@ -81,21 +87,23 @@ import {Inertia} from "@inertiajs/inertia";
 
 export default {
   layout: Layout,
-  components: {Login, Skeletor},
+  components: {Login},
   props: {
     orders: Object
   },
+  data() {
+    return {
+      user: usePage().props.value.auth.user,
+      isLoading: false
+    }
+  },
   mounted() {
-    console.log(this.orders);
     Inertia.reload({
       replace: true,
       only: ['orders'],
+      onStart: () => {this.isLoading = true},
+      onSuccess: () => {this.isLoading = false}
     });
-  },
-  data() {
-    return {
-      user: usePage().props.value.auth.user
-    }
   },
   methods: {
     logout() {
