@@ -1,67 +1,67 @@
 <template>
-  <div>
-    <div class="splide single-slider slider-arrows slider-no-dots" id="single-slider-3">
-      <div class="splide__track">
-        <div class="splide__list">
-          <div class="splide__slide">
-            <div data-card-height="200" class="card mx-3 bg-18 rounded-m shadow-l">
-              <div class="card-bottom text-center mb-3">
-                <h2 class="color-white text-uppercase font-900 mb-0">Splendid Simplicity</h2>
-                <p class="under-heading color-white">A new generation of Mobile Kits.</p>
-              </div>
-              <div class="card-overlay bg-gradient"></div>
-            </div>
-          </div>
-          <div class="splide__slide">
-            <div data-card-height="200" class="card mx-3 bg-14 rounded-m shadow-l">
-              <div class="card-bottom text-center mb-3">
-                <h2 class="color-white text-uppercase font-900 mb-0">Top Notch Quality</h2>
-                <p class="under-heading color-white">Flexibility, Speed, Ease of Use.</p>
-              </div>
-              <div class="card-overlay bg-gradient"></div>
-            </div>
-          </div>
-          <div class="splide__slide">
-            <div data-card-height="200" class="card mx-3 bg-14 rounded-m shadow-l">
-              <div class="card-bottom text-center mb-3">
-                <h2 class="color-white text-uppercase font-900 mb-0">Perfectly Organized</h2>
-                <p class="under-heading color-white">Mobile Website, or App or PWA Ready.</p>
-              </div>
-              <div class="card-overlay bg-gradient"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="content m-0">
+    <Carousel :items-to-show="1.2" >
+      <Slide v-for="slide in 10" :key="slide">
+        <img class="carousel__item" src="/theme/images/pictures/8.jpg">
+      </slide>
+
+      <template #addons>
+        <pagination />
+      </template>
+    </carousel>
   </div>
 </template>
 
 <script>
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
 export default {
-  mounted() {
-    var splide = document.getElementsByClassName('splide');
-    if(splide.length) {
-      var singleSlider = document.querySelectorAll('.single-slider');
-      if (singleSlider.length) {
-        singleSlider.forEach(function (e) {
-          var single = new Splide('#' + e.id, {
-            type: 'loop',
-            autoplay: true,
-            interval: 4000,
-            perPage: 1,
-          }).mount();
-          var sliderNext = document.querySelectorAll('.slider-next');
-          var sliderPrev = document.querySelectorAll('.slider-prev');
-          sliderNext.forEach(el => el.addEventListener('click', el => {
-            single.go('>');
-          }));
-          sliderPrev.forEach(el => el.addEventListener('click', el => {
-            single.go('<');
-          }));
-        });
-      }
-    }
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
   }
 }
 
 </script>
+
+<style>
+.carousel__item {
+  min-height: 150px;
+  width: 100%;
+  background-color: #aaaaaa;
+  color:  var(--carousel-color-white);
+  font-size: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__slide {
+  padding: 10px;
+}
+
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+  border: 5px solid white;
+  background-color: #E9573F;
+}
+
+.carousel__pagination-button {
+  background-color: rgba(212, 149, 136, 0.64);
+}
+
+.carousel__pagination-button--active {
+  background-color: #E9573F;
+}
+
+.carousel__pagination-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+</style>
