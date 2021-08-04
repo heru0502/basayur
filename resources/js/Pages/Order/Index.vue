@@ -81,12 +81,16 @@ import {Inertia} from "@inertiajs/inertia";
 
 export default {
   layout: Layout,
-  components: {Login},
+  components: {Login, Skeletor},
   props: {
     orders: Object
   },
   mounted() {
-    console.log(this.orders)
+    console.log(this.orders);
+    Inertia.reload({
+      replace: true,
+      only: ['orders'],
+    });
   },
   data() {
     return {
