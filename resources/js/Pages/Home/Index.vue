@@ -1,19 +1,17 @@
 <template>
   <div>
-    <form method="get" action="/menus">
-      <div class="search-box bg-white rounded-xl bottom-0 mx-3 mb-3">
-        <i class="fa fa-search"></i>
-        <input type="text" class="border-0" name="search" placeholder="Apa yang dicari hari ini?">
-      </div>
-    </form>
+    <div class="search-box bg-white rounded-xl bottom-0 mx-3 mb-3">
+      <i class="fa fa-search"></i>
+      <input type="text" class="border-0" v-model="keyword" @keyup.enter="enterSearching" placeholder="Apa yang dicari hari ini?">
+    </div>
 
     <slider/>
 
     <categories/>
 
-    <newest-menus :listMenus="newestMenus" :title="'Menu Terbaru'" :subtitle="'Menu terbaru hari ini.'"/>
+    <newest-menus :listMenus="newestMenus" :sort="'latest'" :title="'Menu Terbaru'" :subtitle="'Menu terbaru hari ini.'"/>
 
-    <popular-menus :listMenus="popularMenus" :title="'Menu Terpopuler'" :subtitle="'Menu terpopuler hari ini.'"/>
+    <popular-menus :listMenus="popularMenus" :sort="'oldest'" :title="'Menu Terpopuler'" :subtitle="'Menu terpopuler hari ini.'"/>
 
   </div>
 </template>
@@ -24,6 +22,7 @@ import Slider from '@/Pages/Home/Slider'
 import Categories from '@/Pages/Home/Categories'
 import NewestMenus from '@/Pages/Home/ListMenus'
 import PopularMenus from '@/Pages/Home/ListMenus'
+import {Inertia} from "@inertiajs/inertia";
 
 export default {
   layout: Layout,
@@ -36,6 +35,18 @@ export default {
   props: {
     newestMenus: Object,
     popularMenus: Object
+  },
+  data() {
+    return {
+      keyword: ''
+    }
+  },
+  methods: {
+    enterSearching() {
+      this.$store.commit('clearFilter');
+      this.$store.state.keyword = this.keyword;
+      Inertia.get('menus');
+    }
   }
 }
 </script>

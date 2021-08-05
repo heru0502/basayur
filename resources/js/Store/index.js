@@ -8,10 +8,19 @@ export default {
             voucherCode: localStorage.getItem('voucherCode'),
             voucherTitle: localStorage.getItem('voucherTitle'),
             items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [],
-            selectedCategories: []
+            selectedCategories: [],
+            selectedEvent: '',
+            selectedSorting: '',
+            keyword: ''
         }
     },
     mutations: {
+        clearFilter(state) {
+            state.selectedCategories = [];
+            state.selectedEvent = '';
+            state.selectedSorting = '';
+            state.keyword = '';
+        },
         selectCategory(state, id) {
             let categories = state.selectedCategories.length ? JSON.parse(state.selectedCategories) : [];
 

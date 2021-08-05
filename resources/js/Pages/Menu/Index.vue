@@ -2,11 +2,11 @@
   <div>
     <div class="header header-fixed header-logo-center">
       <a href="index.html" class="header-title">Menu</a>
-      <a href="/" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
-      <a href="/cart" class="header-icon header-icon-4">
+      <a href="#" onclick="window.history.back();" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <inertia-link href="/cart" class="header-icon header-icon-4">
         <i class="fa fa-shopping-basket"></i>
-        <span class="badge bg-red-dark">6</span>
-      </a>
+        <span class="badge bg-red-dark" v-if="this.$store.state.totalQty > 0">{{this.$store.state.totalQty}}</span>
+      </inertia-link>
     </div>
 
     <div class="page-content header-clear-medium">
@@ -28,11 +28,17 @@
 
       <div class="row mb-2 mx-3">
         <div class="col-12 ps-1">
-          <button class="bg-green-dark btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark"
-          >Promo</button>
+          <button
+            @click="selectEvent('promo')"
+            :class="(this.$store.state.selectedEvent === 'promo' ? 'bg-green-dark' : 'bg-theme') +' btn btn-xxs mb-1 me-2 text-uppercase font-900 border-green-dark color-green-dark'">
+              Promo
+          </button>
 
-          <button class="bg-green-dark btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark"
-          >Pilihan</button>
+          <button
+            @click="selectEvent('featured')"
+            :class="(this.$store.state.selectedEvent === 'featured' ? 'bg-green-dark' : 'bg-theme') +' btn btn-xxs mb-1 text-uppercase font-900 border-green-dark color-green-dark'">
+              Pilihan
+          </button>
         </div>
       </div>
 
@@ -40,7 +46,7 @@
         <div class="col-12 ps-1">
           <div class="input-style has-borders has-icon mb-4 input-filter">
             <i class="fa fa-sort-amount-down"></i>
-            <select id="form5" wire:model="selected_sorting">
+            <select id="form5" v-model="selectedSorting" @change="selectSorting">
               <option value="latest">Terbaru</option>
               <option value="oldest">Terlama</option>
             </select>
@@ -98,7 +104,8 @@ export default {
   data() {
     return {
       isLoading: false,
-      keyword: ''
+      keyword: this.$store.state.keyword ? this.$store.state.keyword : '',
+      selectedSorting: this.$store.state.selectedSorting ? this.$store.state.selectedSorting : 'latest'
     }
   },
   mounted() {
@@ -109,13 +116,29 @@ export default {
       this.$store.commit('selectCategory', id);
       this.filter();
     },
+    selectEvent(event) {
+      if (this.$store.state.selectedEvent === event) {
+        this.$store.state.selectedEvent = '';
+      }
+      else {
+        this.$store.state.selectedEvent = event;
+      }
+
+      this.filter();
+    },
+    selectSorting() {
+      this.$store.state.selectedSorting = this.selectedSorting;
+      this.filter();
+    },
     filter() {
       Inertia.reload({
         only: ['menus'],
         replace: true,
         data: {
           category_ids: this.$store.state.selectedCategories,
-          keyword: this.keyword
+          keyword: this.keyword,
+          event: this.$store.state.selectedEvent,
+          sort: this.selectedSorting
         },
         onStart: () => {this.isLoading = true},
         onSuccess: () => {this.isLoading = false}

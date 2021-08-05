@@ -10,7 +10,7 @@
             </p>
           </div>
           <div class="ms-auto">
-            <a href="/menus" class="font-14 color-highlight">Lihat semua ></a>
+            <a href="#" @click="clickSorting" class="font-14 color-highlight">Lihat semua ></a>
           </div>
         </div>
       </div>
@@ -49,11 +49,21 @@
 </template>
 
 <script>
+  import {Inertia} from "@inertiajs/inertia";
+
   export default {
     props: {
       listMenus: Object,
       title: String,
-      subtitle: String
+      subtitle: String,
+      sort: String
+    },
+    methods: {
+      clickSorting() {
+        this.$store.commit('clearFilter');
+        this.$store.state.selectedSorting = this.sort;
+        Inertia.get('menus');
+      }
     }
   }
 </script>
