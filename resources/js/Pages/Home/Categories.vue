@@ -3,7 +3,7 @@
     <div class="card mt-3">
       <div class="content">
         <div class="row mb-0 text-center">
-          <inertia-link href="#" class="col-3 align-text-bottom">
+          <inertia-link href="/menus" class="col-3 align-text-bottom">
             <img src="theme/images/icons/categories/vegetable.png" class="img-fluid p-1">
             <p class="font-11 font-700 text-uppercase">SAYURAN</p>
           </inertia-link>

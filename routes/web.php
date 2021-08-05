@@ -67,6 +67,7 @@ Route::get('/checkout', [\App\Http\Controllers\Customer\CheckoutController::clas
 Route::get('/voucher', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucher']);
 Route::get('/voucher/{id}', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucherShow']);
 //Route::get('/address/map', [\App\Http\Controllers\Customer\AddressController::class, 'showMap']);
+Route::get('/menus', [\App\Http\Controllers\Customer\MenuController::class, 'index']);
 
 Route::middleware('auth:customer')->group(function() {
     Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);

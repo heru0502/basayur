@@ -7,10 +7,28 @@ export default {
             voucherId: localStorage.getItem('voucherId'),
             voucherCode: localStorage.getItem('voucherCode'),
             voucherTitle: localStorage.getItem('voucherTitle'),
-            items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
+            items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [],
+            selectedCategories: []
         }
     },
     mutations: {
+        selectCategory(state, id) {
+            let categories = state.selectedCategories.length ? JSON.parse(state.selectedCategories) : [];
+
+            let isNotExist = true;
+            for (let i=0; i<categories.length; i++) {
+                if (categories[i] === id) {
+                    categories.splice(i, 1);
+                    isNotExist = false;
+                }
+            }
+
+            if (isNotExist) {
+                categories.push(id);
+            }
+
+            state.selectedCategories = JSON.stringify(categories);
+        },
         clearState(state) {
             state.totalQty = null;
             state.subtotal = null;
@@ -118,6 +136,10 @@ export default {
         }
     },
     getters: {
+        isCategorySelected: (state) => (id) => {
+            let categories = state.selectedCategories.length ? JSON.parse(state.selectedCategories) : [];
+            return categories.includes(id);
+        },
         getTotalQty: (state) => (id) => {
             let items = state.items;
 
