@@ -29,7 +29,7 @@
         <div class="card card-style">
           <div class="content">
 
-            <a href="#" style="color: inherit; text-decoration: inherit;">
+            <inertia-link href="/voucher" style="color: inherit; text-decoration: inherit;">
               <div class="d-flex mb-2">
                 <div>
                   Voucher Saya
@@ -38,7 +38,7 @@
                   <i class="fa fa-chevron-right"></i>
                 </div>
               </div>
-            </a>
+            </inertia-link>
             <div class="divider divider-margins mb-2"></div>
 
             <inertia-link href="/address" style="color: inherit; text-decoration: inherit;">
