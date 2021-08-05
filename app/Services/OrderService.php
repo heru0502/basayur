@@ -69,7 +69,7 @@ class OrderService
         $deliveryPrice = $totalOrder['delivery_price'];
         $discountPrice = $totalOrder['discount_price'];
         $grandTotal = $totalOrder['grand_total'];
-        $address = CustomerAddress::where('user_id', $customerId)->first();
+        $address = CustomerAddress::where('customer_id', $customerId)->first();
 
         $order = CustomerOrder::create([
             'customer_id' => $customerId,

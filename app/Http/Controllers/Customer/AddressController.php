@@ -21,7 +21,7 @@ class AddressController extends Controller
 
         $userId = Auth::guard('customer')->id();
         $address = CustomerAddress::with('village.district.regency')
-            ->where('user_id', $userId)
+            ->where('customer_id', $userId)
             ->first();
 
         if ($address) {
@@ -56,7 +56,7 @@ class AddressController extends Controller
         ]);
 
         CustomerAddress::updateOrInsert(
-            ['user_id' => Auth::guard('customer')->id()],
+            ['customer_id' => Auth::guard('customer')->id()],
             [
                 'village_id' => $request->village_id,
                 'address' => $request->address,
