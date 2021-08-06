@@ -71,14 +71,14 @@
             </div>
             <span v-if="errors.phone_number" class="color-red-light ms-1 mb-2">{{errors.phone_number}}</span>
 
-<!--            <div class="divider divider-margins mb-4"></div>-->
+            <div class="divider divider-margins mb-4"></div>
 
-<!--            <span class="color-highlight">Lokasi</span>-->
-<!--            <div class="responsive-iframe add-iframe" v-if="this.$store.state.addressLatLong">-->
-<!--              <iframe style="pointer-events: none;" class="location-map" src='https://maps.google.com/maps?q=banjarbaru&t=&z=13&ie=UTF8&iwloc=&output=embed'></iframe>-->
-<!--            </div>-->
+            <span class="color-highlight">Lokasi</span>
+            <div class="responsive-iframe add-iframe" v-if="this.$store.state.addressLatLong">
+              <iframe style="pointer-events: none;" class="location-map" src='https://maps.google.com/maps?q=banjarbaru&t=&z=13&ie=UTF8&iwloc=&output=embed'></iframe>
+            </div>
 
-<!--            <inertia-link v-else href="/address/map" class="btn btn-xxl btn-full mb-3 rounded-0 border-highlight color-gray-dark bg-gray-light">Tambahkan lokasi</inertia-link>-->
+            <inertia-link v-else href="/address/map" class="btn btn-xxl btn-full mb-3 rounded-0 border-highlight color-gray-dark bg-gray-light">Tambahkan lokasi</inertia-link>
 
             <div class="row mx-1 mt-4">
               <button type="submit" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">

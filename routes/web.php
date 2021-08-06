@@ -72,6 +72,7 @@ Route::get('/menus', [\App\Http\Controllers\Customer\MenuController::class, 'ind
 Route::middleware('auth:customer')->group(function() {
     Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
     Route::get('/address', [\App\Http\Controllers\Customer\AddressController::class, 'edit']);
+    Route::get('/address/map', [\App\Http\Controllers\Customer\AddressController::class, 'showMap']);
     Route::post('/address', [\App\Http\Controllers\Customer\AddressController::class, 'update']);
     Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);
     Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);

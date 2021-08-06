@@ -45,6 +45,11 @@ class AddressController extends Controller
         ]);
     }
 
+    public function showMap()
+    {
+        return Inertia::render('Address/ShowMap');
+    }
+
     public function update(Request $request)
     {
         $request->validate([
