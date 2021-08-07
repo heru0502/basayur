@@ -3,6 +3,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import { createStore } from 'vuex'
 import storeData from './Store/index'
+import 'izitoast/dist/css/iziToast.min.css'
 
 InertiaProgress.init({
     color: '#E96A57',

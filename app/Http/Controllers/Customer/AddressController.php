@@ -8,40 +8,40 @@ use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Village;
+use App\Services\AddressService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class AddressController extends Controller
 {
-    public function edit(Request $request)
+    public function edit(Request $request, AddressService $addressService)
     {
         $regencyId = $request->regency_id;
         $districtId = $request->district_id;
-
-        $userId = Auth::guard('customer')->id();
-        $address = CustomerAddress::with('village.district.regency')
-            ->where('customer_id', $userId)
-            ->first();
+        $address = $addressService->find();
 
         if ($address) {
-            $districtId = $address->village->district_id;
-            $regencyId = $address->village->district->regency_id;
+            $regencyId = $regencyId ?? $address->village->district->regency_id;
+            $districtId = $districtId ?? $address->village->district_id;
+            $address = $address->toArray();
         }
 
         return Inertia::render('Address/Edit', [
-            'provinces' => Province::where('id', 63)->get(),
-            'regencies' => Regency::whereIn('id', [6303, 6372])->get(),
+            'provinces' => Province::where('id', 63)->orderBy('name')->get(),
+            'regencies' => Regency::whereIn('id', [6303, 6372])->orderBy('name')->get(),
             'districts' => District::where('regency_id', $regencyId)
-                                    ->when($regencyId === '6303', function($q) {
-                                        $q->whereIn('id', [6303050]);
-                                    })
-                                    ->when($regencyId === '6372', function($q) {
-                                        $q->whereIn('id', [6372010, 6372031, 6372032]);
-                                    })
-                                    ->get(),
-            'villages' => Village::where('district_id', $districtId)->get(),
-            'address' => $address->toArray()
+                ->when($regencyId === '6303', function($q) {
+                    $q->whereIn('id', [6303050]);
+                })
+                ->when($regencyId === '6372', function($q) {
+                    $q->whereIn('id', [6372010, 6372031, 6372032]);
+                })
+                ->orderBy('name')
+                ->get(),
+            'villages' => Village::where('district_id', $districtId)->orderBy('name')->get(),
+            'address' => $address
         ]);
     }
 
@@ -50,7 +50,7 @@ class AddressController extends Controller
         return Inertia::render('Address/ShowMap');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, AddressService $addressService)
     {
         $request->validate([
             'regency_id' => 'required',
@@ -58,17 +58,11 @@ class AddressController extends Controller
             'village_id' => 'required',
             'address' => 'required',
             'phone_number' => 'required',
+            'location_point' => 'required'
         ]);
 
-        CustomerAddress::updateOrInsert(
-            ['customer_id' => Auth::guard('customer')->id()],
-            [
-                'village_id' => $request->village_id,
-                'address' => $request->address,
-                'phone_number' => $request->phone_number
-            ]
-        );
+        $addressService->createOrUpdate($request->all());
 
-        return redirect()->to('/checkout');
+        return redirect()->back();
     }
 }

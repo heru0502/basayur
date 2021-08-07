@@ -11,7 +11,9 @@ export default {
             selectedCategories: [],
             selectedEvent: '',
             selectedSorting: '',
-            keyword: ''
+            keyword: '',
+            latLong: '',
+            latLongAccuracy: 0
         }
     },
     mutations: {

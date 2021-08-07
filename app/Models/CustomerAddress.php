@@ -13,6 +13,8 @@ class CustomerAddress extends Model
         'customer_id',
         'village_id',
         'address',
+        'phone_number',
+        'location_point'
     ];
 
     public function village() {

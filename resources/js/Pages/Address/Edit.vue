@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="header header-fixed header-logo-center">
-      <a href="index.html" class="header-title">Alamat Pengiriman</a>
-      <a href="#" @click="back" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" class="header-title">Alamat Pengiriman</a>
+      <a href="#" onclick="window.history.back();" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
     </div>
 
     <div class="page-content header-clear-medium">
@@ -54,7 +54,7 @@
             <span v-if="errors.village_id" class="color-red-light ms-1 mb-2">{{errors.village_id}}</span>
 
             <div class="input-style input-style-always-active has-borders no-icon mb-0 mt-4">
-              <textarea v-model="form.address" placeholder="Tulis detail alamat..."></textarea>
+              <textarea v-model="form.address"></textarea>
               <label class="color-green-dark">Alamat</label>
               <em class="mt-n3 me-4">(required)</em>
               <i v-if="errors.address" class="fa fa-times invalid color-red-dark"></i>
@@ -64,7 +64,7 @@
             <div class="divider divider-margins my-4"></div>
 
             <div class="input-style input-style-always-active has-borders no-icon validate-field mb-0">
-              <input type="text" class="form-control validate-name" v-model="form.phone_number" placeholder="08xxx">
+              <input type="text" class="form-control validate-name" v-model="form.phone_number">
               <label class="color-green-dark">No. HP</label>
               <em class="mt-n3 me-4">(required)</em>
               <i v-if="errors.phone_number" class="fa fa-times invalid color-red-dark"></i>
@@ -73,12 +73,21 @@
 
             <div class="divider divider-margins mb-4"></div>
 
-            <span class="color-highlight">Lokasi</span>
-            <div class="responsive-iframe add-iframe" v-if="this.$store.state.addressLatLong">
-              <iframe style="pointer-events: none;" class="location-map" src='https://maps.google.com/maps?q=banjarbaru&t=&z=13&ie=UTF8&iwloc=&output=embed'></iframe>
-            </div>
+            <span class="color-green-dark">Lokasi</span>
 
-            <inertia-link v-else href="/address/map" class="btn btn-xxl btn-full mb-3 rounded-0 border-highlight color-gray-dark bg-gray-light">Tambahkan lokasi</inertia-link>
+            <inertia-link href="/address/map" v-if="form.location_point">
+              <div class="responsive-iframe add-iframe" >
+                  <iframe style="pointer-events: none;"
+                    class="location-map"
+                    :src="'https://maps.google.com/maps?q=' +form.location_point+ '&t=&z=15&ie=UTF8&iwloc=&output=embed'">
+                  </iframe>
+              </div>
+            </inertia-link>
+
+            <inertia-link v-else href="/address/map"
+              class="btn btn-xxl btn-full mb-3 rounded-m border-gray-dark color-gray-dark bg-gray-light">
+              Tambahkan lokasi
+            </inertia-link>
 
             <div class="row mx-1 mt-4">
               <button type="submit" class="btn btn-m btn-full rounded-s text-uppercase font-500 shadow-s bg-highlight">
@@ -95,6 +104,7 @@
 
 <script>
   import {Inertia} from "@inertiajs/inertia";
+  import iziToast from 'izitoast'
 
   export default {
     props: {
@@ -103,7 +113,10 @@
       regencies: Object,
       districts: Object,
       villages: Object,
-      errors: Object
+      errors: Object,
+    },
+    remember: {
+      data: ['form'],
     },
     data() {
       return {
@@ -112,17 +125,15 @@
           district_id: this.address ? this.address.village.district.id : '',
           village_id: this.address ? this.address.village_id : '',
           address: this.address ? this.address.address : '',
-          phone_number: this.address ? this.address.phone_number : ''
+          phone_number: this.address ? this.address.phone_number : '',
+          location_point: this.address ? this.address.location_point : this.$store.state.latLong
         }
       }
     },
     mounted() {
-      console.log(this.address)
+      //
     },
     methods: {
-      back() {
-        window.history.back();
-      },
       reload(event) {
         Inertia.reload({
           replace: true,
@@ -131,34 +142,23 @@
             regency_id: this.form.regency_id,
             district_id: this.form.district_id
           },
-          // onStart: visit => {
-          //   this.isLoading = true;
-          // },
-          // onFinish: visit => {
-          //   this.isLoading = false;
-          // }
         });
       },
       submit() {
-        this.$inertia.post('/address', this.form);
+        Inertia.post('/address', this.form, {
+          replace: true,
+          onSuccess: () => {
+            iziToast.success({
+              message: 'Alamat berhasil disimpan',
+              maxWidth: '90%',
+              position: 'bottomCenter',
+              // class: 'myOwnToast',
+              progressBar: false,
+              transitionInMobile: 'flipInX'
+            });
+          }
+        });
       }
-      // geoLocate() {
-      //   function success(position) {
-      //     const latitude  = position.coords.latitude;
-      //     const longitude = position.coords.longitude;
-      //     var mapL1 = 'https://maps.google.com/maps?q=';
-      //     var mapL2 = latitude+',';
-      //     var mapL3 = longitude;
-      //     var mapL4 = '&z=16&t=&output=embed'
-      //     var mapLinkEmbed = mapL1 + mapL2 + mapL3 + mapL4;
-      //     document.getElementsByClassName('location-map')[0].setAttribute('src',mapLinkEmbed);
-      //     console.log(latitude+','+longitude);
-      //   }
-      //   function error() {
-      //     // locationCoordinates.textContent = 'Unable to retrieve your location';
-      //   }
-      //   navigator.geolocation.getCurrentPosition(success, error);
-      // }
     }
   }
 </script>
