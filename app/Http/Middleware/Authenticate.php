@@ -19,15 +19,4 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
-
-    public function handle($request, Closure $next, ...$guards)
-    {
-        $guard = $guards[0] ?? null;
-
-        if($guard === "customer"){
-            return $next($request);
-        }
-
-        return redirect()->route('login');
-    }
 }
