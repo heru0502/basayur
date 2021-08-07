@@ -54,10 +54,10 @@ Route::get('/auth/{provider}/redirect', function ($provider) {
 
 Route::get('auth/{provider}/callback', [AuthController::class, 'callbackOAuth']);
 Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout-customer');
-Route::get('welcome/skip', function() {
-    Cookie::queue(Cookie::make('welcome', true, 10080));
-    return redirect()->route('home');
-});
+//Route::get('welcome/skip', function() {
+//    Cookie::queue(Cookie::make('welcome', true, 10080));
+//    return redirect()->route('home');
+//});
 
 Route::get('/', [\App\Http\Controllers\Customer\HomeController::class, 'index']);
 //Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
@@ -66,16 +66,16 @@ Route::get('/cart', [\App\Http\Controllers\Customer\CheckoutController::class, '
 Route::get('/checkout', [\App\Http\Controllers\Customer\CheckoutController::class, 'checkout']);
 Route::get('/voucher', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucher']);
 Route::get('/voucher/{id}', [\App\Http\Controllers\Customer\CheckoutController::class, 'voucherShow']);
-//Route::get('/address/map', [\App\Http\Controllers\Customer\AddressController::class, 'showMap']);
 Route::get('/menus', [\App\Http\Controllers\Customer\MenuController::class, 'index']);
+Route::get('/welcome/{event}', [\App\Http\Controllers\Customer\WelcomeController::class, 'index']);
 
-Route::middleware('auth:customer')->group(function() {
-    Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index']);
+Route::middleware('auth-customer')->group(function() {
+    Route::get('/account', [\App\Http\Controllers\Customer\AccountController::class, 'index'])->withoutMiddleware('auth-customer');
     Route::get('/address', [\App\Http\Controllers\Customer\AddressController::class, 'edit']);
     Route::get('/address/map', [\App\Http\Controllers\Customer\AddressController::class, 'showMap']);
     Route::post('/address', [\App\Http\Controllers\Customer\AddressController::class, 'update']);
     Route::get('/select-payment', [\App\Http\Controllers\Customer\CheckoutController::class, 'selectPayment']);
-    Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index']);
+    Route::get('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'index'])->withoutMiddleware('auth-customer');
     Route::get('/order-histories', [\App\Http\Controllers\Customer\OrderController::class, 'indexHistory']);
     Route::get('/orders/{id}', [\App\Http\Controllers\Customer\OrderController::class, 'show']);
     Route::post('/orders', [\App\Http\Controllers\Customer\OrderController::class, 'store']);
