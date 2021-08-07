@@ -11,7 +11,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->group(function() {
-        Route::get('/menus', \App\Http\Livewire\Admin\Menu\Index::class)->name('admin.menus.index');
+        Route::get('/menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin.menus.index');
         Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('admin.menus.create');
         Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('admin.menus.edit');
     });
