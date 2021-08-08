@@ -15,9 +15,15 @@
         </li>
 
         <li :class="isUrl('admin/banners') ? 'active' : ''">
-          <a class="nav-link" href="#">
+          <inertia-link class="nav-link" href="/admin/banners">
             <i class="fas fa-newspaper"></i> <span>Banner</span>
-          </a>
+          </inertia-link>
+        </li>
+
+        <li :class="isUrl('admin/posts') ? 'active' : ''">
+          <inertia-link class="nav-link" href="/admin/posts">
+            <i class="fas fa-newspaper"></i> <span>Post</span>
+          </inertia-link>
         </li>
 
         <li class="">
