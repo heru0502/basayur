@@ -13,6 +13,7 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::resource('/banners', \App\Http\Controllers\Admin\BannerController::class)->only(['index', 'store', 'destroy']);
         Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class)->only(['index', 'store', 'destroy']);
+        Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
         Route::get('/menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin.menus.index');
         Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('admin.menus.create');
         Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('admin.menus.edit');

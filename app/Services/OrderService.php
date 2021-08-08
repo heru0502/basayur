@@ -14,14 +14,25 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService
 {
-    public function all(string $event)
+    public function all(string $event, int $userId = 0)
     {
-        $orders = CustomerOrder::where('customer_id', Auth::guard('customer')->id())
+        $orders = CustomerOrder::with(
+                'statusOrder',
+                'items.menu',
+                'items.unit',
+                'address',
+                'address.village.district.regency.province',
+                'payment',
+                'customer'
+            )
+            ->when($userId, function($q, $userId) {
+                $q->where('customer_id', $userId);
+            })
             ->where(function($q) use($event) {
                 if ($event === 'active') {
                     $q->whereIn('status_order_id', [1,2]);
                 }
-                else {
+                else if ($event === 'inactive') {
                     $q->whereIn('status_order_id', [3,4]);
                 }
             })
@@ -39,6 +50,8 @@ class OrderService
             });
             $statusOrdersLastIndex = count($statusOrders) -1;
             $order->status_order = $statusOrders[$statusOrdersLastIndex];
+
+            $order->progress_status = $this->getStatusOrderCOD($order->id);
         }
 
         return $orders;

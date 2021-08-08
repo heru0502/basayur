@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CustomerOrder extends Model
 {
@@ -35,10 +36,15 @@ class CustomerOrder extends Model
     }
 
     public function address() {
-        return $this->belongsTo(CustomerAddress::class, 'customer_address_id');
+        return $this->belongsTo(CustomerAddress::class, 'customer_address_id')
+            ->select(['*', DB::raw("CONCAT(ST_Latitude(location_point), ',', ST_Longitude(location_point)) AS location_point")]);
     }
 
     public function payment() {
         return $this->belongsTo(Payment::class);
+    }
+
+    public function statusOrder() {
+        return $this->belongsTo(StatusOrder::class);
     }
 }

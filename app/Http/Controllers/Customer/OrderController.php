@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         return Inertia::render('Order/Index', [
             'orders' => Inertia::lazy(function(Request $request) use($orderService) {
-                return $orderService->all($request->event);
+                return $orderService->all($request->event, Auth::guard('customer')->id());
             })
         ]);
     }
@@ -26,7 +26,7 @@ class OrderController extends Controller
     {
         return Inertia::render('Order/IndexHistory', [
             'orders' => Inertia::lazy(function(Request $request) use($orderService) {
-                return $orderService->all($request->event);
+                return $orderService->all($request->event, Auth::guard('customer')->id());
             })
         ]);
     }
