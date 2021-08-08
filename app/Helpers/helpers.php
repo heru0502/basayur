@@ -58,7 +58,7 @@ function setStorage()
 function urlImage($image)
 {
     if (config('app.env') === 'local') {
-        return 'storage/' . $image;
+        return '/storage/' . $image;
     }
 
     return 'https://' . config('filesystems.disks.s3.bucket') . '.s3-' . config('filesystems.disks.s3.region') . '.amazonaws.com/' . $image;

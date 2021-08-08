@@ -11,6 +11,10 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+//        Route::get('/banners', [\App\Http\Controllers\Admin\BannerController::class, 'index'])->name('admin.banners.index');
+//        Route::post('/banners', [\App\Http\Controllers\Admin\BannerController::class, 'store'])->name('admin.banners.store');
+//        Route::delete('/banners', [\App\Http\Controllers\Admin\BannerController::class, 'destroy'])->name('admin.banners.destroy');
+        Route::resource('/banners', \App\Http\Controllers\Admin\BannerController::class);
         Route::get('/menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('admin.menus.index');
         Route::get('/menus/create', \App\Http\Livewire\Admin\Menu\Create::class)->name('admin.menus.create');
         Route::get('/menus/{id}/edit', \App\Http\Livewire\Admin\Menu\Edit::class)->name('admin.menus.edit');
