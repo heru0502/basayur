@@ -135,6 +135,7 @@
             <table class="table table-striped">
               <tr>
                 <th>Nomor Order</th>
+                <th>Nama Customer</th>
                 <th>Grand Total</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -142,6 +143,7 @@
 
               <tr v-for="order in orders" :class="rowSelected === order.id ? 'bg-light' : ''">
                 <td>{{order.order_number}}</td>
+                <td>{{order.customer.name}}</td>
                 <td>{{order.grand_total}}</td>
                 <td>
                   <span :class="'badge '+ statusColor(order.status_order_id)">
