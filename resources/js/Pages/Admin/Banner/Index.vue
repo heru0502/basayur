@@ -27,7 +27,7 @@
               <label>Post</label>
               <select v-model="form.post_id" class="form-control">
                 <option></option>
-                <option v-for="post in posts">{{post.title}}</option>
+                <option v-for="post in posts" :value="post.id">{{post.title}}</option>
               </select>
             </div>
 
