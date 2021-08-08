@@ -5,7 +5,7 @@
       <input type="text" class="border-0" v-model="keyword" @keyup.enter="enterSearching" placeholder="Apa yang dicari hari ini?">
     </div>
 
-    <slider/>
+    <slider :banners="banners"/>
 
     <categories/>
 
@@ -34,7 +34,8 @@ export default {
   },
   props: {
     newestMenus: Object,
-    popularMenus: Object
+    popularMenus: Object,
+    banners: Object
   },
   data() {
     return {

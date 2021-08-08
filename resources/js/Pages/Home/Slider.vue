@@ -1,8 +1,8 @@
 <template>
   <div class="content m-0">
     <Carousel :items-to-show="1.2" >
-      <Slide v-for="slide in 10" :key="slide">
-        <img class="carousel__item" src="/theme/images/pictures/8.jpg">
+      <Slide v-for="banner in banners" :key="banner.id">
+        <img class="carousel__item" :src="banner.image">
       </slide>
 
       <template #addons>
@@ -22,6 +22,9 @@ export default {
     Slide,
     Pagination,
     Navigation,
+  },
+  props: {
+    banners: Object
   }
 }
 
