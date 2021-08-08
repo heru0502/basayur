@@ -17,7 +17,6 @@ class OrderService
     public function all(string $event, int $userId = 0)
     {
         $orders = CustomerOrder::with(
-                'statusOrder',
                 'items.menu',
                 'items.unit',
                 'address',
